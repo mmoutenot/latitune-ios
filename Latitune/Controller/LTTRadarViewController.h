@@ -7,7 +7,14 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <CoreLocation/CoreLocation.h>
+#import <QuartzCore/QuartzCore.h>
 
-@interface LTTRadarViewController : UIViewController
+@interface LTTRadarViewController : UIViewController <CLLocationManagerDelegate> {
+  CLLocationManager *locationManager;
+}
+
+@property (nonatomic,retain) CLLocationManager *locationManager;
+@property (weak, nonatomic) IBOutlet UIImageView *compassImage;
 
 @end
