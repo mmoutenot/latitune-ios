@@ -21,7 +21,6 @@
 		BF7C0EF3182EB905004ED756 /* Main_iPad.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BF7C0EE8182EB905004ED756 /* Main_iPad.storyboard */; };
 		BF7C0EF4182EB905004ED756 /* Main_iPhone.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BF7C0EE9182EB905004ED756 /* Main_iPhone.storyboard */; };
 		BF7C0EF5182EB905004ED756 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = BF7C0EEB182EB905004ED756 /* InfoPlist.strings */; };
-		BF7C0EF6182EB905004ED756 /* Latitune-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = BF7C0EED182EB905004ED756 /* Latitune-Info.plist */; };
 		BF7C0EF7182EB905004ED756 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = BF7C0EEF182EB905004ED756 /* main.m */; };
 /* End PBXBuildFile section */
 
@@ -273,7 +272,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				BF7C0EF6182EB905004ED756 /* Latitune-Info.plist in Resources */,
 				BF7C0EF2182EB905004ED756 /* Images.xcassets in Resources */,
 				BF7C0EF5182EB905004ED756 /* InfoPlist.strings in Resources */,
 				BF7C0EF3182EB905004ED756 /* Main_iPad.storyboard in Resources */,
@@ -420,8 +418,8 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "Latitune/Latitune-Prefix.pch";
-				INFOPLIST_FILE = "Latitune/Latitune-Info.plist";
+				GCC_PREFIX_HEADER = "Latitune/Shared/Latitune-Prefix.pch";
+				INFOPLIST_FILE = "$(SRCROOT)/Latitune/Shared/Latitune-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};
@@ -433,8 +431,8 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "Latitune/Latitune-Prefix.pch";
-				INFOPLIST_FILE = "Latitune/Latitune-Info.plist";
+				GCC_PREFIX_HEADER = "Latitune/Shared/Latitune-Prefix.pch";
+				INFOPLIST_FILE = "$(SRCROOT)/Latitune/Shared/Latitune-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};
