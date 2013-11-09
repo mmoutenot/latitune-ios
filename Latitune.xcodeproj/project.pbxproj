@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		A63AFEE0182EC1BD007F19C0 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A63AFEDF182EC1BD007F19C0 /* CoreLocation.framework */; };
+		A63AFEE2182EC1C5007F19C0 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A63AFEE1182EC1C5007F19C0 /* QuartzCore.framework */; };
 		BF7C0EA6182EB5B9004ED756 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BF7C0EA5182EB5B9004ED756 /* Foundation.framework */; };
 		BF7C0EA8182EB5B9004ED756 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BF7C0EA7182EB5B9004ED756 /* CoreGraphics.framework */; };
 		BF7C0EAA182EB5B9004ED756 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BF7C0EA9182EB5B9004ED756 /* UIKit.framework */; };
@@ -37,6 +39,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		A63AFEDF182EC1BD007F19C0 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
+		A63AFEE1182EC1C5007F19C0 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		BF7C0EA2182EB5B9004ED756 /* Latitune.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Latitune.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BF7C0EA5182EB5B9004ED756 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		BF7C0EA7182EB5B9004ED756 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -68,6 +72,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A63AFEE2182EC1C5007F19C0 /* QuartzCore.framework in Frameworks */,
+				A63AFEE0182EC1BD007F19C0 /* CoreLocation.framework in Frameworks */,
 				BF7C0EA8182EB5B9004ED756 /* CoreGraphics.framework in Frameworks */,
 				BF7C0EAA182EB5B9004ED756 /* UIKit.framework in Frameworks */,
 				BF7C0EA6182EB5B9004ED756 /* Foundation.framework in Frameworks */,
@@ -109,6 +115,8 @@
 		BF7C0EA4182EB5B9004ED756 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				A63AFEE1182EC1C5007F19C0 /* QuartzCore.framework */,
+				A63AFEDF182EC1BD007F19C0 /* CoreLocation.framework */,
 				BF7C0EA5182EB5B9004ED756 /* Foundation.framework */,
 				BF7C0EA7182EB5B9004ED756 /* CoreGraphics.framework */,
 				BF7C0EA9182EB5B9004ED756 /* UIKit.framework */,
@@ -253,6 +261,9 @@
 				LastUpgradeCheck = 0500;
 				ORGANIZATIONNAME = "Alden Keefe Sampson";
 				TargetAttributes = {
+					BF7C0EA1182EB5B9004ED756 = {
+						DevelopmentTeam = Z8GUSFBWFT;
+					};
 					BF7C0EC5182EB5B9004ED756 = {
 						TestTargetID = BF7C0EA1182EB5B9004ED756;
 					};
@@ -429,10 +440,13 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Latitune/Shared/Latitune-Prefix.pch";
 				INFOPLIST_FILE = "$(SRCROOT)/Latitune/Shared/Latitune-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -442,10 +456,13 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Latitune/Shared/Latitune-Prefix.pch";
 				INFOPLIST_FILE = "$(SRCROOT)/Latitune/Shared/Latitune-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
