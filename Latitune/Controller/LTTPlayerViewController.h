@@ -11,6 +11,9 @@
 
 @interface LTTPlayerViewController : UIViewController
 
-@property (strong, nonatomic) Rdio *rdio;
+@property (weak, nonatomic) IBOutlet UIButton *authenticateButton;
+@property (strong, nonatomic) IBOutlet UIView *authenticateOverlay;
+
+- (IBAction)authenticateWithRdio:(id)sender;
 
 @end

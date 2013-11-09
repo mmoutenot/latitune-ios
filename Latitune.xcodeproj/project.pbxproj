@@ -53,7 +53,7 @@
 		26D49302A81345AA96627698 /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = "<group>"; };
 		A63AFEDF182EC1BD007F19C0 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		A63AFEE1182EC1C5007F19C0 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
-		A67EB623182EF48300FE10C4 /* libENAPILibrary.a */ = {isa = PBXFileReference; lastKnownFileType = file; name = libENAPILibrary.a; path = "ENWorkspace/ENAPILibrary/build/Debug-iphoneos/libENAPILibrary.a"; sourceTree = "<group>"; };
+		A67EB623182EF48300FE10C4 /* libENAPILibrary.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libENAPILibrary.a; path = "ENWorkspace/ENAPILibrary/build/Debug-iphoneos/libENAPILibrary.a"; sourceTree = "<group>"; };
 		A67EB625182EF48A00FE10C4 /* Rdio.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Rdio.framework; path = System/Library/Frameworks/Rdio.framework; sourceTree = SDKROOT; };
 		A6FCCB25182EDD8300D682E9 /* LTTBlip.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LTTBlip.h; sourceTree = "<group>"; };
 		A6FCCB26182EDD8300D682E9 /* LTTBlip.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LTTBlip.m; sourceTree = "<group>"; };
@@ -538,12 +538,15 @@
 					"${SRCROOT}/Frameworks",
 					"$(inherited)",
 					"${SRCROOT}/Pods",
-					"/Users/mmoutenot/workspace/latitune-ios/Frameworks",
+					"${SRCROOT}/Frameworks",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Latitune/Shared/Latitune-Prefix.pch";
 				INFOPLIST_FILE = "$(SRCROOT)/Latitune/Shared/Latitune-Info.plist";
-				OTHER_LDFLAGS = "";
+				OTHER_LDFLAGS = (
+					"-force_load",
+					"${SRCROOT}/Pods/Rdio/Rdio.framework/Versions/Current/Rdio",
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				USER_HEADER_SEARCH_PATHS = "${SRCROOT}/**";
@@ -563,12 +566,15 @@
 					"${SRCROOT}/Frameworks",
 					"$(inherited)",
 					"${SRCROOT}/Pods",
-					"/Users/mmoutenot/workspace/latitune-ios/Frameworks",
+					"${SRCROOT}/Frameworks",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Latitune/Shared/Latitune-Prefix.pch";
 				INFOPLIST_FILE = "$(SRCROOT)/Latitune/Shared/Latitune-Info.plist";
-				OTHER_LDFLAGS = "";
+				OTHER_LDFLAGS = (
+					"-force_load",
+					"${SRCROOT}/Pods/Rdio/Rdio.framework/Versions/Current/Rdio",
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				USER_HEADER_SEARCH_PATHS = "${SRCROOT}/**";

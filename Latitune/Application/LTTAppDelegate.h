@@ -7,7 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-#import <Rdio.h>
+#import <Rdio/Rdio.h>
 
 @interface LTTAppDelegate : UIResponder <UIApplicationDelegate>
 

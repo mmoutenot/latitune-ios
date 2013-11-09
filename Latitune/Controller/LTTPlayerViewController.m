@@ -7,14 +7,13 @@
 //
 
 #import "LTTPlayerViewController.h"
+#import "LTTAppDelegate.h"
 
 @interface LTTPlayerViewController ()
 
 @end
 
 @implementation LTTPlayerViewController
-
-@synthesize rdio;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -35,6 +34,12 @@
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+- (IBAction)authenticateWithRdio:(id)sender
+{
+    Rdio *rdio = [(LTTAppDelegate *)[[UIApplication sharedApplication] delegate] rdio];
+    [rdio authorizeFromController:self];
 }
 
 @end
