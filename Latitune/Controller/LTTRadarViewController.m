@@ -9,9 +9,6 @@
 
 @implementation LTTRadarViewController
 
-@synthesize locationManager;
-@synthesize compassImage;
-
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
   self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
@@ -26,15 +23,15 @@
   [super viewDidLoad];
   
   // initialize our geolocation and start updating
-  locationManager = [[CLLocationManager alloc] init];
-  locationManager.desiredAccuracy = kCLLocationAccuracyBest;
-  locationManager.headingFilter = 1;
-  locationManager.delegate=self;
-  [locationManager startUpdatingHeading];
+  self.locationManager = [[CLLocationManager alloc] init];
+  self.locationManager.desiredAccuracy = kCLLocationAccuracyBest;
+  self.locationManager.headingFilter = 1;
+  self.locationManager.delegate=self;
+  [self.locationManager startUpdatingHeading];
 }
 
 - (void)locationManager:(CLLocationManager *)manager didUpdateHeading:(CLHeading *)newHeading{
-  compassImage.center = CGPointMake(160, 167);
+  self.compassImage.center = CGPointMake(160, 167);
   
   // Convert Degree to Radian and move the needle
   float oldRad = -manager.heading.trueHeading * M_PI / 180.0f;
@@ -45,7 +42,7 @@
     rotationAnimation.fromValue = [NSNumber numberWithFloat:oldRad];
     rotationAnimation.toValue=[NSNumber numberWithFloat:newRad];
     rotationAnimation.duration = 0.2;
-    [compassImage.layer addAnimation:rotationAnimation forKey:@"AnimateFrame"];
+    [self.compassImage.layer addAnimation:rotationAnimation forKey:@"AnimateFrame"];
   }];
 
   

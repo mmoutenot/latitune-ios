@@ -10,9 +10,7 @@
 #import <CoreLocation/CoreLocation.h>
 #import <QuartzCore/QuartzCore.h>
 
-@interface LTTRadarViewController : UIViewController <CLLocationManagerDelegate> {
-  CLLocationManager *locationManager;
-}
+@interface LTTRadarViewController : UIViewController <CLLocationManagerDelegate>
 
 @property (nonatomic,retain) CLLocationManager *locationManager;
 @property (weak, nonatomic) IBOutlet UIImageView *compassImage;
