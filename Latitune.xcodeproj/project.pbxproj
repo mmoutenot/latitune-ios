@@ -22,6 +22,8 @@
 		BF7C0EF4182EB905004ED756 /* Main_iPhone.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BF7C0EE9182EB905004ED756 /* Main_iPhone.storyboard */; };
 		BF7C0EF5182EB905004ED756 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = BF7C0EEB182EB905004ED756 /* InfoPlist.strings */; };
 		BF7C0EF7182EB905004ED756 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = BF7C0EEF182EB905004ED756 /* main.m */; };
+		BF7C0EFA182EBEB5004ED756 /* LTTDropBlipViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BF7C0EF9182EBEB5004ED756 /* LTTDropBlipViewController.m */; };
+		BF7C0EFD182EBF14004ED756 /* LTTRadarViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BF7C0EFC182EBF14004ED756 /* LTTRadarViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -55,6 +57,10 @@
 		BF7C0EED182EB905004ED756 /* Latitune-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "Latitune-Info.plist"; sourceTree = "<group>"; };
 		BF7C0EEE182EB905004ED756 /* Latitune-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Latitune-Prefix.pch"; sourceTree = "<group>"; };
 		BF7C0EEF182EB905004ED756 /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		BF7C0EF8182EBEB5004ED756 /* LTTDropBlipViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LTTDropBlipViewController.h; sourceTree = "<group>"; };
+		BF7C0EF9182EBEB5004ED756 /* LTTDropBlipViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LTTDropBlipViewController.m; sourceTree = "<group>"; };
+		BF7C0EFB182EBF14004ED756 /* LTTRadarViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LTTRadarViewController.h; sourceTree = "<group>"; };
+		BF7C0EFC182EBF14004ED756 /* LTTRadarViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LTTRadarViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -155,6 +161,10 @@
 			children = (
 				BF7C0EE2182EB905004ED756 /* LTTViewController.h */,
 				BF7C0EE3182EB905004ED756 /* LTTViewController.m */,
+				BF7C0EF8182EBEB5004ED756 /* LTTDropBlipViewController.h */,
+				BF7C0EF9182EBEB5004ED756 /* LTTDropBlipViewController.m */,
+				BF7C0EFB182EBF14004ED756 /* LTTRadarViewController.h */,
+				BF7C0EFC182EBF14004ED756 /* LTTRadarViewController.m */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -295,6 +305,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				BF7C0EF0182EB905004ED756 /* LTTAppDelegate.m in Sources */,
+				BF7C0EFA182EBEB5004ED756 /* LTTDropBlipViewController.m in Sources */,
+				BF7C0EFD182EBF14004ED756 /* LTTRadarViewController.m in Sources */,
 				BF7C0EF7182EB905004ED756 /* main.m in Sources */,
 				BF7C0EF1182EB905004ED756 /* LTTViewController.m in Sources */,
 			);
