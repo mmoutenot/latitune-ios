@@ -28,7 +28,6 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    rdio = [[Rdio alloc] initWithConsumerKey:@"xya6sc2u4x73sgvsdtc8ef4k" andSecret:@"hs68psbjtH" delegate:nil];
 	// Do any additional setup after loading the view.
 }
 

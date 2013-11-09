@@ -7,6 +7,7 @@
 //
 
 #import "LTTSong.h"
+#import "ENAPI.h"
 
 @implementation LTTSong
 
@@ -18,11 +19,19 @@
 - (id) initWithTitle:(NSString *)title artist:(NSString*)artist album:(NSString*)album {
   self = [super init];
   if (self) {
+    NSLog(@"Creating song with %@ %@ %@", title, artist, album);
     self.title = title;
     self.artist = artist;
     self.album = album;
-    self.providerKey = @"";
-    self.providerSongID = @"";
+    
+    NSMutableDictionary *parameters = [NSMutableDictionary new];
+    [parameters setValue:title forKey:@"title"];
+    [parameters setValue:artist forKey:@"artist"];
+    
+    [ENAPIRequest GETWithEndpoint:@"song/search" andParameters:parameters andCompletionBlock:
+     ^(ENAPIRequest *request) {
+       NSLog(@"Echonest response %@", request.response);
+     }];
   }
   return self;
 }

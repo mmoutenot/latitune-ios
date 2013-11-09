@@ -16,7 +16,8 @@
 @property (nonatomic) NSString *providerSongID;
 @property (nonatomic) NSString *providerKey;
 
-- (id) initWithTitle:(NSString *)_title artist:(NSString*)_artist album:(NSString*)_album;
+- (id) initWithTitle:(NSString *)title artist:(NSString*)artist album:(NSString*)album;
+
 - (NSDictionary *)asDictionary;
 
 @end

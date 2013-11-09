@@ -10,4 +10,6 @@
 
 @interface LTTDropBlipViewController : UIViewController
 
+- (IBAction)dropButton:(id)sender;
+
 @end

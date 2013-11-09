@@ -5,12 +5,12 @@
 //  Created by alden on 11/9/13.
 //  Copyright (c) 2013 Alden Keefe Sampson. All rights reserved.
 //
+#import <MediaPlayer/MediaPlayer.h>
+#import <Rdio/Rdio.h>
 
+#import "LTTSong.h"
+#import "LTTAppDelegate.h"
 #import "LTTDropBlipViewController.h"
-
-@interface LTTDropBlipViewController ()
-
-@end
 
 @implementation LTTDropBlipViewController
 
@@ -33,6 +33,31 @@
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+- (IBAction)dropButton:(id)sender {
+  [self getCurrentExternalSong];
+}
+
+- (LTTSong *)getCurrentExternalSong {
+  NSString *title;
+  NSString *artist;
+  NSString *album;
+  
+  MPMediaItem* currentPlaying = [[MPMusicPlayerController iPodMusicPlayer] nowPlayingItem];
+  
+  title = [currentPlaying valueForProperty:MPMediaItemPropertyTitle];
+  album = [currentPlaying valueForProperty:MPMediaItemPropertyAlbumTitle];
+  artist = [currentPlaying valueForProperty:MPMediaItemPropertyArtist];
+  
+  if (!title || !artist) { // iPodMusicPlayer may not be playing anything. Let's defer to Rdio.
+    
+    Rdio *rdio = ((LTTAppDelegate *)[[UIApplication sharedApplication] delegate]).rdio;
+  }
+  
+  
+  LTTSong* song = [[LTTSong new] initWithTitle:title artist:artist album:album];
+  return song;
 }
 
 @end

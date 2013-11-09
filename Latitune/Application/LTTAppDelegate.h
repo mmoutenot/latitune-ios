@@ -7,9 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <Rdio.h>
 
 @interface LTTAppDelegate : UIResponder <UIApplicationDelegate>
 
 @property (strong, nonatomic) UIWindow *window;
+@property (strong, nonatomic) Rdio *rdio;
 
 @end

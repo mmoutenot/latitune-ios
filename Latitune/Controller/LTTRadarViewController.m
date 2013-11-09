@@ -44,9 +44,8 @@
     rotationAnimation.duration = 0.2;
     [self.compassImage.layer addAnimation:rotationAnimation forKey:@"AnimateFrame"];
   }];
-
   
-  NSLog(@"%f (%f) => %f (%f)", manager.heading.trueHeading, oldRad, newHeading.trueHeading, newRad);
+  // NSLog(@"%f (%f) => %f (%f)", manager.heading.trueHeading, oldRad, newHeading.trueHeading, newRad);
 }
 
 - (void)didReceiveMemoryWarning

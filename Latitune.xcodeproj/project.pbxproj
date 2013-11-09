@@ -7,14 +7,18 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		536F0E7A2E8649A4B2F154DF /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1639DF29951F44E9899F2A24 /* libPods.a */; };
 		A63AFEE0182EC1BD007F19C0 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A63AFEDF182EC1BD007F19C0 /* CoreLocation.framework */; };
 		A63AFEE2182EC1C5007F19C0 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A63AFEE1182EC1C5007F19C0 /* QuartzCore.framework */; };
+		A67EB624182EF48300FE10C4 /* libENAPILibrary.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A67EB623182EF48300FE10C4 /* libENAPILibrary.a */; };
+		A67EB626182EF48A00FE10C4 /* Rdio.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A67EB625182EF48A00FE10C4 /* Rdio.framework */; };
+		A6FCCB29182EDD8300D682E9 /* LTTBlip.m in Sources */ = {isa = PBXBuildFile; fileRef = A6FCCB26182EDD8300D682E9 /* LTTBlip.m */; };
+		A6FCCB2A182EDD8300D682E9 /* LTTSong.m in Sources */ = {isa = PBXBuildFile; fileRef = A6FCCB28182EDD8300D682E9 /* LTTSong.m */; };
 		B572960B182EE4FE00E9E23E /* LTTPlayerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B572960A182EE4FE00E9E23E /* LTTPlayerViewController.m */; };
 		B572960F182EE65700E9E23E /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B572960E182EE65700E9E23E /* CFNetwork.framework */; };
 		B5729611182EE66400E9E23E /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B5729610182EE66400E9E23E /* SystemConfiguration.framework */; };
 		B5729613182EE66B00E9E23E /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B5729612182EE66B00E9E23E /* AudioToolbox.framework */; };
 		B5729615182EE67200E9E23E /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B5729614182EE67200E9E23E /* Security.framework */; };
-		B5729617182EE96300E9E23E /* Rdio.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B5729616182EE96300E9E23E /* Rdio.framework */; };
 		BF7C0EA6182EB5B9004ED756 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BF7C0EA5182EB5B9004ED756 /* Foundation.framework */; };
 		BF7C0EA8182EB5B9004ED756 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BF7C0EA7182EB5B9004ED756 /* CoreGraphics.framework */; };
 		BF7C0EAA182EB5B9004ED756 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BF7C0EA9182EB5B9004ED756 /* UIKit.framework */; };
@@ -45,15 +49,22 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		1639DF29951F44E9899F2A24 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		26D49302A81345AA96627698 /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = "<group>"; };
 		A63AFEDF182EC1BD007F19C0 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		A63AFEE1182EC1C5007F19C0 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		A67EB623182EF48300FE10C4 /* libENAPILibrary.a */ = {isa = PBXFileReference; lastKnownFileType = file; name = libENAPILibrary.a; path = "ENWorkspace/ENAPILibrary/build/Debug-iphoneos/libENAPILibrary.a"; sourceTree = "<group>"; };
+		A67EB625182EF48A00FE10C4 /* Rdio.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Rdio.framework; path = System/Library/Frameworks/Rdio.framework; sourceTree = SDKROOT; };
+		A6FCCB25182EDD8300D682E9 /* LTTBlip.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LTTBlip.h; sourceTree = "<group>"; };
+		A6FCCB26182EDD8300D682E9 /* LTTBlip.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LTTBlip.m; sourceTree = "<group>"; };
+		A6FCCB27182EDD8300D682E9 /* LTTSong.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LTTSong.h; sourceTree = "<group>"; };
+		A6FCCB28182EDD8300D682E9 /* LTTSong.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LTTSong.m; sourceTree = "<group>"; };
 		B5729609182EE4FE00E9E23E /* LTTPlayerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LTTPlayerViewController.h; path = Latitune/Controller/LTTPlayerViewController.h; sourceTree = SOURCE_ROOT; };
 		B572960A182EE4FE00E9E23E /* LTTPlayerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LTTPlayerViewController.m; path = Latitune/Controller/LTTPlayerViewController.m; sourceTree = SOURCE_ROOT; };
 		B572960E182EE65700E9E23E /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
 		B5729610182EE66400E9E23E /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		B5729612182EE66B00E9E23E /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
 		B5729614182EE67200E9E23E /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
-		B5729616182EE96300E9E23E /* Rdio.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Rdio.framework; path = Frameworks/Rdio.framework; sourceTree = "<group>"; };
 		BF7C0EA2182EB5B9004ED756 /* Latitune.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Latitune.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BF7C0EA5182EB5B9004ED756 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		BF7C0EA7182EB5B9004ED756 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -85,7 +96,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B5729617182EE96300E9E23E /* Rdio.framework in Frameworks */,
+				A67EB626182EF48A00FE10C4 /* Rdio.framework in Frameworks */,
+				A67EB624182EF48300FE10C4 /* libENAPILibrary.a in Frameworks */,
 				B5729615182EE67200E9E23E /* Security.framework in Frameworks */,
 				B5729613182EE66B00E9E23E /* AudioToolbox.framework in Frameworks */,
 				B5729611182EE66400E9E23E /* SystemConfiguration.framework in Frameworks */,
@@ -95,6 +107,7 @@
 				BF7C0EA8182EB5B9004ED756 /* CoreGraphics.framework in Frameworks */,
 				BF7C0EAA182EB5B9004ED756 /* UIKit.framework in Frameworks */,
 				BF7C0EA6182EB5B9004ED756 /* Foundation.framework in Frameworks */,
+				536F0E7A2E8649A4B2F154DF /* libPods.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -111,6 +124,13 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		A6FCCB2B182EDF4100D682E9 /* Vendor */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Vendor;
+			sourceTree = "<group>";
+		};
 		BF7C0E99182EB5B9004ED756 = {
 			isa = PBXGroup;
 			children = (
@@ -118,6 +138,7 @@
 				BF7C0ECD182EB5B9004ED756 /* LatituneTests */,
 				BF7C0EA4182EB5B9004ED756 /* Frameworks */,
 				BF7C0EA3182EB5B9004ED756 /* Products */,
+				26D49302A81345AA96627698 /* Pods.xcconfig */,
 			);
 			sourceTree = "<group>";
 		};
@@ -133,7 +154,8 @@
 		BF7C0EA4182EB5B9004ED756 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				B5729616182EE96300E9E23E /* Rdio.framework */,
+				A67EB625182EF48A00FE10C4 /* Rdio.framework */,
+				A67EB623182EF48300FE10C4 /* libENAPILibrary.a */,
 				B5729614182EE67200E9E23E /* Security.framework */,
 				B5729612182EE66B00E9E23E /* AudioToolbox.framework */,
 				B5729610182EE66400E9E23E /* SystemConfiguration.framework */,
@@ -144,6 +166,7 @@
 				BF7C0EA7182EB5B9004ED756 /* CoreGraphics.framework */,
 				BF7C0EA9182EB5B9004ED756 /* UIKit.framework */,
 				BF7C0EC7182EB5B9004ED756 /* XCTest.framework */,
+				1639DF29951F44E9899F2A24 /* libPods.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -174,6 +197,7 @@
 				BF7C0EE4182EB905004ED756 /* Model */,
 				BF7C0EE5182EB905004ED756 /* Resources */,
 				BF7C0EEA182EB905004ED756 /* Shared */,
+				A6FCCB2B182EDF4100D682E9 /* Vendor */,
 			);
 			path = Latitune;
 			sourceTree = "<group>";
@@ -205,6 +229,10 @@
 		BF7C0EE4182EB905004ED756 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				A6FCCB25182EDD8300D682E9 /* LTTBlip.h */,
+				A6FCCB26182EDD8300D682E9 /* LTTBlip.m */,
+				A6FCCB27182EDD8300D682E9 /* LTTSong.h */,
+				A6FCCB28182EDD8300D682E9 /* LTTSong.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -245,9 +273,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = BF7C0ED7182EB5B9004ED756 /* Build configuration list for PBXNativeTarget "Latitune" */;
 			buildPhases = (
+				6B86B98016D84DC3BF855949 /* Check Pods Manifest.lock */,
 				BF7C0E9E182EB5B9004ED756 /* Sources */,
 				BF7C0E9F182EB5B9004ED756 /* Frameworks */,
 				BF7C0EA0182EB5B9004ED756 /* Resources */,
+				DBF620796709492F9900F980 /* Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -335,6 +365,39 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		6B86B98016D84DC3BF855949 /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		DBF620796709492F9900F980 /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Pods-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		BF7C0E9E182EB5B9004ED756 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -344,7 +407,9 @@
 				BF7C0EFA182EBEB5004ED756 /* LTTDropBlipViewController.m in Sources */,
 				B572960B182EE4FE00E9E23E /* LTTPlayerViewController.m in Sources */,
 				BF7C0EFD182EBF14004ED756 /* LTTRadarViewController.m in Sources */,
+				A6FCCB29182EDD8300D682E9 /* LTTBlip.m in Sources */,
 				BF7C0EF7182EB905004ED756 /* main.m in Sources */,
+				A6FCCB2A182EDD8300D682E9 /* LTTSong.m in Sources */,
 				BF7C0EF1182EB905004ED756 /* LTTViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -463,44 +528,50 @@
 		};
 		BF7C0ED8182EB5B9004ED756 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 26D49302A81345AA96627698 /* Pods.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
+					"${SRCROOT}/Frameworks",
 					"$(inherited)",
-					"/Users/ben/Documents/Code/latitune-ios",
-					"/Users/ben/Documents/Code/latitune-ios/Frameworks",
+					"${SRCROOT}/Pods",
+					"/Users/mmoutenot/workspace/latitune-ios/Frameworks",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Latitune/Shared/Latitune-Prefix.pch";
 				INFOPLIST_FILE = "$(SRCROOT)/Latitune/Shared/Latitune-Info.plist";
-				OTHER_LDFLAGS = "-all_load";
+				OTHER_LDFLAGS = "";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
+				USER_HEADER_SEARCH_PATHS = "${SRCROOT}/**";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
 		};
 		BF7C0ED9182EB5B9004ED756 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 26D49302A81345AA96627698 /* Pods.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
+					"${SRCROOT}/Frameworks",
 					"$(inherited)",
-					"/Users/ben/Documents/Code/latitune-ios",
-					"/Users/ben/Documents/Code/latitune-ios/Frameworks",
+					"${SRCROOT}/Pods",
+					"/Users/mmoutenot/workspace/latitune-ios/Frameworks",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Latitune/Shared/Latitune-Prefix.pch";
 				INFOPLIST_FILE = "$(SRCROOT)/Latitune/Shared/Latitune-Info.plist";
-				OTHER_LDFLAGS = "-all_load";
+				OTHER_LDFLAGS = "";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
+				USER_HEADER_SEARCH_PATHS = "${SRCROOT}/**";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
