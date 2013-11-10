@@ -45,11 +45,7 @@
 
 - (void) rdioDidAuthorizeUser:(NSDictionary *)user withAccessToken:(NSString *)accessToken
 {
-    CGRect rect = self.view.frame;
-    rect.origin.y = -rect.size.height;
-    [UIView animateWithDuration:0.3 animations:^{
-        self.view.frame = rect;
-    }];
+    [self performSegueWithIdentifier:@"didAuthenticateSegue" sender:self];
 }
 
 @end

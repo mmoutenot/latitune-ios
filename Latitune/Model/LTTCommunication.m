@@ -8,11 +8,7 @@
 
 #import "LTTCommunication.h"
 
-//#ifdef RUN_KIF_TESTS
-#define SERVER_ROOT @"http://localhost:5000/api/"
-//#else
-//#define SERVER_ROOT @"https://latitune.herokuapp.com/api/"
-//#endif
+#define SERVER_ROOT @"https://latitune.herokuapp.com/api/"
 
 #define BLIP_ROUTE [NSString stringWithFormat:@"%@%@",SERVER_ROOT,@"blip"]
 #define SONG_ROUTE [NSString stringWithFormat:@"%@%@",SERVER_ROOT,@"song"]
@@ -208,6 +204,13 @@
     toReturn.userID = [blip[@"user_id"] integerValue];
     NSDictionary *song = blip[@"song"];
     toReturn.song = [[LTTSong alloc] initWithTitle:song[@"title"] artist:song[@"artist"] album:song[@"album"] echonestID:song[@"echonestID"]];
+    NSArray *providerDicts = song[@"providers"];
+    NSMutableArray *providers = [[NSMutableArray alloc] init];
+    for (NSDictionary *providerDict in providerDicts) {
+        Provider provider = [providerDict[@"provider"] isEqualToString:@"Rdio"] ? ProviderRdio : ProviderSpotify;
+        [providers addObject:[[LTTSongProvider alloc] initWithProvider:provider key:providerDict[@"provider_key"]]];
+    }
+    toReturn.song.providers = [[NSArray alloc] initWithArray:providers];
     toReturn.song.songID = [song[@"id"] integerValue];
     toReturn.userID = [blip[@"user_id"] integerValue];
     toReturn.timestamp = nil;
@@ -230,6 +233,13 @@
     blipObj.userID = [blip[@"user_id"] integerValue];
     NSDictionary *song = blip[@"song"];
     blipObj.song = [[LTTSong alloc] initWithTitle:song[@"title"] artist:song[@"artist"] album:song[@"album"] echonestID:song[@"echonestID"]];
+    NSArray *providerDicts = song[@"providers"];
+    NSMutableArray *providers = [[NSMutableArray alloc] init];
+    for (NSDictionary *providerDict in providerDicts) {
+      Provider provider = [providerDict[@"provider"] isEqualToString:@"Rdio"] ? ProviderRdio : ProviderSpotify;
+      [providers addObject:[[LTTSongProvider alloc] initWithProvider:provider key:providerDict[@"provider_key"]]];
+    }
+    blipObj.song.providers = [[NSArray alloc] initWithArray:providers];
     blipObj.song.songID = [song[@"id"] integerValue];
     blipObj.userID = [blip[@"user_id"] integerValue];
     blipObj.timestamp = nil;

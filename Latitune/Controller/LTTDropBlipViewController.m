@@ -52,7 +52,6 @@
   artist = [currentPlaying valueForProperty:MPMediaItemPropertyArtist];
   
   if (!title || !artist) { // iPodMusicPlayer may not be playing anything. Let's defer to Rdio.
-    
     Rdio *rdio = ((LTTAppDelegate *)[[UIApplication sharedApplication] delegate]).rdio;
   }
   

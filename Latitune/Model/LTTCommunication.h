@@ -12,6 +12,7 @@
 #import "SSKeychain.h"
 #import "LTTSong.h"
 #import "LTTBlip.h"
+#import "LTTSongProvider.h"
 
 typedef struct {
     float lat;
