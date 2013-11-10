@@ -14,10 +14,10 @@
 //#define SERVER_ROOT @"https://latitune.herokuapp.com/api/"
 //#endif
 
-#define BLIP_EXT [NSString stringWithFormat:@"%@%@",SERVER_ROOT,@"blip"]
-#define SONG_EXT [NSString stringWithFormat:@"%@%@",SERVER_ROOT,@"song"]
-#define USER_EXT [NSString stringWithFormat:@"%@%@",SERVER_ROOT,@"user"]
-#define RASA_EXT [NSString stringWithFormat:@"%@%@",SERVER_ROOT,@"tabularasa"]
+#define BLIP_ROUTE [NSString stringWithFormat:@"%@%@",SERVER_ROOT,@"blip"]
+#define SONG_ROUTE [NSString stringWithFormat:@"%@%@",SERVER_ROOT,@"song"]
+#define USER_ROUTE [NSString stringWithFormat:@"%@%@",SERVER_ROOT,@"user"]
+#define RASA_ROUTE [NSString stringWithFormat:@"%@%@",SERVER_ROOT,@"tabularasa"]
 
 @interface NSNull (DelegateResolver) <CreateUserDelegate, GetBlipsDelegate, AddBlipDelegate, AddSongDelegate, LoginDelegate>
 @end
@@ -38,8 +38,6 @@
 @end
 
 @implementation LTTCommunication
-
-@synthesize userID;
 
 + (id)sharedInstance {
     static dispatch_once_t pred = 0;
@@ -149,7 +147,7 @@
   self.password = upassword;
   NSDictionary *params = @{@"email":uemail};
   NSDictionary *cl = @{@"delegate":delegate};
-  [self putURL:USER_EXT parameters:params succeedSelector:@selector(requestToAddUserDidSucceedWithResponse:closure:)
+  [self putURL:USER_ROUTE parameters:params succeedSelector:@selector(requestToAddUserDidSucceedWithResponse:closure:)
   failSelector:@selector(requestToAddUserDidFailWithErrorCode:closure:) closure:cl];
 }
 
@@ -170,20 +168,20 @@
     self.username = uname;
     self.password = upassword;
     NSDictionary *cl = @{@"delegate":delegate};
-    [self getURL:USER_EXT parameters:nil succeedSelector:@selector(requestToLoginDidSucceedWithResponse:closure:)
+    [self getURL:USER_ROUTE parameters:nil succeedSelector:@selector(requestToLoginDidSucceedWithResponse:closure:)
     failSelector:@selector(requestToLoginDidFailWithErrorCode:closure:) closure:cl];
 }
 
 - (void) addSong:(LTTSong *)song withDelegate:(NSObject<AddSongDelegate> *)delegate {
     NSDictionary *params = [song asDictionary];
     NSDictionary *cl = @{@"delegate":delegate};
-    [self putURL:SONG_EXT parameters:params succeedSelector:@selector(requestToAddSongDidSucceedWithResponse:closure:)
+    [self putURL:SONG_ROUTE parameters:params succeedSelector:@selector(requestToAddSongDidSucceedWithResponse:closure:)
           failSelector:@selector(requestToAddSongDidFailWithClosure:) closure:cl];
 }
 
 - (void) requestToAddSongDidSucceedWithResponse:(NSDictionary*)response closure:(NSDictionary*)cl {
     NSDictionary *song = response[@"objects"][0];
-    LTTSong *toReturn = [[LTTSong alloc] initWithTitle:song[@"title"] artist:song[@"artist"] album:song[@"album"]];
+    LTTSong *toReturn = [[LTTSong alloc] initWithTitle:song[@"title"] artist:song[@"artist"] album:song[@"album"] echonestID:song[@"echonestID"]];
     [cl[@"delegate"] performSelector:@selector(addSongDidSucceedWithSong:) withObject:toReturn];
 }
 
@@ -194,12 +192,12 @@
 - (void) addBlipWithSong:(LTTSong *)song atLocation:(GeoPoint)point withDelegate:(NSObject <AddBlipDelegate>*)delegate {
     NSDictionary *params = @{@"song_id":song.echonestID,@"latitude":@(point.lat),@"longitude":@(point.lng),@"user_id":@(userID)};
     NSDictionary *cl = @{@"delegate":delegate};
-    [self putURL:BLIP_EXT parameters:params succeedSelector:@selector(requestToAddBlipDidSucceedWithResponse:closure:) failSelector:@selector(requestToAddBlipDidFailWithClosure:) closure:cl];
+    [self putURL:BLIP_ROUTE parameters:params succeedSelector:@selector(requestToAddBlipDidSucceedWithResponse:closure:) failSelector:@selector(requestToAddBlipDidFailWithClosure:) closure:cl];
 }
 
 - (void) getBlipsWithDelegate:(NSObject<GetBlipsDelegate> *)delegate {
     NSDictionary *cl = @{@"delegate":delegate};
-    [self getURL:BLIP_EXT parameters:nil succeedSelector:@selector(requestToGetBlipsDidSucceedWithResponse:closure:) failSelector:@selector(requestToGetBlipsDidFailWithClosure:) closure:cl];
+    [self getURL:BLIP_ROUTE parameters:nil succeedSelector:@selector(requestToGetBlipsDidSucceedWithResponse:closure:) failSelector:@selector(requestToGetBlipsDidFailWithClosure:) closure:cl];
 }
 
 - (void) requestToAddBlipDidSucceedWithResponse:(NSDictionary*)response closure:(NSDictionary*)cl {
@@ -207,9 +205,7 @@
     LTTBlip *toReturn = [[LTTBlip alloc] init];
     toReturn.userID = [blip[@"user_id"] integerValue];
     NSDictionary *song = blip[@"song"];
-    toReturn.song = [[LTTSong alloc] initWithTitle:song[@"title"]
-                                         artist:song[@"artist"]
-                                          album:song[@"album"]];
+    toReturn.song = [[LTTSong alloc] initWithTitle:song[@"title"] artist:song[@"artist"] album:song[@"album"] echonestID:song[@"echonestID"]];
     toReturn.song.songID = [song[@"id"] integerValue];
     toReturn.userID = [blip[@"user_id"] integerValue];
     toReturn.timestamp = nil;
@@ -231,11 +227,8 @@
     blipObj.blipID = [blip [@"id"] integerValue];
     blipObj.userID = [blip[@"user_id"] integerValue];
     NSDictionary *song = blip[@"song"];
-    blipObj.song = [[LTTSong alloc] initWithTitle:song[@"title"]
-                                           artist:song[@"artist"]
-                                            album:song[@"album"]];
+    blipObj.song = [[LTTSong alloc] initWithTitle:song[@"title"] artist:song[@"artist"] album:song[@"album"] echonestID:song[@"echonestID"]];
     blipObj.song.songID = [song[@"id"] integerValue];
-    blipObj.song.echonestID = song[@"echonest_id"];
     blipObj.userID = [blip[@"user_id"] integerValue];
     blipObj.timestamp = nil;
     blipObj.lat = [blip[@"latitude"] floatValue];
@@ -252,13 +245,13 @@
 - (void) getBlipsNearLocation:(GeoPoint)location withDelegate:(NSObject<GetBlipsDelegate>*)delegate {
     NSDictionary *params = @{@"latitude":@(location.lat),@"longitude":@(location.lng)};
     NSDictionary *cl = @{@"delegate":delegate};
-    [self getURL:BLIP_EXT parameters:params succeedSelector:@selector(requestToGetBlipsDidSucceedWithResponse:closure:) failSelector:@selector(requestToGetBlipsDidFailWithClosure:) closure:cl];
+    [self getURL:BLIP_ROUTE parameters:params succeedSelector:@selector(requestToGetBlipsDidSucceedWithResponse:closure:) failSelector:@selector(requestToGetBlipsDidFailWithClosure:) closure:cl];
 }
 
 - (void) getBlipWithID:(NSInteger)blipID withDelegate:(NSObject<GetBlipsDelegate> *)delegate {
     NSDictionary *params = @{@"id":@(blipID)};
     NSDictionary *cl = @{@"delegate":delegate};
-       [self getURL:BLIP_EXT parameters:params succeedSelector:@selector(requestToGetBlipsDidSucceedWithResponse:closure:) failSelector:@selector(requestToGetBlipsDidFailWithClosure:) closure:cl];
+       [self getURL:BLIP_ROUTE parameters:params succeedSelector:@selector(requestToGetBlipsDidSucceedWithResponse:closure:) failSelector:@selector(requestToGetBlipsDidFailWithClosure:) closure:cl];
 }
 
 #pragma clang diagnostic pop
