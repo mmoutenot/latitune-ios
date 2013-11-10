@@ -13,8 +13,6 @@
 
 // used to get rid of unkown selector warnings
 // http://stackoverflow.com/questions/7017281/performselector-may-cause-a-leak-because-its-selector-is-unknown
-#pragma clang diagnostic push
-#pragma clang diagnostic ignored "-Warc-performSelector-leaks"
 
 @synthesize providers;
 
@@ -24,14 +22,12 @@
     self.title = title;
     self.artist = artist;
     self.album = album;
-    self.providers = @[];
-    NSMutableDictionary *parameters = [NSMutableDictionary new];
-    [parameters setValue:title forKey:@"title"];
-    [parameters setValue:artist forKey:@"artist"];
-    
-    [ENAPIRequest GETWithEndpoint:@"song/search" andParameters:parameters andCompletionBlock:
+
+    NSMutableDictionary *songSearchParameters = [@{ @"title" : title, @"artist" : artist } mutableCopy];
+
+    [ENAPIRequest GETWithEndpoint:@"song/search" andParameters:songSearchParameters andCompletionBlock:
      ^(ENAPIRequest *request) {
-       NSLog(@"Echonest response %@", request.response);
+       self.echonestID = request.response[@"response"][@"songs"][0][@"id"];
      }];
   }
   return self;
