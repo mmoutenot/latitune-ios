@@ -19,7 +19,6 @@
 - (id) initWithTitle:(NSString *)title artist:(NSString*)artist album:(NSString*)album {
   self = [super init];
   if (self) {
-    NSLog(@"Creating song with %@ %@ %@", title, artist, album);
     self.title = title;
     self.artist = artist;
     self.album = album;
@@ -36,11 +35,20 @@
   return self;
 }
 
+- (id) initWithTitle:(NSString *)title artist:(NSString *)artist album:(NSString *)album echonestID:(NSString *)echonestID {
+  self = [super init];
+  if (self) {
+    self.title = title;
+    self.artist = artist;
+    self.album = album;
+    self.echonestID = echonestID;
+  }
+}
+
 - (NSDictionary *)asDictionary {
   return @{ @"title": self.title,
             @"artist": self.artist,
             @"album": self.album,
-            @"provider_key": self.providerKey,
-            @"providerSongID": self.providerSongID};
+            @"echonestID":self.echonestID};
 }
 @end
