@@ -237,6 +237,13 @@
     blipObj.userID = [blip[@"user_id"] integerValue];
     NSDictionary *song = blip[@"song"];
     blipObj.song = [[LTTSong alloc] initWithTitle:song[@"title"] artist:song[@"artist"] album:song[@"album"] echonestID:song[@"echonestID"]];
+    NSArray *providerDicts = song[@"providers"];
+    NSMutableArray *providers = [[NSMutableArray alloc] init];
+    for (NSDictionary *providerDict in providerDicts) {
+      Provider provider = [providerDict[@"provider"] isEqualToString:@"Rdio"] ? ProviderRdio : ProviderSpotify;
+      [providers addObject:[[LTTSongProvider alloc] initWithProvider:provider key:providerDict[@"provider_key"]]];
+    }
+    blipObj.song.providers = [[NSArray alloc] initWithArray:providers];
     blipObj.song.songID = [song[@"id"] integerValue];
     blipObj.userID = [blip[@"user_id"] integerValue];
     blipObj.timestamp = nil;

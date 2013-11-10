@@ -10,8 +10,9 @@
 #import "LTTAppDelegate.h"
 #import <Rdio/Rdio.h>
 #import "LTTSongProvider.h"
+#import "LTTCommunication.h"
 
-@interface LTTPlayerViewController () <RDPlayerDelegate>
+@interface LTTPlayerViewController () <RDPlayerDelegate, GetBlipsDelegate>
 {
     bool playing, paused;
     RDPlayer *player;
@@ -38,6 +39,7 @@
     Rdio *rdio = [(LTTAppDelegate *)[[UIApplication sharedApplication] delegate] rdio];
     player = rdio.player;
     player.delegate = self;
+    [[LTTCommunication sharedInstance] getBlipsWithDelegate:self];
     //[player queueSource:@"t2278209"];
 	// Do any additional setup after loading the view.
 }
@@ -77,6 +79,7 @@
     [artistLabel setText:[song artist]];
     [albumLabel setText:[song album]];
     [trackLabel setText:[song title]];
+    [player play];
     
 }
 
@@ -92,7 +95,21 @@
 {
     playing = (state != RDPlayerStateInitializing && state != RDPlayerStateStopped);
     paused = (state == RDPlayerStatePaused);
-    [trackLabel setText:player.currentTrack];
+}
+
+#pragma mark GetBlipsDelegate
+
+- (void)getBlipsDidSucceedWithBlips:(NSArray *)blips
+{
+    [self playSong:((LTTBlip *)blips[0]).song];
+    LTTBlip *blip = blips[0];
+    NSLog(@"%@",blip.song);
+    NSLog(@"%@",blip.song.providers);
+}
+
+- (void)getBlipsDidFail
+{
+    NSLog(@"getBlipdsFailed");
 }
 
 @end
