@@ -40,7 +40,6 @@
   return @{ @"title": self.title,
             @"artist": self.artist,
             @"album": self.album,
-            @"provider_key": self.providerKey,
-            @"providerSongID": self.providerSongID};
+            @"echonestID":self.echonestID};
 }
 @end

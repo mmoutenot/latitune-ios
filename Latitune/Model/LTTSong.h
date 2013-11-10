@@ -13,8 +13,8 @@
 @property (nonatomic) NSString *title;
 @property (nonatomic) NSString *album;
 @property (nonatomic) NSString *artist;
-@property (nonatomic) NSString *providerSongID;
-@property (nonatomic) NSString *providerKey;
+@property (nonatomic) NSString *echonestID;
+@property (nonatomic) NSInteger songID;
 
 - (id) initWithTitle:(NSString *)title artist:(NSString*)artist album:(NSString*)album;
 
