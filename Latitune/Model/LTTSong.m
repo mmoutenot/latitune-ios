@@ -16,13 +16,15 @@
 #pragma clang diagnostic push
 #pragma clang diagnostic ignored "-Warc-performSelector-leaks"
 
+@synthesize providers;
+
 - (id) initWithTitle:(NSString *)title artist:(NSString*)artist album:(NSString*)album {
   self = [super init];
   if (self) {
     self.title = title;
     self.artist = artist;
     self.album = album;
-    
+    self.providers = @[];
     NSMutableDictionary *parameters = [NSMutableDictionary new];
     [parameters setValue:title forKey:@"title"];
     [parameters setValue:artist forKey:@"artist"];
@@ -42,6 +44,7 @@
     self.artist = artist;
     self.album = album;
     self.echonestID = echonestID;
+    self.providers = @[];
   }
   return self;
 }

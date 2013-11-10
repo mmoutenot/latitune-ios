@@ -208,6 +208,13 @@
     toReturn.userID = [blip[@"user_id"] integerValue];
     NSDictionary *song = blip[@"song"];
     toReturn.song = [[LTTSong alloc] initWithTitle:song[@"title"] artist:song[@"artist"] album:song[@"album"] echonestID:song[@"echonestID"]];
+    NSArray *providerDicts = song[@"providers"];
+    NSMutableArray *providers = [[NSMutableArray alloc] init];
+    for (NSDictionary *providerDict in providerDicts) {
+        Provider provider = [providerDict[@"provider"] isEqualToString:@"Rdio"] ? ProviderRdio : ProviderSpotify;
+        [providers addObject:[[LTTSongProvider alloc] initWithProvider:provider key:providerDict[@"provider_key"]]];
+    }
+    toReturn.song.providers = [[NSArray alloc] initWithArray:providers];
     toReturn.song.songID = [song[@"id"] integerValue];
     toReturn.userID = [blip[@"user_id"] integerValue];
     toReturn.timestamp = nil;
