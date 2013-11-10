@@ -51,10 +51,15 @@
   album = [currentPlaying valueForProperty:MPMediaItemPropertyAlbumTitle];
   artist = [currentPlaying valueForProperty:MPMediaItemPropertyArtist];
   
-  if (!title || !artist) { // iPodMusicPlayer may not be playing anything. Let's defer to Rdio.
-    
-    Rdio *rdio = ((LTTAppDelegate *)[[UIApplication sharedApplication] delegate]).rdio;
-  }
+//  NSDictionary* currentPlayingRdio = [[MPNowPlayingInfoCenter defaultCenter] nowPlayingInfo];
+//  NSLog(@"%@", currentPlayingRdio);
+
+//  if (!title || !artist) { // iPodMusicPlayer may not be playing anything. Let's defer to Rdio.
+
+//    Rdio *rdio = ((LTTAppDelegate *)[[UIApplication sharedApplication] delegate]).rdio;
+//    [rdio callAPIMethod:@"" withParameters:<#(NSDictionary *)#> delegate:<#(id<RDAPIRequestDelegate>)#>]
+//    NSLog(@"%@", );
+//  }
   
   
   LTTSong* song = [[LTTSong new] initWithTitle:title artist:artist album:album];
