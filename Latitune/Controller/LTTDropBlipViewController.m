@@ -19,7 +19,11 @@
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
-        // Custom initialization
+      self.locationManager = [[CLLocationManager alloc] init];
+      self.locationManager.delegate = self;
+      self.locationManager.distanceFilter = kCLDistanceFilterNone;
+      self.locationManager.desiredAccuracy = kCLLocationAccuracyBest;
+      [self.locationManager startUpdatingLocation];
     }
     return self;
 }
@@ -37,7 +41,8 @@
 }
 
 - (IBAction)dropButton:(id)sender {
-  [self getCurrentExternalSong];
+  LTTSong *song = [self getCurrentExternalSong];
+  [song populateEchonestIDWithDelegate:self];
 }
 
 - (LTTSong *)getCurrentExternalSong {
@@ -51,19 +56,44 @@
   album = [currentPlaying valueForProperty:MPMediaItemPropertyAlbumTitle];
   artist = [currentPlaying valueForProperty:MPMediaItemPropertyArtist];
 
-//  NSDictionary* currentPlayingRdio = [[MPNowPlayingInfoCenter defaultCenter] nowPlayingInfo];
-//  NSLog(@"%@", currentPlayingRdio);
+  /*
+   // THIS LOGIC DOES NOT WORK TO GET RDIO/SPOTIFY NOW PLAYING SONGS
 
-//  if (!title || !artist) { // iPodMusicPlayer may not be playing anything. Let's defer to Rdio.
+  NSDictionary* currentPlayingRdio = [[MPNowPlayingInfoCenter defaultCenter] nowPlayingInfo];
+  NSLog(@"%@", currentPlayingRdio);
 
-//    Rdio *rdio = ((LTTAppDelegate *)[[UIApplication sharedApplication] delegate]).rdio;
-//    [rdio callAPIMethod:@"" withParameters:<#(NSDictionary *)#> delegate:<#(id<RDAPIRequestDelegate>)#>]
-//    NSLog(@"%@", );
-//  }
+  if (!title || !artist) { // iPodMusicPlayer may not be playing anything. Let's defer to Rdio.
 
+    Rdio *rdio = ((LTTAppDelegate *)[[UIApplication sharedApplication] delegate]).rdio;
+    [rdio callAPIMethod:@"" withParameters:<#(NSDictionary *)#> delegate:<#(id<RDAPIRequestDelegate>)#>]
+    NSLog(@"%@", );
+  }
+   */
 
   LTTSong* song = [[LTTSong new] initWithTitle:title artist:artist album:album];
   return song;
+}
+
+#pragma callbacks
+- (void) populateEchonestIDSuccessWithSong:(LTTSong *)song{
+  [[LTTCommunication sharedInstance] addSong:song withDelegate:self];
+}
+
+-(void) addSongDidFail {
+  NSLog(@"Adding song failed");
+}
+
+-(void) addSongDidSucceedWithSong:(LTTSong *)song {
+  CLLocationCoordinate2D loc = self.locationManager.location.coordinate;
+  [[LTTCommunication sharedInstance] addBlipWithSong:song atLocation:loc withDelegate:self];
+}
+
+-(void) addBlipDidFail {
+  NSLog(@"Adding blip failed");
+}
+
+-(void) addBlipDidSucceedWithBlip:(LTTBlip *)blip {
+  NSLog(@"Blip added successfully");
 }
 
 @end

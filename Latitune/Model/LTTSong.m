@@ -5,9 +5,12 @@
 //  Created by alden on 11/9/13.
 //  Copyright (c) 2013 Alden Keefe Sampson. All rights reserved.
 //
+#import "ENAPI.h"
 
 #import "LTTSong.h"
-#import "ENAPI.h"
+
+@interface NSNull (DelegateResolver) <LTTSongDelegate>
+@end
 
 @implementation LTTSong
 
@@ -22,13 +25,6 @@
     self.title = title;
     self.artist = artist;
     self.album = album;
-
-    NSMutableDictionary *songSearchParameters = [@{ @"title" : title, @"artist" : artist } mutableCopy];
-
-    [ENAPIRequest GETWithEndpoint:@"song/search" andParameters:songSearchParameters andCompletionBlock:
-     ^(ENAPIRequest *request) {
-       self.echonestID = request.response[@"response"][@"songs"][0][@"id"];
-     }];
   }
   return self;
 }
@@ -45,10 +41,21 @@
   return self;
 }
 
+- (void) populateEchonestIDWithDelegate:(NSObject <LTTSongDelegate>*)delegate {
+  NSMutableDictionary *songSearchParameters = [@{ @"title" : self.title, @"artist" : self.artist } mutableCopy];
+
+  [ENAPIRequest GETWithEndpoint:@"song/search" andParameters:songSearchParameters andCompletionBlock:
+   ^(ENAPIRequest *request) {
+     self.echonestID = request.response[@"response"][@"songs"][0][@"id"];
+     [delegate populateEchonestIDSuccessWithSong:self];
+   }];
+
+}
+
 - (NSDictionary *)asDictionary {
   return @{ @"title": self.title,
             @"artist": self.artist,
             @"album": self.album,
-            @"echonestID":self.echonestID};
+	    @"echonest_id":self.echonestID};
 }
 @end
