@@ -37,20 +37,8 @@
 }
 
 - (IBAction)dropButton:(id)sender {
-  LTTCommunication *api = [LTTCommunication sharedInstance];
-  [api getURL:@"http://localhost:5000/api/" parameters:@{} succeedSelector:@selector(successSelector)
-                                                              failSelector:@selector(failSelector)
-                                                                   closure:@{ @"delegate": self }];
   [self getCurrentExternalSong];
 }
-
-- (void)successSelector {
-  NSLog(@"Http Success");
-}
-- (void)failSelector {
-  NSLog(@"Http Fail");
-}
-
 
 - (LTTSong *)getCurrentExternalSong {
   NSString *title;

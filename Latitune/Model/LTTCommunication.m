@@ -8,6 +8,17 @@
 
 #import "LTTCommunication.h"
 
+//#ifdef RUN_KIF_TESTS
+#define SERVER_ROOT @"http://localhost:5000/api/"
+//#else
+//#define SERVER_ROOT @"https://latitune.herokuapp.com/api/"
+//#endif
+
+#define BLIP_EXT [NSString stringWithFormat:@"%@%@",SERVER_ROOT,@"blip"]
+#define SONG_EXT [NSString stringWithFormat:@"%@%@",SERVER_ROOT,@"song"]
+#define USER_EXT [NSString stringWithFormat:@"%@%@",SERVER_ROOT,@"user"]
+#define RASA_EXT [NSString stringWithFormat:@"%@%@",SERVER_ROOT,@"tabularasa"]
+
 @interface NSNull (DelegateResolver) <CreateUserDelegate, GetBlipsDelegate, AddBlipDelegate, AddSongDelegate, LoginDelegate>
 @end
 
@@ -79,67 +90,63 @@
     urlString = [NSString stringWithFormat:@"%@&%@=%@",urlString,key,params[key]];
   }
   [self.http GET:urlString parameters:params success:^(AFHTTPRequestOperation *operation, id response){
-    NSLog(@"Operation:%@ resp: %@", operation, response);
+    NSLog(@"GET. Operation:%@ resp: %@", operation, response);
     NSDictionary *responseDict = (NSDictionary *)response;
-    if (![responseDict[@"meta"][@"status"] isEqualToNumber:@(Success)]) {
-      [self performSelector:failSelector withObject:responseDict[@"meta"][@"status"] withObject:cl];
-    } else {
+    if ([responseDict[@"meta"][@"status"] isEqualToNumber:@(Success)]) {
       [self performSelector:succeedSelector withObject:responseDict withObject:cl];
+    } else {
+      [self performSelector:failSelector withObject:responseDict[@"meta"][@"status"] withObject:cl];
     }
   } failure:^(AFHTTPRequestOperation *operation, id response){
     [self performSelector:failSelector withObject:cl];
   }];
 }
 
-//- (void)putURL:(NSString*)urlString parameters:(NSDictionary*)params succeedSelector:(SEL)succeedSelector
-//        failSelector:(SEL) failSelector closure:(NSDictionary*)cl; {
-//    NSURL *url = [NSURL URLWithString:urlString];
-//    __weak ASIFormDataRequest *request = [ASIFormDataRequest requestWithURL:url];
-//    [request setPostValue:username forKey:@"username"];
-//    [request setPostValue:password forKey:@"password"];
+- (void)putURL:(NSString*)urlString parameters:(NSDictionary*)params succeedSelector:(SEL)succeedSelector
+        failSelector:(SEL) failSelector closure:(NSDictionary*)cl; {
 //    NSString *paramString = [NSString stringWithFormat:@"username=%@&password=%@",self.username,self.password];
 //    for (id key in [params allKeys]) {
 //        paramString = [NSString stringWithFormat:@"%@&%@=%@",paramString,key,params[key]];
 //        [request setPostValue:params[key] forKey:key];
 //    }
-//    [request setRequestMethod:@"PUT"];
-//    [request setCompletionBlock:^{
-//      NSString *responseString = [request responseString];
-//      NSDictionary *responseDict = [responseString JSONValue];
-//      if (![responseDict[@"meta"][@"status"] isEqualToNumber:@(Success)]) {
-//        [self performSelector:failSelector withObject:responseDict[@"meta"][@"status"] withObject:cl];
-//      } else {
-//        [self performSelector:succeedSelector withObject:responseDict withObject:cl];
-//      }
-//    }];
-//    [request setFailedBlock:^{
-//        [self performSelector:failSelector withObject:cl];
-//    }];
-//
-//    [request startAsynchronous];
-//}
-//
-//- (void) requestToAddUserDidSucceedWithResponse:(NSDictionary*)response closure:(NSDictionary*)cl {
-//  NSDictionary *user = response[@"objects"][0];
-//  [[NSUserDefaults standardUserDefaults] setValue:self.username forKey:@"username"];
-//  [SSKeychain setPassword:self.password forService:@"latitune" account:self.username];
-//  self.userID = [user[@"id"] integerValue];
-//  [cl[@"delegate"] performSelector:@selector(createUserDidSucceedWithUser:) withObject:user];
-//}
-//
-//- (void) requestToAddUserDidFailWithErrorCode:(NSNumber *)errorCode closure:(NSDictionary*)cl {
-//  [cl[@"delegate"] performSelector:@selector(createUserDidFailWithError:) withObject:errorCode];
-//}
-//
-//- (void) createUserWithUsername:(NSString *)uname email:(NSString*)uemail password:(NSString*)upassword
-//                   withDelegate:(NSObject<CreateUserDelegate>*) delegate {
-//    self.username = uname;
-//    self.password = upassword;
-//    NSDictionary *params = @{@"email":uemail};
-//    NSDictionary *cl = @{@"delegate":delegate};
-//    [self putURL:USER_EXT parameters:params succeedSelector:@selector(requestToAddUserDidSucceedWithResponse:closure:)
-//    failSelector:@selector(requestToAddUserDidFailWithErrorCode:closure:) closure:cl];
-//}
+
+  NSMutableDictionary *parameters = [NSMutableDictionary dictionaryWithDictionary:params];
+  [parameters setObject:self.username forKey:@"username"];
+  [parameters setObject:self.password forKey:@"password"];
+
+  [self.http PUT:urlString parameters:params success:^(AFHTTPRequestOperation *operation, id response) {
+    NSLog(@"PUT. Operation:%@ resp: %@", operation, response);
+    if ([response[@"meta"][@"status"] isEqualToNumber:@(Success)]) {
+      [self performSelector:succeedSelector withObject:response withObject:cl];
+    } else {
+      [self performSelector:failSelector withObject:response[@"meta"][@"status"] withObject:cl];
+    }
+  } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+    [self performSelector:failSelector withObject:cl];
+  }];
+}
+
+- (void) requestToAddUserDidSucceedWithResponse:(NSDictionary*)response closure:(NSDictionary*)cl {
+  NSDictionary *user = response[@"objects"][0];
+  [[NSUserDefaults standardUserDefaults] setValue:self.username forKey:@"username"];
+  [SSKeychain setPassword:self.password forService:@"latitune" account:self.username];
+  self.userID = [user[@"id"] integerValue];
+  [cl[@"delegate"] performSelector:@selector(createUserDidSucceedWithUser:) withObject:user];
+}
+
+- (void) requestToAddUserDidFailWithErrorCode:(NSNumber *)errorCode closure:(NSDictionary*)cl {
+  [cl[@"delegate"] performSelector:@selector(createUserDidFailWithError:) withObject:errorCode];
+}
+
+- (void) createUserWithUsername:(NSString *)uname email:(NSString*)uemail password:(NSString*)upassword
+                   withDelegate:(NSObject<CreateUserDelegate>*) delegate {
+  self.username = uname;
+  self.password = upassword;
+  NSDictionary *params = @{@"email":uemail};
+  NSDictionary *cl = @{@"delegate":delegate};
+  [self putURL:USER_EXT parameters:params succeedSelector:@selector(requestToAddUserDidSucceedWithResponse:closure:)
+  failSelector:@selector(requestToAddUserDidFailWithErrorCode:closure:) closure:cl];
+}
 //
 //- (void) requestToLoginDidSucceedWithResponse:(NSDictionary*)response closure:(NSDictionary*)cl {
 //  NSDictionary *user = response[@"objects"][0];

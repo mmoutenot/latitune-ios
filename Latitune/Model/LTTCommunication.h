@@ -71,8 +71,6 @@ typedef enum {
 @property (strong,nonatomic) NSString *username, *password;
 @property (nonatomic) NSInteger userID;
 @property (nonatomic) AFHTTPRequestOperationManager *http;
-- (void)getURL:(NSString*)urlString parameters:(NSDictionary*)params succeedSelector:(SEL)succeedSelector
-  failSelector:(SEL) failSelector closure:(NSDictionary*)cl;
 
 +(id)sharedInstance;
 - (void) loginWithStoredData;
