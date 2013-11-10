@@ -6,14 +6,14 @@
 //  Copyright (c) 2013 Alden Keefe Sampson. All rights reserved.
 //
 
-#import "LTTPlayerViewController.h"
+#import "LTTAuthenticationViewController.h"
 #import "LTTAppDelegate.h"
 
-@interface LTTPlayerViewController ()
+@interface LTTAuthenticationViewController () <RdioDelegate>
 
 @end
 
-@implementation LTTPlayerViewController
+@implementation LTTAuthenticationViewController
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -39,7 +39,17 @@
 - (IBAction)authenticateWithRdio:(id)sender
 {
     Rdio *rdio = [(LTTAppDelegate *)[[UIApplication sharedApplication] delegate] rdio];
+    rdio.delegate = self;
     [rdio authorizeFromController:self];
+}
+
+- (void) rdioDidAuthorizeUser:(NSDictionary *)user withAccessToken:(NSString *)accessToken
+{
+    CGRect rect = self.view.frame;
+    rect.origin.y = -rect.size.height;
+    [UIView animateWithDuration:0.3 animations:^{
+        self.view.frame = rect;
+    }];
 }
 
 @end

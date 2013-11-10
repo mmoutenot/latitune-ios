@@ -14,11 +14,12 @@
 		A67EB626182EF48A00FE10C4 /* Rdio.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A67EB625182EF48A00FE10C4 /* Rdio.framework */; };
 		A6FCCB29182EDD8300D682E9 /* LTTBlip.m in Sources */ = {isa = PBXBuildFile; fileRef = A6FCCB26182EDD8300D682E9 /* LTTBlip.m */; };
 		A6FCCB2A182EDD8300D682E9 /* LTTSong.m in Sources */ = {isa = PBXBuildFile; fileRef = A6FCCB28182EDD8300D682E9 /* LTTSong.m */; };
-		B572960B182EE4FE00E9E23E /* LTTPlayerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B572960A182EE4FE00E9E23E /* LTTPlayerViewController.m */; };
+		B572960B182EE4FE00E9E23E /* LTTAuthenticationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B572960A182EE4FE00E9E23E /* LTTAuthenticationViewController.m */; };
 		B572960F182EE65700E9E23E /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B572960E182EE65700E9E23E /* CFNetwork.framework */; };
 		B5729611182EE66400E9E23E /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B5729610182EE66400E9E23E /* SystemConfiguration.framework */; };
 		B5729613182EE66B00E9E23E /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B5729612182EE66B00E9E23E /* AudioToolbox.framework */; };
 		B5729615182EE67200E9E23E /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B5729614182EE67200E9E23E /* Security.framework */; };
+		B572961D182F2F1200E9E23E /* LTTCommunication.m in Sources */ = {isa = PBXBuildFile; fileRef = B572961C182F2F1200E9E23E /* LTTCommunication.m */; };
 		BF7C0EA6182EB5B9004ED756 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BF7C0EA5182EB5B9004ED756 /* Foundation.framework */; };
 		BF7C0EA8182EB5B9004ED756 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BF7C0EA7182EB5B9004ED756 /* CoreGraphics.framework */; };
 		BF7C0EAA182EB5B9004ED756 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BF7C0EA9182EB5B9004ED756 /* UIKit.framework */; };
@@ -59,12 +60,14 @@
 		A6FCCB26182EDD8300D682E9 /* LTTBlip.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LTTBlip.m; sourceTree = "<group>"; };
 		A6FCCB27182EDD8300D682E9 /* LTTSong.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LTTSong.h; sourceTree = "<group>"; };
 		A6FCCB28182EDD8300D682E9 /* LTTSong.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LTTSong.m; sourceTree = "<group>"; };
-		B5729609182EE4FE00E9E23E /* LTTPlayerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LTTPlayerViewController.h; path = Latitune/Controller/LTTPlayerViewController.h; sourceTree = SOURCE_ROOT; };
-		B572960A182EE4FE00E9E23E /* LTTPlayerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LTTPlayerViewController.m; path = Latitune/Controller/LTTPlayerViewController.m; sourceTree = SOURCE_ROOT; };
+		B5729609182EE4FE00E9E23E /* LTTAuthenticationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LTTAuthenticationViewController.h; path = Latitune/Controller/LTTAuthenticationViewController.h; sourceTree = SOURCE_ROOT; };
+		B572960A182EE4FE00E9E23E /* LTTAuthenticationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LTTAuthenticationViewController.m; path = Latitune/Controller/LTTAuthenticationViewController.m; sourceTree = SOURCE_ROOT; };
 		B572960E182EE65700E9E23E /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
 		B5729610182EE66400E9E23E /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		B5729612182EE66B00E9E23E /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
 		B5729614182EE67200E9E23E /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
+		B572961B182F2F1200E9E23E /* LTTCommunication.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LTTCommunication.h; sourceTree = "<group>"; };
+		B572961C182F2F1200E9E23E /* LTTCommunication.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LTTCommunication.m; sourceTree = "<group>"; };
 		BF7C0EA2182EB5B9004ED756 /* Latitune.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Latitune.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BF7C0EA5182EB5B9004ED756 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		BF7C0EA7182EB5B9004ED756 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -214,8 +217,8 @@
 		BF7C0EE1182EB905004ED756 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
-				B5729609182EE4FE00E9E23E /* LTTPlayerViewController.h */,
-				B572960A182EE4FE00E9E23E /* LTTPlayerViewController.m */,
+				B5729609182EE4FE00E9E23E /* LTTAuthenticationViewController.h */,
+				B572960A182EE4FE00E9E23E /* LTTAuthenticationViewController.m */,
 				BF7C0EE2182EB905004ED756 /* LTTViewController.h */,
 				BF7C0EE3182EB905004ED756 /* LTTViewController.m */,
 				BF7C0EF8182EBEB5004ED756 /* LTTDropBlipViewController.h */,
@@ -229,6 +232,8 @@
 		BF7C0EE4182EB905004ED756 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				B572961B182F2F1200E9E23E /* LTTCommunication.h */,
+				B572961C182F2F1200E9E23E /* LTTCommunication.m */,
 				A6FCCB25182EDD8300D682E9 /* LTTBlip.h */,
 				A6FCCB26182EDD8300D682E9 /* LTTBlip.m */,
 				A6FCCB27182EDD8300D682E9 /* LTTSong.h */,
@@ -405,10 +410,11 @@
 			files = (
 				BF7C0EF0182EB905004ED756 /* LTTAppDelegate.m in Sources */,
 				BF7C0EFA182EBEB5004ED756 /* LTTDropBlipViewController.m in Sources */,
-				B572960B182EE4FE00E9E23E /* LTTPlayerViewController.m in Sources */,
+				B572960B182EE4FE00E9E23E /* LTTAuthenticationViewController.m in Sources */,
 				BF7C0EFD182EBF14004ED756 /* LTTRadarViewController.m in Sources */,
 				A6FCCB29182EDD8300D682E9 /* LTTBlip.m in Sources */,
 				BF7C0EF7182EB905004ED756 /* main.m in Sources */,
+				B572961D182F2F1200E9E23E /* LTTCommunication.m in Sources */,
 				A6FCCB2A182EDD8300D682E9 /* LTTSong.m in Sources */,
 				BF7C0EF1182EB905004ED756 /* LTTViewController.m in Sources */,
 			);
@@ -535,10 +541,8 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
-					"${SRCROOT}/Frameworks",
 					"$(inherited)",
 					"${SRCROOT}/Pods",
-					"${SRCROOT}/Frameworks",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Latitune/Shared/Latitune-Prefix.pch";
@@ -563,10 +567,8 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
-					"${SRCROOT}/Frameworks",
 					"$(inherited)",
 					"${SRCROOT}/Pods",
-					"${SRCROOT}/Frameworks",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Latitune/Shared/Latitune-Prefix.pch";

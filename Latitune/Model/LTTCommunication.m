@@ -147,7 +147,7 @@
   [self putURL:USER_EXT parameters:params succeedSelector:@selector(requestToAddUserDidSucceedWithResponse:closure:)
   failSelector:@selector(requestToAddUserDidFailWithErrorCode:closure:) closure:cl];
 }
-//
+
 //- (void) requestToLoginDidSucceedWithResponse:(NSDictionary*)response closure:(NSDictionary*)cl {
 //  NSDictionary *user = response[@"objects"][0];
 //  [[NSUserDefaults standardUserDefaults] setValue:self.username forKey:@"username"];

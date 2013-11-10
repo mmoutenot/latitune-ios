@@ -20,13 +20,19 @@ PODS:
   - AFNetworking/UIKit (2.0.2):
     - AFNetworking/NSURLConnection
   - Rdio (1.3.5)
+  - SBJson (3.2)
+  - SSKeychain (1.2.1)
 
 DEPENDENCIES:
   - AFNetworking (~> 2.0)
   - Rdio
+  - SBJson
+  - SSKeychain
 
 SPEC CHECKSUMS:
   AFNetworking: 22de50ae71ab1c4859773f61068d6fcd1d8f9a4d
   Rdio: e166b1cd7a1fed894c16982776e58ca499d56676
+  SBJson: e60b4dc22448c2ae1e754b523a4ab53408e85c8d
+  SSKeychain: d18926838c2e7cd342e2a49e9f869858e49f035a
 
 COCOAPODS: 0.27.1

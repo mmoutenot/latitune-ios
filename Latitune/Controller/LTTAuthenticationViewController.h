@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 #import <Rdio/Rdio.h>
 
-@interface LTTPlayerViewController : UIViewController
+@interface LTTAuthenticationViewController : UIViewController
 
 @property (weak, nonatomic) IBOutlet UIButton *authenticateButton;
 @property (strong, nonatomic) IBOutlet UIView *authenticateOverlay;

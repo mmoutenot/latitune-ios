@@ -81,10 +81,10 @@
             </objects>
             <point key="canvasLocation" x="774" y="649"/>
         </scene>
-        <!--Player View Controller-->
+        <!--Authentication View Controller-->
         <scene sceneID="gil-eN-xEZ">
             <objects>
-                <viewController automaticallyAdjustsScrollViewInsets="NO" id="yy8-em-hTO" customClass="LTTPlayerViewController" sceneMemberID="viewController">
+                <viewController automaticallyAdjustsScrollViewInsets="NO" id="yy8-em-hTO" customClass="LTTAuthenticationViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="heV-30-CcV"/>
                         <viewControllerLayoutGuide type="bottom" id="b79-NQ-mM6"/>
