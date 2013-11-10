@@ -1,4 +1,4 @@
 platform :ios, '7.0'
 
-pod 'MKNetworkKit'
 pod 'Rdio'
+pod "AFNetworking", "~> 2.0"

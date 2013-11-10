@@ -1,16 +1,32 @@
 PODS:
-  - MKNetworkKit (0.87):
-    - Reachability (~> 3.1.0)
+  - AFNetworking (2.0.2):
+    - AFNetworking/NSURLConnection
+    - AFNetworking/NSURLSession
+    - AFNetworking/Reachability
+    - AFNetworking/Security
+    - AFNetworking/Serialization
+    - AFNetworking/UIKit
+  - AFNetworking/NSURLConnection (2.0.2):
+    - AFNetworking/Reachability
+    - AFNetworking/Security
+    - AFNetworking/Serialization
+  - AFNetworking/NSURLSession (2.0.2):
+    - AFNetworking/Reachability
+    - AFNetworking/Security
+    - AFNetworking/Serialization
+  - AFNetworking/Reachability (2.0.2)
+  - AFNetworking/Security (2.0.2)
+  - AFNetworking/Serialization (2.0.2)
+  - AFNetworking/UIKit (2.0.2):
+    - AFNetworking/NSURLConnection
   - Rdio (1.3.5)
-  - Reachability (3.1.1)
 
 DEPENDENCIES:
-  - MKNetworkKit
+  - AFNetworking (~> 2.0)
   - Rdio
 
 SPEC CHECKSUMS:
-  MKNetworkKit: f174100f92473012138b6b1c3040266af8d43a14
+  AFNetworking: 22de50ae71ab1c4859773f61068d6fcd1d8f9a4d
   Rdio: e166b1cd7a1fed894c16982776e58ca499d56676
-  Reachability: 2be6bc2fd2bd31d97f5db33e75e4b29c79e95883
 
 COCOAPODS: 0.27.1

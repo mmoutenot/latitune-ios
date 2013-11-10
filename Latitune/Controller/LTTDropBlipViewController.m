@@ -7,6 +7,7 @@
 //
 #import <MediaPlayer/MediaPlayer.h>
 #import <Rdio/Rdio.h>
+#import "LTTCommunication.h"
 
 #import "LTTSong.h"
 #import "LTTAppDelegate.h"
