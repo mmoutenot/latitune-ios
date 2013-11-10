@@ -8,11 +8,7 @@
 
 #import "LTTCommunication.h"
 
-//#ifdef RUN_KIF_TESTS
-#define SERVER_ROOT @"http://localhost:5000/api/"
-//#else
-//#define SERVER_ROOT @"https://latitune.herokuapp.com/api/"
-//#endif
+#define SERVER_ROOT @"https://latitune.herokuapp.com/api/"
 
 #define BLIP_ROUTE [NSString stringWithFormat:@"%@%@",SERVER_ROOT,@"blip"]
 #define SONG_ROUTE [NSString stringWithFormat:@"%@%@",SERVER_ROOT,@"song"]
