@@ -13,11 +13,6 @@
 #import "LTTSong.h"
 #import "LTTBlip.h"
 
-typedef struct {
-    float lat;
-    float lng;
-} GeoPoint;
-
 typedef enum {
   Success = 20,
   MissingRequiredParameters = 10,
@@ -78,9 +73,9 @@ typedef enum {
 - (void) createUserWithUsername:(NSString *)uname email:(NSString*)uemail password:(NSString*)upassword
                    withDelegate:(NSObject<CreateUserDelegate>*) delegate;
 - (void) addSong:(LTTSong *)song withDelegate:(NSObject <AddSongDelegate>*)delegate;
-- (void) addBlipWithSong:(LTTSong *)song atLocation:(GeoPoint)point withDelegate:(NSObject <AddBlipDelegate>*)delegate;
+- (void) addBlipWithSong:(LTTSong *)song atLocation:(CLLocationCoordinate2D)loc withDelegate:(NSObject <AddBlipDelegate>*)delegate;
 - (void) getBlipsWithDelegate:(NSObject <GetBlipsDelegate> *)delegate;
-- (void) getBlipsNearLocation:(GeoPoint)location withDelegate:(NSObject<GetBlipsDelegate>*)delegate;
+- (void) getBlipsNearLocation:(CLLocationCoordinate2D)loc withDelegate:(NSObject<GetBlipsDelegate>*)delegate;
 - (void) getBlipWithID:(NSInteger)blipID withDelegate:(NSObject<GetBlipsDelegate>*)delegate;
 
 @end

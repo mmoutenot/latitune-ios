@@ -18,6 +18,7 @@
   // Override point for customization after application launch.
   [ENAPIRequest setApiKey:@"DUQVSZTKUIUQIMZXI"];
   self.rdio = [[Rdio alloc] initWithConsumerKey:@"xya6sc2u4x73sgvsdtc8ef4k" andSecret:@"hs68psbjtH" delegate:nil];
+  [[LTTCommunication sharedInstance] loginWithUsername:@"admin" password:@"admin" withDelegate:self];
   return YES;
 }
 
@@ -50,6 +51,14 @@
 
 - (Rdio *) getRdio {
   return self.rdio;
+}
+
+-(void) loginDidFailWithError:(NSNumber *)errorCode{
+  NSLog(@"Login failed: %@", errorCode);
+}
+
+-(void) loginDidSucceedWithUser:(NSDictionary *)user {
+  NSLog(@"Login succeeded: %@", user);
 }
 
 @end

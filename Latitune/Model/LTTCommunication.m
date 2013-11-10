@@ -9,7 +9,7 @@
 #import "LTTCommunication.h"
 
 //#ifdef RUN_KIF_TESTS
-#define SERVER_ROOT @"http://localhost:5000/api/"
+#define SERVER_ROOT @"http://latitune.herokuapp.com/api/"
 //#else
 //#define SERVER_ROOT @"https://latitune.herokuapp.com/api/"
 //#endif
@@ -31,7 +31,7 @@
 - (void) getBlipsDidFail {}
 - (void) getBlipsDidSucceedWithBlips:(NSArray *)blips {}
 - (void) addBlipDidFail {}
-- (void) addBlipDidSucceedWithBlip:(LTTBlip *)song {}
+- (void) addBlipDidSucceedWithBlip:(LTTBlip *)blip {}
 - (void) addSongDidFail {}
 - (void) addSongDidSucceedWithSong:(LTTSong *)song {}
 
@@ -117,7 +117,7 @@
   [parameters setObject:self.username forKey:@"username"];
   [parameters setObject:self.password forKey:@"password"];
 
-  [self.http PUT:urlString parameters:params success:^(AFHTTPRequestOperation *operation, id response) {
+  [self.http PUT:urlString parameters:parameters success:^(AFHTTPRequestOperation *operation, id response) {
     NSLog(@"PUT. Operation:%@ resp: %@", operation, response);
     if ([response[@"meta"][@"status"] isEqualToNumber:@(Success)]) {
       [self performSelector:succeedSelector withObject:response withObject:cl];
@@ -182,6 +182,7 @@
 - (void) requestToAddSongDidSucceedWithResponse:(NSDictionary*)response closure:(NSDictionary*)cl {
     NSDictionary *song = response[@"objects"][0];
     LTTSong *toReturn = [[LTTSong alloc] initWithTitle:song[@"title"] artist:song[@"artist"] album:song[@"album"] echonestID:song[@"echonestID"]];
+    toReturn.songID = [song[@"id"] integerValue];
     [cl[@"delegate"] performSelector:@selector(addSongDidSucceedWithSong:) withObject:toReturn];
 }
 
@@ -189,8 +190,8 @@
     [cl[@"delegate"] performSelector:@selector(addSongDidFail)];
 }
 
-- (void) addBlipWithSong:(LTTSong *)song atLocation:(GeoPoint)point withDelegate:(NSObject <AddBlipDelegate>*)delegate {
-    NSDictionary *params = @{@"song_id":song.echonestID,@"latitude":@(point.lat),@"longitude":@(point.lng),@"user_id":@(userID)};
+- (void) addBlipWithSong:(LTTSong *)song atLocation:(CLLocationCoordinate2D)loc withDelegate:(NSObject <AddBlipDelegate>*)delegate {
+    NSDictionary *params = @{ @"song_id":@(song.songID), @"latitude":@(loc.latitude), @"longitude":@(loc.longitude), @"user_id":@(_userID)};
     NSDictionary *cl = @{@"delegate":delegate};
     [self putURL:BLIP_ROUTE parameters:params succeedSelector:@selector(requestToAddBlipDidSucceedWithResponse:closure:) failSelector:@selector(requestToAddBlipDidFailWithClosure:) closure:cl];
 }
@@ -242,8 +243,8 @@
   [cl[@"delegate"] performSelector:@selector(getBlipsDidFail)];
 }
 
-- (void) getBlipsNearLocation:(GeoPoint)location withDelegate:(NSObject<GetBlipsDelegate>*)delegate {
-    NSDictionary *params = @{@"latitude":@(location.lat),@"longitude":@(location.lng)};
+- (void) getBlipsNearLocation:(CLLocationCoordinate2D)loc withDelegate:(NSObject<GetBlipsDelegate>*)delegate {
+    NSDictionary *params = @{@"latitude":@(loc.latitude),@"longitude":@(loc.longitude)};
     NSDictionary *cl = @{@"delegate":delegate};
     [self getURL:BLIP_ROUTE parameters:params succeedSelector:@selector(requestToGetBlipsDidSucceedWithResponse:closure:) failSelector:@selector(requestToGetBlipsDidFailWithClosure:) closure:cl];
 }
