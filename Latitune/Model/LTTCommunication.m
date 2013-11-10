@@ -39,6 +39,8 @@
 
 @implementation LTTCommunication
 
+@synthesize userID;
+
 + (id)sharedInstance {
     static dispatch_once_t pred = 0;
     __strong static id _sharedObject = nil;

@@ -43,6 +43,7 @@
     self.album = album;
     self.echonestID = echonestID;
   }
+  return self;
 }
 
 - (NSDictionary *)asDictionary {
