@@ -17,8 +17,6 @@
 // used to get rid of unkown selector warnings
 // http://stackoverflow.com/questions/7017281/performselector-may-cause-a-leak-because-its-selector-is-unknown
 
-@synthesize providers;
-
 - (id) initWithTitle:(NSString *)title artist:(NSString*)artist album:(NSString*)album {
   self = [super init];
   if (self) {
@@ -43,13 +41,11 @@
 
 - (void) populateEchonestIDWithDelegate:(NSObject <LTTSongDelegate>*)delegate {
   NSMutableDictionary *songSearchParameters = [@{ @"title" : self.title, @"artist" : self.artist } mutableCopy];
-
   [ENAPIRequest GETWithEndpoint:@"song/search" andParameters:songSearchParameters andCompletionBlock:
    ^(ENAPIRequest *request) {
      self.echonestID = request.response[@"response"][@"songs"][0][@"id"];
      [delegate populateEchonestIDSuccessWithSong:self];
    }];
-
 }
 
 - (NSDictionary *)asDictionary {

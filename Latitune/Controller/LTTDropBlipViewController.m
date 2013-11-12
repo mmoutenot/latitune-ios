@@ -69,7 +69,6 @@
     NSLog(@"%@", );
   }
    */
-
   LTTSong* song = [[LTTSong new] initWithTitle:title artist:artist album:album];
   return song;
 }
