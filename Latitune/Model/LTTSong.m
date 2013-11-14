@@ -44,7 +44,7 @@
   [ENAPIRequest GETWithEndpoint:@"song/search" andParameters:songSearchParameters andCompletionBlock:
    ^(ENAPIRequest *request) {
      self.echonestID = request.response[@"response"][@"songs"][0][@"id"];
-     [delegate populateEchonestIDSuccessWithSong:self];
+     [delegate populateEchonestIDSucceededForSong:self];
    }];
 }
 

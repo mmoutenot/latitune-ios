@@ -74,7 +74,7 @@
 }
 
 #pragma callbacks
-- (void) populateEchonestIDSuccessWithSong:(LTTSong *)song{
+- (void) populateEchonestIDSucceededForSong:(LTTSong *)song{
   [[LTTCommunication sharedInstance] addSong:song withDelegate:self];
 }
 

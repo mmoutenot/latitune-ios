@@ -11,7 +11,7 @@
 @interface LTTDropBlipViewController : UIViewController <AddBlipDelegate, AddSongDelegate, CLLocationManagerDelegate, LTTSongDelegate>
 
 - (IBAction)dropButton:(id)sender;
-- (void) populateEchonestIDSuccessWithSong:(LTTSong *)song;
+- (void) populateEchonestIDSucceededForSong:(LTTSong *)song;
 
 @property (nonatomic,retain) CLLocationManager *locationManager;
 

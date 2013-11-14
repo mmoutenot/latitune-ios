@@ -12,7 +12,7 @@
 
 @protocol LTTSongDelegate <NSObject>
 
-- (void) populateEchonestIDSuccessWithSong:(LTTSong *) song;
+- (void) populateEchonestIDSucceededForSong:(LTTSong *) song;
 - (void) populateEchonestIDFailed;
 
 @end
@@ -24,7 +24,7 @@
 @property (nonatomic) NSString *artist;
 @property (nonatomic) NSString *echonestID;
 @property (nonatomic) NSInteger songID;
-@property (nonatomic) NSDictionary *providers;
+@property (nonatomic) NSArray *providers;
 
 - (id) initWithTitle:(NSString *)title artist:(NSString *)artist album:(NSString *)album;
 - (id) initWithTitle:(NSString *)title artist:(NSString *)artist album:(NSString *)album echonestID:(NSString *)echonestID;
