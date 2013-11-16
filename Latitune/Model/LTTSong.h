@@ -8,6 +8,15 @@
 
 #import <Foundation/Foundation.h>
 
+@class LTTSong;
+
+@protocol LTTSongDelegate <NSObject>
+
+- (void) populateEchonestIDSucceededForSong:(LTTSong *) song;
+- (void) populateEchonestIDFailed;
+
+@end
+
 @interface LTTSong : NSObject
 
 @property (nonatomic) NSString *title;
@@ -20,6 +29,7 @@
 - (id) initWithTitle:(NSString *)title artist:(NSString *)artist album:(NSString *)album;
 - (id) initWithTitle:(NSString *)title artist:(NSString *)artist album:(NSString *)album echonestID:(NSString *)echonestID;
 
+- (void) populateEchonestIDWithDelegate:(NSObject <LTTSongDelegate>*)delegate;
 - (NSDictionary *)asDictionary;
 
 @end
