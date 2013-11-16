@@ -17,27 +17,28 @@
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
-    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
-    if (self) {
-      self.locationManager = [[CLLocationManager alloc] init];
-      self.locationManager.delegate = self;
-      self.locationManager.distanceFilter = kCLDistanceFilterNone;
-      self.locationManager.desiredAccuracy = kCLLocationAccuracyBest;
-      [self.locationManager startUpdatingLocation];
-    }
-    return self;
+  self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
+  if (self) {
+
+  }
+  return self;
 }
 
 - (void)viewDidLoad
 {
-    [super viewDidLoad];
-	// Do any additional setup after loading the view.
+  [super viewDidLoad];
+// Do any additional setup after loading the view.
+  self.locationManager = [[CLLocationManager alloc] init];
+  self.locationManager.delegate = self;
+  self.locationManager.distanceFilter = kCLDistanceFilterNone;
+  self.locationManager.desiredAccuracy = kCLLocationAccuracyBest;
+  [self.locationManager startUpdatingLocation];
 }
 
 - (void)didReceiveMemoryWarning
 {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+  [super didReceiveMemoryWarning];
+  // Dispose of any resources that can be recreated.
 }
 
 - (IBAction)dropButton:(id)sender {
