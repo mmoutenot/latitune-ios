@@ -1,0 +1,713 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		A606999D1837FA67006E99E5 /* LTTSongProvider.m in Sources */ = {isa = PBXBuildFile; fileRef = A606999C1837FA67006E99E5 /* LTTSongProvider.m */; };
+		A60699A118394F97006E99E5 /* Crashlytics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A60699A018394F97006E99E5 /* Crashlytics.framework */; };
+		A63AFEE0182EC1BD007F19C0 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A63AFEDF182EC1BD007F19C0 /* CoreLocation.framework */; };
+		A63AFEE2182EC1C5007F19C0 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A63AFEE1182EC1C5007F19C0 /* QuartzCore.framework */; };
+		A6AA93F918300CD30022D276 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A6AA93F518300CD30022D276 /* Images.xcassets */; };
+		A6AA93FA18300CD30022D276 /* Main_iPad.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A6AA93F718300CD30022D276 /* Main_iPad.storyboard */; };
+		A6AA93FB18300CD30022D276 /* Main_iPhone.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A6AA93F818300CD30022D276 /* Main_iPhone.storyboard */; };
+		A6AA93FD18300DC50022D276 /* libENAPILibrary.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A6AA93FC18300DC50022D276 /* libENAPILibrary.a */; };
+		A6AA940118300DF00022D276 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A6AA940018300DF00022D276 /* libPods.a */; };
+		A6FCCB29182EDD8300D682E9 /* LTTBlip.m in Sources */ = {isa = PBXBuildFile; fileRef = A6FCCB26182EDD8300D682E9 /* LTTBlip.m */; };
+		A6FCCB2A182EDD8300D682E9 /* LTTSong.m in Sources */ = {isa = PBXBuildFile; fileRef = A6FCCB28182EDD8300D682E9 /* LTTSong.m */; };
+		B572960B182EE4FE00E9E23E /* LTTAuthenticationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B572960A182EE4FE00E9E23E /* LTTAuthenticationViewController.m */; };
+		B572960F182EE65700E9E23E /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B572960E182EE65700E9E23E /* CFNetwork.framework */; };
+		B5729611182EE66400E9E23E /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B5729610182EE66400E9E23E /* SystemConfiguration.framework */; };
+		B5729613182EE66B00E9E23E /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B5729612182EE66B00E9E23E /* AudioToolbox.framework */; };
+		B5729615182EE67200E9E23E /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B5729614182EE67200E9E23E /* Security.framework */; };
+		B572961D182F2F1200E9E23E /* LTTCommunication.m in Sources */ = {isa = PBXBuildFile; fileRef = B572961C182F2F1200E9E23E /* LTTCommunication.m */; };
+		BF7C0EA6182EB5B9004ED756 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BF7C0EA5182EB5B9004ED756 /* Foundation.framework */; };
+		BF7C0EA8182EB5B9004ED756 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BF7C0EA7182EB5B9004ED756 /* CoreGraphics.framework */; };
+		BF7C0EAA182EB5B9004ED756 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BF7C0EA9182EB5B9004ED756 /* UIKit.framework */; };
+		BF7C0EC8182EB5B9004ED756 /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BF7C0EC7182EB5B9004ED756 /* XCTest.framework */; };
+		BF7C0EC9182EB5B9004ED756 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BF7C0EA5182EB5B9004ED756 /* Foundation.framework */; };
+		BF7C0ECA182EB5B9004ED756 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BF7C0EA9182EB5B9004ED756 /* UIKit.framework */; };
+		BF7C0ED2182EB5B9004ED756 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = BF7C0ED0182EB5B9004ED756 /* InfoPlist.strings */; };
+		BF7C0ED4182EB5B9004ED756 /* LatituneTests.m in Sources */ = {isa = PBXBuildFile; fileRef = BF7C0ED3182EB5B9004ED756 /* LatituneTests.m */; };
+		BF7C0EF0182EB905004ED756 /* LTTAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = BF7C0EE0182EB905004ED756 /* LTTAppDelegate.m */; };
+		BF7C0EF1182EB905004ED756 /* LTTViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BF7C0EE3182EB905004ED756 /* LTTViewController.m */; };
+		BF7C0EF5182EB905004ED756 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = BF7C0EEB182EB905004ED756 /* InfoPlist.strings */; };
+		BF7C0EF7182EB905004ED756 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = BF7C0EEF182EB905004ED756 /* main.m */; };
+		BF7C0EFA182EBEB5004ED756 /* LTTDropBlipViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BF7C0EF9182EBEB5004ED756 /* LTTDropBlipViewController.m */; };
+		BF7C0EFD182EBF14004ED756 /* LTTRadarViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BF7C0EFC182EBF14004ED756 /* LTTRadarViewController.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		BF7C0ECB182EB5B9004ED756 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = BF7C0E9A182EB5B9004ED756 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = BF7C0EA1182EB5B9004ED756;
+			remoteInfo = Latitune;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		1639DF29951F44E9899F2A24 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		26D49302A81345AA96627698 /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = "<group>"; };
+		A606999B1837FA67006E99E5 /* LTTSongProvider.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LTTSongProvider.h; sourceTree = "<group>"; };
+		A606999C1837FA67006E99E5 /* LTTSongProvider.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LTTSongProvider.m; sourceTree = "<group>"; };
+		A60699A018394F97006E99E5 /* Crashlytics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Crashlytics.framework; sourceTree = "<group>"; };
+		A63AFEDF182EC1BD007F19C0 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
+		A63AFEE1182EC1C5007F19C0 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		A6AA93F518300CD30022D276 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		A6AA93F718300CD30022D276 /* Main_iPad.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main_iPad.storyboard; sourceTree = "<group>"; };
+		A6AA93F818300CD30022D276 /* Main_iPhone.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main_iPhone.storyboard; sourceTree = "<group>"; };
+		A6AA93FC18300DC50022D276 /* libENAPILibrary.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libENAPILibrary.a; path = "../../Library/Developer/Xcode/DerivedData/Latitune-giwqjdbkyyetdjdsnoqsooalnpwf/Build/Products/Debug-iphoneos/libENAPILibrary.a"; sourceTree = "<group>"; };
+		A6AA93FE18300DC90022D276 /* Rdio.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Rdio.framework; path = System/Library/Frameworks/Rdio.framework; sourceTree = SDKROOT; };
+		A6AA940018300DF00022D276 /* libPods.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libPods.a; path = "Pods/build/Debug-iphoneos/libPods.a"; sourceTree = "<group>"; };
+		A6FCCB25182EDD8300D682E9 /* LTTBlip.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LTTBlip.h; sourceTree = "<group>"; };
+		A6FCCB26182EDD8300D682E9 /* LTTBlip.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LTTBlip.m; sourceTree = "<group>"; };
+		A6FCCB27182EDD8300D682E9 /* LTTSong.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LTTSong.h; sourceTree = "<group>"; };
+		A6FCCB28182EDD8300D682E9 /* LTTSong.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LTTSong.m; sourceTree = "<group>"; };
+		B5729609182EE4FE00E9E23E /* LTTAuthenticationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LTTAuthenticationViewController.h; path = Latitune/Controller/LTTAuthenticationViewController.h; sourceTree = SOURCE_ROOT; };
+		B572960A182EE4FE00E9E23E /* LTTAuthenticationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LTTAuthenticationViewController.m; path = Latitune/Controller/LTTAuthenticationViewController.m; sourceTree = SOURCE_ROOT; };
+		B572960E182EE65700E9E23E /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
+		B5729610182EE66400E9E23E /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
+		B5729612182EE66B00E9E23E /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
+		B5729614182EE67200E9E23E /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
+		B572961B182F2F1200E9E23E /* LTTCommunication.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LTTCommunication.h; sourceTree = "<group>"; };
+		B572961C182F2F1200E9E23E /* LTTCommunication.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LTTCommunication.m; sourceTree = "<group>"; };
+		BF7C0EA2182EB5B9004ED756 /* Latitune.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Latitune.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		BF7C0EA5182EB5B9004ED756 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		BF7C0EA7182EB5B9004ED756 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		BF7C0EA9182EB5B9004ED756 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		BF7C0EC6182EB5B9004ED756 /* LatituneTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = LatituneTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		BF7C0EC7182EB5B9004ED756 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
+		BF7C0ECF182EB5B9004ED756 /* LatituneTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "LatituneTests-Info.plist"; sourceTree = "<group>"; };
+		BF7C0ED1182EB5B9004ED756 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		BF7C0ED3182EB5B9004ED756 /* LatituneTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LatituneTests.m; sourceTree = "<group>"; };
+		BF7C0EDF182EB905004ED756 /* LTTAppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LTTAppDelegate.h; sourceTree = "<group>"; };
+		BF7C0EE0182EB905004ED756 /* LTTAppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LTTAppDelegate.m; sourceTree = "<group>"; };
+		BF7C0EE2182EB905004ED756 /* LTTViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LTTViewController.h; sourceTree = "<group>"; };
+		BF7C0EE3182EB905004ED756 /* LTTViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LTTViewController.m; sourceTree = "<group>"; };
+		BF7C0EEC182EB905004ED756 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		BF7C0EED182EB905004ED756 /* Latitune-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "Latitune-Info.plist"; sourceTree = "<group>"; };
+		BF7C0EEE182EB905004ED756 /* Latitune-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Latitune-Prefix.pch"; sourceTree = "<group>"; };
+		BF7C0EEF182EB905004ED756 /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		BF7C0EF8182EBEB5004ED756 /* LTTDropBlipViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LTTDropBlipViewController.h; sourceTree = "<group>"; };
+		BF7C0EF9182EBEB5004ED756 /* LTTDropBlipViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LTTDropBlipViewController.m; sourceTree = "<group>"; };
+		BF7C0EFB182EBF14004ED756 /* LTTRadarViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LTTRadarViewController.h; sourceTree = "<group>"; };
+		BF7C0EFC182EBF14004ED756 /* LTTRadarViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LTTRadarViewController.m; sourceTree = "<group>"; };
+		BFEEB0D418300FC0005931D9 /* LTTRadarView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LTTRadarView.h; sourceTree = "<group>"; };
+		BFEEB0D518300FC0005931D9 /* LTTRadarView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LTTRadarView.m; sourceTree = "<group>"; };
+		BFEEB0D718301500005931D9 /* LTTBlipView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LTTBlipView.h; sourceTree = "<group>"; };
+		BFEEB0D818301500005931D9 /* LTTBlipView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LTTBlipView.m; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		BF7C0E9F182EB5B9004ED756 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A6AA940118300DF00022D276 /* libPods.a in Frameworks */,
+				A6AA93FD18300DC50022D276 /* libENAPILibrary.a in Frameworks */,
+				B5729615182EE67200E9E23E /* Security.framework in Frameworks */,
+				B5729613182EE66B00E9E23E /* AudioToolbox.framework in Frameworks */,
+				B5729611182EE66400E9E23E /* SystemConfiguration.framework in Frameworks */,
+				B572960F182EE65700E9E23E /* CFNetwork.framework in Frameworks */,
+				A63AFEE2182EC1C5007F19C0 /* QuartzCore.framework in Frameworks */,
+				A63AFEE0182EC1BD007F19C0 /* CoreLocation.framework in Frameworks */,
+				BF7C0EA8182EB5B9004ED756 /* CoreGraphics.framework in Frameworks */,
+				BF7C0EAA182EB5B9004ED756 /* UIKit.framework in Frameworks */,
+				A60699A118394F97006E99E5 /* Crashlytics.framework in Frameworks */,
+				BF7C0EA6182EB5B9004ED756 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		BF7C0EC3182EB5B9004ED756 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				BF7C0EC8182EB5B9004ED756 /* XCTest.framework in Frameworks */,
+				BF7C0ECA182EB5B9004ED756 /* UIKit.framework in Frameworks */,
+				BF7C0EC9182EB5B9004ED756 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		A6AA93F418300CD30022D276 /* Resource */ = {
+			isa = PBXGroup;
+			children = (
+				A6AA93F518300CD30022D276 /* Images.xcassets */,
+				A6AA93F618300CD30022D276 /* Storyboard */,
+			);
+			path = Resource;
+			sourceTree = "<group>";
+		};
+		A6AA93F618300CD30022D276 /* Storyboard */ = {
+			isa = PBXGroup;
+			children = (
+				A6AA93F718300CD30022D276 /* Main_iPad.storyboard */,
+				A6AA93F818300CD30022D276 /* Main_iPhone.storyboard */,
+			);
+			path = Storyboard;
+			sourceTree = "<group>";
+		};
+		A6FCCB2B182EDF4100D682E9 /* Vendor */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Vendor;
+			sourceTree = "<group>";
+		};
+		BF7C0E99182EB5B9004ED756 = {
+			isa = PBXGroup;
+			children = (
+				BF7C0EDD182EB904004ED756 /* Latitune */,
+				BF7C0ECD182EB5B9004ED756 /* LatituneTests */,
+				BF7C0EA4182EB5B9004ED756 /* Frameworks */,
+				BF7C0EA3182EB5B9004ED756 /* Products */,
+				26D49302A81345AA96627698 /* Pods.xcconfig */,
+			);
+			sourceTree = "<group>";
+		};
+		BF7C0EA3182EB5B9004ED756 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				BF7C0EA2182EB5B9004ED756 /* Latitune.app */,
+				BF7C0EC6182EB5B9004ED756 /* LatituneTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		BF7C0EA4182EB5B9004ED756 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				A60699A018394F97006E99E5 /* Crashlytics.framework */,
+				A6AA940018300DF00022D276 /* libPods.a */,
+				A6AA93FE18300DC90022D276 /* Rdio.framework */,
+				A6AA93FC18300DC50022D276 /* libENAPILibrary.a */,
+				B5729614182EE67200E9E23E /* Security.framework */,
+				B5729612182EE66B00E9E23E /* AudioToolbox.framework */,
+				B5729610182EE66400E9E23E /* SystemConfiguration.framework */,
+				B572960E182EE65700E9E23E /* CFNetwork.framework */,
+				A63AFEE1182EC1C5007F19C0 /* QuartzCore.framework */,
+				A63AFEDF182EC1BD007F19C0 /* CoreLocation.framework */,
+				BF7C0EA5182EB5B9004ED756 /* Foundation.framework */,
+				BF7C0EA7182EB5B9004ED756 /* CoreGraphics.framework */,
+				BF7C0EA9182EB5B9004ED756 /* UIKit.framework */,
+				BF7C0EC7182EB5B9004ED756 /* XCTest.framework */,
+				1639DF29951F44E9899F2A24 /* libPods.a */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		BF7C0ECD182EB5B9004ED756 /* LatituneTests */ = {
+			isa = PBXGroup;
+			children = (
+				BF7C0ED3182EB5B9004ED756 /* LatituneTests.m */,
+				BF7C0ECE182EB5B9004ED756 /* Supporting Files */,
+			);
+			path = LatituneTests;
+			sourceTree = "<group>";
+		};
+		BF7C0ECE182EB5B9004ED756 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				BF7C0ECF182EB5B9004ED756 /* LatituneTests-Info.plist */,
+				BF7C0ED0182EB5B9004ED756 /* InfoPlist.strings */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		BF7C0EDD182EB904004ED756 /* Latitune */ = {
+			isa = PBXGroup;
+			children = (
+				BF7C0EDE182EB905004ED756 /* Application */,
+				BFEEB0D318300FC0005931D9 /* View */,
+				BF7C0EE1182EB905004ED756 /* Controller */,
+				BF7C0EE4182EB905004ED756 /* Model */,
+				A6AA93F418300CD30022D276 /* Resource */,
+				BF7C0EEA182EB905004ED756 /* Shared */,
+				A6FCCB2B182EDF4100D682E9 /* Vendor */,
+			);
+			path = Latitune;
+			sourceTree = "<group>";
+		};
+		BF7C0EDE182EB905004ED756 /* Application */ = {
+			isa = PBXGroup;
+			children = (
+				BF7C0EDF182EB905004ED756 /* LTTAppDelegate.h */,
+				BF7C0EE0182EB905004ED756 /* LTTAppDelegate.m */,
+			);
+			path = Application;
+			sourceTree = "<group>";
+		};
+		BF7C0EE1182EB905004ED756 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				B5729609182EE4FE00E9E23E /* LTTAuthenticationViewController.h */,
+				B572960A182EE4FE00E9E23E /* LTTAuthenticationViewController.m */,
+				BF7C0EE2182EB905004ED756 /* LTTViewController.h */,
+				BF7C0EE3182EB905004ED756 /* LTTViewController.m */,
+				BF7C0EF8182EBEB5004ED756 /* LTTDropBlipViewController.h */,
+				BF7C0EF9182EBEB5004ED756 /* LTTDropBlipViewController.m */,
+				BF7C0EFB182EBF14004ED756 /* LTTRadarViewController.h */,
+				BF7C0EFC182EBF14004ED756 /* LTTRadarViewController.m */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		BF7C0EE4182EB905004ED756 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				A606999B1837FA67006E99E5 /* LTTSongProvider.h */,
+				A606999C1837FA67006E99E5 /* LTTSongProvider.m */,
+				B572961B182F2F1200E9E23E /* LTTCommunication.h */,
+				B572961C182F2F1200E9E23E /* LTTCommunication.m */,
+				A6FCCB25182EDD8300D682E9 /* LTTBlip.h */,
+				A6FCCB26182EDD8300D682E9 /* LTTBlip.m */,
+				A6FCCB27182EDD8300D682E9 /* LTTSong.h */,
+				A6FCCB28182EDD8300D682E9 /* LTTSong.m */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		BF7C0EEA182EB905004ED756 /* Shared */ = {
+			isa = PBXGroup;
+			children = (
+				BF7C0EEB182EB905004ED756 /* InfoPlist.strings */,
+				BF7C0EED182EB905004ED756 /* Latitune-Info.plist */,
+				BF7C0EEE182EB905004ED756 /* Latitune-Prefix.pch */,
+				BF7C0EEF182EB905004ED756 /* main.m */,
+			);
+			path = Shared;
+			sourceTree = "<group>";
+		};
+		BFEEB0D318300FC0005931D9 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				BFEEB0D418300FC0005931D9 /* LTTRadarView.h */,
+				BFEEB0D518300FC0005931D9 /* LTTRadarView.m */,
+				BFEEB0D718301500005931D9 /* LTTBlipView.h */,
+				BFEEB0D818301500005931D9 /* LTTBlipView.m */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		BF7C0EA1182EB5B9004ED756 /* Latitune */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = BF7C0ED7182EB5B9004ED756 /* Build configuration list for PBXNativeTarget "Latitune" */;
+			buildPhases = (
+				6B86B98016D84DC3BF855949 /* Check Pods Manifest.lock */,
+				BF7C0E9E182EB5B9004ED756 /* Sources */,
+				BF7C0E9F182EB5B9004ED756 /* Frameworks */,
+				BF7C0EA0182EB5B9004ED756 /* Resources */,
+				DBF620796709492F9900F980 /* Copy Pods Resources */,
+				A606999F18394F77006E99E5 /* Run Script */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Latitune;
+			productName = Latitune;
+			productReference = BF7C0EA2182EB5B9004ED756 /* Latitune.app */;
+			productType = "com.apple.product-type.application";
+		};
+		BF7C0EC5182EB5B9004ED756 /* LatituneTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = BF7C0EDA182EB5B9004ED756 /* Build configuration list for PBXNativeTarget "LatituneTests" */;
+			buildPhases = (
+				BF7C0EC2182EB5B9004ED756 /* Sources */,
+				BF7C0EC3182EB5B9004ED756 /* Frameworks */,
+				BF7C0EC4182EB5B9004ED756 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				BF7C0ECC182EB5B9004ED756 /* PBXTargetDependency */,
+			);
+			name = LatituneTests;
+			productName = LatituneTests;
+			productReference = BF7C0EC6182EB5B9004ED756 /* LatituneTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		BF7C0E9A182EB5B9004ED756 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				CLASSPREFIX = LTT;
+				LastUpgradeCheck = 0500;
+				ORGANIZATIONNAME = "Alden Keefe Sampson";
+				TargetAttributes = {
+					BF7C0EA1182EB5B9004ED756 = {
+						DevelopmentTeam = Z8GUSFBWFT;
+					};
+					BF7C0EC5182EB5B9004ED756 = {
+						TestTargetID = BF7C0EA1182EB5B9004ED756;
+					};
+				};
+			};
+			buildConfigurationList = BF7C0E9D182EB5B9004ED756 /* Build configuration list for PBXProject "Latitune" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = BF7C0E99182EB5B9004ED756;
+			productRefGroup = BF7C0EA3182EB5B9004ED756 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				BF7C0EA1182EB5B9004ED756 /* Latitune */,
+				BF7C0EC5182EB5B9004ED756 /* LatituneTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		BF7C0EA0182EB5B9004ED756 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A6AA93FB18300CD30022D276 /* Main_iPhone.storyboard in Resources */,
+				A6AA93FA18300CD30022D276 /* Main_iPad.storyboard in Resources */,
+				BF7C0EF5182EB905004ED756 /* InfoPlist.strings in Resources */,
+				A6AA93F918300CD30022D276 /* Images.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		BF7C0EC4182EB5B9004ED756 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				BF7C0ED2182EB5B9004ED756 /* InfoPlist.strings in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		6B86B98016D84DC3BF855949 /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		A606999F18394F77006E99E5 /* Run Script */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Run Script";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "./Crashlytics.framework/run 2e702869be33210fc0417066e88ce3f5f2dfd615";
+		};
+		DBF620796709492F9900F980 /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Pods-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		BF7C0E9E182EB5B9004ED756 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				BF7C0EF0182EB905004ED756 /* LTTAppDelegate.m in Sources */,
+				BF7C0EFA182EBEB5004ED756 /* LTTDropBlipViewController.m in Sources */,
+				B572960B182EE4FE00E9E23E /* LTTAuthenticationViewController.m in Sources */,
+				BF7C0EFD182EBF14004ED756 /* LTTRadarViewController.m in Sources */,
+				A6FCCB29182EDD8300D682E9 /* LTTBlip.m in Sources */,
+				BF7C0EF7182EB905004ED756 /* main.m in Sources */,
+				A606999D1837FA67006E99E5 /* LTTSongProvider.m in Sources */,
+				B572961D182F2F1200E9E23E /* LTTCommunication.m in Sources */,
+				A6FCCB2A182EDD8300D682E9 /* LTTSong.m in Sources */,
+				BF7C0EF1182EB905004ED756 /* LTTViewController.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		BF7C0EC2182EB5B9004ED756 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				BF7C0ED4182EB5B9004ED756 /* LatituneTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		BF7C0ECC182EB5B9004ED756 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = BF7C0EA1182EB5B9004ED756 /* Latitune */;
+			targetProxy = BF7C0ECB182EB5B9004ED756 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		BF7C0ED0182EB5B9004ED756 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				BF7C0ED1182EB5B9004ED756 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		BF7C0EEB182EB905004ED756 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				BF7C0EEC182EB905004ED756 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		BF7C0ED5182EB5B9004ED756 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		BF7C0ED6182EB5B9004ED756 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = YES;
+				ENABLE_NS_ASSERTIONS = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		BF7C0ED8182EB5B9004ED756 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 26D49302A81345AA96627698 /* Pods.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"${SRCROOT}/Pods",
+					"/Users/mmoutenot/workspace/latitune-ios",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "Latitune/Shared/Latitune-Prefix.pch";
+				INFOPLIST_FILE = "$(SRCROOT)/Latitune/Shared/Latitune-Info.plist";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(USER_LIBRARY_DIR)/Developer/Xcode/DerivedData/Latitune-giwqjdbkyyetdjdsnoqsooalnpwf/Build/Products/Debug-iphoneos",
+				);
+				OTHER_LDFLAGS = (
+					"-force_load",
+					"${SRCROOT}/Pods/Rdio/Rdio.framework/Versions/Current/Rdio",
+				);
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
+				USER_HEADER_SEARCH_PATHS = "${SRCROOT}/**";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		BF7C0ED9182EB5B9004ED756 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 26D49302A81345AA96627698 /* Pods.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"${SRCROOT}/Pods",
+					"/Users/mmoutenot/workspace/latitune-ios",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "Latitune/Shared/Latitune-Prefix.pch";
+				INFOPLIST_FILE = "$(SRCROOT)/Latitune/Shared/Latitune-Info.plist";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(USER_LIBRARY_DIR)/Developer/Xcode/DerivedData/Latitune-giwqjdbkyyetdjdsnoqsooalnpwf/Build/Products/Debug-iphoneos",
+				);
+				OTHER_LDFLAGS = (
+					"-force_load",
+					"${SRCROOT}/Pods/Rdio/Rdio.framework/Versions/Current/Rdio",
+				);
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
+				USER_HEADER_SEARCH_PATHS = "${SRCROOT}/**";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+		BF7C0EDB182EB5B9004ED756 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/Latitune.app/Latitune";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "Latitune/Latitune-Prefix.pch";
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = "LatituneTests/LatituneTests-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUNDLE_LOADER)";
+				WRAPPER_EXTENSION = xctest;
+			};
+			name = Debug;
+		};
+		BF7C0EDC182EB5B9004ED756 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/Latitune.app/Latitune";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "Latitune/Latitune-Prefix.pch";
+				INFOPLIST_FILE = "LatituneTests/LatituneTests-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUNDLE_LOADER)";
+				WRAPPER_EXTENSION = xctest;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		BF7C0E9D182EB5B9004ED756 /* Build configuration list for PBXProject "Latitune" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				BF7C0ED5182EB5B9004ED756 /* Debug */,
+				BF7C0ED6182EB5B9004ED756 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		BF7C0ED7182EB5B9004ED756 /* Build configuration list for PBXNativeTarget "Latitune" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				BF7C0ED8182EB5B9004ED756 /* Debug */,
+				BF7C0ED9182EB5B9004ED756 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		BF7C0EDA182EB5B9004ED756 /* Build configuration list for PBXNativeTarget "LatituneTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				BF7C0EDB182EB5B9004ED756 /* Debug */,
+				BF7C0EDC182EB5B9004ED756 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = BF7C0E9A182EB5B9004ED756 /* Project object */;
+}
