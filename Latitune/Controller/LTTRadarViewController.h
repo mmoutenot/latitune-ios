@@ -9,10 +9,12 @@
 #import <UIKit/UIKit.h>
 #import <CoreLocation/CoreLocation.h>
 #import <QuartzCore/QuartzCore.h>
+#import "LTTRadarView.h"
+#import "LTTBlip.h"
 
 @interface LTTRadarViewController : UIViewController <CLLocationManagerDelegate>
 
 @property (nonatomic,retain) CLLocationManager *locationManager;
-@property (weak, nonatomic) IBOutlet UIImageView *compassImage;
+@property (weak, nonatomic) IBOutlet LTTRadarView *radarView;
 
 @end
