@@ -45,6 +45,7 @@
 
 - (void) rdioDidAuthorizeUser:(NSDictionary *)user withAccessToken:(NSString *)accessToken
 {
+    NSLog(@"%@",accessToken);
     [self performSegueWithIdentifier:@"didAuthenticateSegue" sender:self];
 }
 

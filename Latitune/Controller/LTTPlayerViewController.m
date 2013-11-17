@@ -101,8 +101,8 @@
 
 - (void)getBlipsDidSucceedWithBlips:(NSArray *)blips
 {
-    [self playSong:((LTTBlip *)blips[0]).song];
-    LTTBlip *blip = blips[0];
+    LTTBlip *blip = [blips lastObject];
+    [self playSong:blip.song];
     NSLog(@"%@",blip.song);
     NSLog(@"%@",blip.song.providers);
 }
