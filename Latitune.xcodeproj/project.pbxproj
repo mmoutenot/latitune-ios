@@ -18,6 +18,7 @@
 		A6AA940118300DF00022D276 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A6AA940018300DF00022D276 /* libPods.a */; };
 		A6FCCB29182EDD8300D682E9 /* LTTBlip.m in Sources */ = {isa = PBXBuildFile; fileRef = A6FCCB26182EDD8300D682E9 /* LTTBlip.m */; };
 		A6FCCB2A182EDD8300D682E9 /* LTTSong.m in Sources */ = {isa = PBXBuildFile; fileRef = A6FCCB28182EDD8300D682E9 /* LTTSong.m */; };
+		B51501AB18395469008ACE45 /* LTTPlayerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B51501AA18395469008ACE45 /* LTTPlayerViewController.m */; };
 		B572960B182EE4FE00E9E23E /* LTTAuthenticationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B572960A182EE4FE00E9E23E /* LTTAuthenticationViewController.m */; };
 		B572960F182EE65700E9E23E /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B572960E182EE65700E9E23E /* CFNetwork.framework */; };
 		B5729611182EE66400E9E23E /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B5729610182EE66400E9E23E /* SystemConfiguration.framework */; };
@@ -68,6 +69,8 @@
 		A6FCCB26182EDD8300D682E9 /* LTTBlip.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LTTBlip.m; sourceTree = "<group>"; };
 		A6FCCB27182EDD8300D682E9 /* LTTSong.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LTTSong.h; sourceTree = "<group>"; };
 		A6FCCB28182EDD8300D682E9 /* LTTSong.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LTTSong.m; sourceTree = "<group>"; };
+		B51501A918395469008ACE45 /* LTTPlayerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LTTPlayerViewController.h; sourceTree = "<group>"; };
+		B51501AA18395469008ACE45 /* LTTPlayerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LTTPlayerViewController.m; sourceTree = "<group>"; };
 		B5729609182EE4FE00E9E23E /* LTTAuthenticationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LTTAuthenticationViewController.h; path = Latitune/Controller/LTTAuthenticationViewController.h; sourceTree = SOURCE_ROOT; };
 		B572960A182EE4FE00E9E23E /* LTTAuthenticationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LTTAuthenticationViewController.m; path = Latitune/Controller/LTTAuthenticationViewController.m; sourceTree = SOURCE_ROOT; };
 		B572960E182EE65700E9E23E /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
@@ -247,6 +250,8 @@
 		BF7C0EE1182EB905004ED756 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				B51501A918395469008ACE45 /* LTTPlayerViewController.h */,
+				B51501AA18395469008ACE45 /* LTTPlayerViewController.m */,
 				B5729609182EE4FE00E9E23E /* LTTAuthenticationViewController.h */,
 				B572960A182EE4FE00E9E23E /* LTTAuthenticationViewController.m */,
 				BF7C0EE2182EB905004ED756 /* LTTViewController.h */,
@@ -453,6 +458,7 @@
 				B572960B182EE4FE00E9E23E /* LTTAuthenticationViewController.m in Sources */,
 				BF7C0EFD182EBF14004ED756 /* LTTRadarViewController.m in Sources */,
 				A6FCCB29182EDD8300D682E9 /* LTTBlip.m in Sources */,
+				B51501AB18395469008ACE45 /* LTTPlayerViewController.m in Sources */,
 				BF7C0EF7182EB905004ED756 /* main.m in Sources */,
 				A606999D1837FA67006E99E5 /* LTTSongProvider.m in Sources */,
 				B572961D182F2F1200E9E23E /* LTTCommunication.m in Sources */,
@@ -584,7 +590,7 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"${SRCROOT}/Pods",
-					"/Users/mmoutenot/workspace/latitune-ios",
+					"${SRCROOT}/",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Latitune/Shared/Latitune-Prefix.pch";
@@ -615,7 +621,7 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"${SRCROOT}/Pods",
-					"/Users/mmoutenot/workspace/latitune-ios",
+					"${SRCROOT}/",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Latitune/Shared/Latitune-Prefix.pch";

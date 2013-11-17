@@ -16,6 +16,7 @@
 {
     bool playing, paused;
     RDPlayer *player;
+    UIBackgroundTaskIdentifier bgTaskId;
 }
 
 @end
@@ -33,6 +34,11 @@
     return self;
 }
 
+- (void) awakeFromNib
+{
+    bgTaskId = UIBackgroundTaskInvalid;
+}
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
@@ -40,8 +46,10 @@
     player = rdio.player;
     player.delegate = self;
     [[LTTCommunication sharedInstance] getBlipsWithDelegate:self];
-    //[player queueSource:@"t2278209"];
-	// Do any additional setup after loading the view.
+    // Observe changes to the 'currentTrack' of the player
+    [player addObserver:self
+             forKeyPath:@"currentTrack"
+                options:NSKeyValueObservingOptionNew context:nil];
 }
 
 - (void)didReceiveMemoryWarning
@@ -110,6 +118,28 @@
 - (void)getBlipsDidFail
 {
     NSLog(@"getBlipdsFailed");
+}
+
+#pragma mark Play background music
+
+- (void)observeValueForKeyPath:(NSString *)keyPath
+                      ofObject:(id)object
+                        change:(NSDictionary *)change
+                       context:(void *)context {
+    
+    // When the current track changes, create a new background task and end
+    // the previous task
+    if ([keyPath isEqualToString:@"currentTrack"]) {
+        UIBackgroundTaskIdentifier newTaskId = UIBackgroundTaskInvalid;
+        newTaskId = [[UIApplication sharedApplication]
+                     beginBackgroundTaskWithExpirationHandler:NULL];
+        if (bgTaskId != UIBackgroundTaskInvalid) {
+            [[UIApplication sharedApplication] endBackgroundTask:bgTaskId];
+            bgTaskId = UIBackgroundTaskInvalid;
+        }
+        
+        bgTaskId = newTaskId;
+    }
 }
 
 @end
