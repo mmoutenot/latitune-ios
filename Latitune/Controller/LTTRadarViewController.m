@@ -31,7 +31,7 @@
 }
 
 - (void)locationManager:(CLLocationManager *)manager didUpdateHeading:(CLHeading *)newHeading{
-  self.compassImage.center = CGPointMake(160, 167);
+  self.radarView.center = CGPointMake(160, 167);
   
   // Convert Degree to Radian and move the needle
   float oldRad = -manager.heading.trueHeading * M_PI / 180.0f;
@@ -42,9 +42,9 @@
     rotationAnimation.fromValue = [NSNumber numberWithFloat:oldRad];
     rotationAnimation.toValue=[NSNumber numberWithFloat:newRad];
     rotationAnimation.duration = 0.2;
-    [self.compassImage.layer addAnimation:rotationAnimation forKey:@"AnimateFrame"];
+    [self.radarView.layer addAnimation:rotationAnimation forKey:@"AnimateFrame"];
   }];
-  
+
   // NSLog(@"%f (%f) => %f (%f)", manager.heading.trueHeading, oldRad, newHeading.trueHeading, newRad);
 }
 
