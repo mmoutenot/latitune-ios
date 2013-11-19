@@ -54,6 +54,7 @@
   for (LTTBlip *blip in blips) {
     CGRect viewRect = CGRectMake(0, 0, 30, 30);
     LTTBlipView *blipView = [[LTTBlipView alloc] initWithFrame:viewRect];
+    [blipView setBlip:blip];
     [self addSubview:blipView];
     [self.blipIDToView setObject:blipView forKey:@(blip.blipID)];
   }

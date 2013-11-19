@@ -7,7 +7,12 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "LTTBlip.h"
 
 @interface LTTBlipView : UIView
+
+@property (nonatomic) LTTBlip *blip;
+
+- (void)setBlip:(LTTBlip *)blip;
 
 @end

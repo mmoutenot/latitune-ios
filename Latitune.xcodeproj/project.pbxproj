@@ -25,6 +25,8 @@
 		B5729613182EE66B00E9E23E /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B5729612182EE66B00E9E23E /* AudioToolbox.framework */; };
 		B5729615182EE67200E9E23E /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B5729614182EE67200E9E23E /* Security.framework */; };
 		B572961D182F2F1200E9E23E /* LTTCommunication.m in Sources */ = {isa = PBXBuildFile; fileRef = B572961C182F2F1200E9E23E /* LTTCommunication.m */; };
+		BF286ADA183AF5CB000B32E1 /* LTTRadarView.m in Sources */ = {isa = PBXBuildFile; fileRef = BFEEB0D518300FC0005931D9 /* LTTRadarView.m */; };
+		BF286ADB183AF5CB000B32E1 /* LTTBlipView.m in Sources */ = {isa = PBXBuildFile; fileRef = BFEEB0D818301500005931D9 /* LTTBlipView.m */; };
 		BF7C0EA6182EB5B9004ED756 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BF7C0EA5182EB5B9004ED756 /* Foundation.framework */; };
 		BF7C0EA8182EB5B9004ED756 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BF7C0EA7182EB5B9004ED756 /* CoreGraphics.framework */; };
 		BF7C0EAA182EB5B9004ED756 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BF7C0EA9182EB5B9004ED756 /* UIKit.framework */; };
@@ -453,6 +455,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BF286ADA183AF5CB000B32E1 /* LTTRadarView.m in Sources */,
+				BF286ADB183AF5CB000B32E1 /* LTTBlipView.m in Sources */,
 				BF7C0EF0182EB905004ED756 /* LTTAppDelegate.m in Sources */,
 				BF7C0EFA182EBEB5004ED756 /* LTTDropBlipViewController.m in Sources */,
 				B572960B182EE4FE00E9E23E /* LTTAuthenticationViewController.m in Sources */,
@@ -595,10 +599,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Latitune/Shared/Latitune-Prefix.pch";
 				INFOPLIST_FILE = "$(SRCROOT)/Latitune/Shared/Latitune-Info.plist";
-				LIBRARY_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(USER_LIBRARY_DIR)/Developer/Xcode/DerivedData/Latitune-giwqjdbkyyetdjdsnoqsooalnpwf/Build/Products/Debug-iphoneos",
-				);
+				LIBRARY_SEARCH_PATHS = "$(inherited)";
 				OTHER_LDFLAGS = (
 					"-force_load",
 					"${SRCROOT}/Pods/Rdio/Rdio.framework/Versions/Current/Rdio",
@@ -626,10 +627,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Latitune/Shared/Latitune-Prefix.pch";
 				INFOPLIST_FILE = "$(SRCROOT)/Latitune/Shared/Latitune-Info.plist";
-				LIBRARY_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(USER_LIBRARY_DIR)/Developer/Xcode/DerivedData/Latitune-giwqjdbkyyetdjdsnoqsooalnpwf/Build/Products/Debug-iphoneos",
-				);
+				LIBRARY_SEARCH_PATHS = "$(inherited)";
 				OTHER_LDFLAGS = (
 					"-force_load",
 					"${SRCROOT}/Pods/Rdio/Rdio.framework/Versions/Current/Rdio",
