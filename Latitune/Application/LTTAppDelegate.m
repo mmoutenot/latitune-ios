@@ -23,6 +23,8 @@
   [ENAPIRequest setApiKey:@"DUQVSZTKUIUQIMZXI"];
   self.rdio = [[Rdio alloc] initWithConsumerKey:@"xya6sc2u4x73sgvsdtc8ef4k" andSecret:@"hs68psbjtH" delegate:nil];
   [[LTTCommunication sharedInstance] loginWithUsername:@"admin" password:@"admin" withDelegate:self];
+
+  
   return YES;
 }
 

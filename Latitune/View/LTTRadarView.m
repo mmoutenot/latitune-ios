@@ -56,6 +56,7 @@
     LTTBlipView *blipView = [[LTTBlipView alloc] initWithFrame:viewRect];
     [blipView setBlip:blip];
     [self addSubview:blipView];
+    [self bringSubviewToFront:blipView];
     [self.blipIDToView setObject:blipView forKey:@(blip.blipID)];
   }
   [self updateBlipViewLocations];
