@@ -15,7 +15,6 @@
 {
   self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
   if (self) {
-    // Custom initialization
   }
   return self;
 }
@@ -23,6 +22,18 @@
 - (void)viewDidLoad
 {
   [super viewDidLoad];
+  self.radarView = [[LTTRadarView alloc] init];
+
+  self.radarView.frame = self.view.frame;
+  
+  self.bgView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"radar-bg"]];
+  self.bgView.contentMode = UIViewContentModeCenter;
+  
+  [self.radarView addSubview:self.bgView];
+  [self.view addSubview:self.radarView];
+  
+  self.radarView.center = self.view.center;
+  self.bgView.center = self.view.center;
   
   // initialize our geolocation and start updating
   self.locationManager = [[CLLocationManager alloc] init];
@@ -63,23 +74,22 @@
 - (void)locationManager:(CLLocationManager *)manager didUpdateHeading:(CLHeading *)newHeading{
   
   // Convert Degree to Radian and move the needle
-  float oldRad = -manager.heading.trueHeading * M_PI / 180.0f;
+//  float oldRad = -manager.heading.trueHeading * M_PI / 180.0f;
   float newRad = -newHeading.trueHeading * M_PI / 180.0f;
   NSLog(@"%f", newRad);
-  CGAffineTransform rotationTransform = CGAffineTransformRotate(CGAffineTransformIdentity, newRad-oldRad);
+//  CGAffineTransform rotationTransform = CGAffineTransformRotate(self.radarView.transform, newRad-oldRad);
   
-  [UIView animateWithDuration:0.2 animations:^{
-    CABasicAnimation* rotationAnimation = [CABasicAnimation animationWithKeyPath:@"transform.rotation"];
-    rotationAnimation.fromValue = [NSNumber numberWithFloat:oldRad];
-    rotationAnimation.toValue=[NSNumber numberWithFloat:newRad];
-    rotationAnimation.duration = 0.2;
-    [self.radarView.layer addAnimation:rotationAnimation forKey:@"AnimateFrame"];
-  }];
-  
-  
-  self.radarView.transform = rotationTransform;
-  
-  
+  [UIView animateWithDuration:0.2
+    animations:^{
+      CGAffineTransform  xform = CGAffineTransformMakeRotation(newRad);
+      self.view.transform = xform;
+      [self.radarView setNeedsDisplay];
+      [self.view setNeedsDisplay];
+    } completion:^(BOOL finished){
+      NSLog(@"Image: %f, %f, %f, %f", self.bgView.frame.origin.x, self.bgView.frame.origin.y, self.bgView.frame.size.width, self.bgView.frame.size.height);
+      NSLog(@"Radar: %f, %f, %f, %f", self.radarView.frame.origin.x, self.radarView.frame.origin.y, self.radarView.frame.size.width, self.radarView.frame.size.height);
+      NSLog(@"Super: %f, %f, %f, %f", self.view.frame.origin.x, self.view.frame.origin.y, self.view.frame.size.width, self.view.frame.size.height);
+    }];
 }
 
 - (void)didReceiveMemoryWarning
