@@ -22,18 +22,6 @@
 - (void)viewDidLoad
 {
   [super viewDidLoad];
-  self.radarView = [[LTTRadarView alloc] init];
-
-  self.radarView.frame = self.view.frame;
-  
-  self.bgView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"radar-bg"]];
-  self.bgView.contentMode = UIViewContentModeCenter;
-  
-  [self.radarView addSubview:self.bgView];
-  [self.view addSubview:self.radarView];
-  
-  self.radarView.center = self.view.center;
-  self.bgView.center = self.view.center;
   
   // initialize our geolocation and start updating
   self.locationManager = [[CLLocationManager alloc] init];
@@ -86,9 +74,6 @@
       [self.radarView setNeedsDisplay];
       [self.view setNeedsDisplay];
     } completion:^(BOOL finished){
-      NSLog(@"Image: %f, %f, %f, %f", self.bgView.frame.origin.x, self.bgView.frame.origin.y, self.bgView.frame.size.width, self.bgView.frame.size.height);
-      NSLog(@"Radar: %f, %f, %f, %f", self.radarView.frame.origin.x, self.radarView.frame.origin.y, self.radarView.frame.size.width, self.radarView.frame.size.height);
-      NSLog(@"Super: %f, %f, %f, %f", self.view.frame.origin.x, self.view.frame.origin.y, self.view.frame.size.width, self.view.frame.size.height);
     }];
 }
 
