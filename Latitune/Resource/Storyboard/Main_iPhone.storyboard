@@ -109,17 +109,42 @@
         <scene sceneID="BCC-Jx-Gdg">
             <objects>
                 <viewController id="TwG-BO-lwe" customClass="LTTAuthenticationViewController" sceneMemberID="viewController">
-                    <button key="view" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="bcm-kr-1At">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="zSG-3v-mgd"/>
+                        <viewControllerLayoutGuide type="bottom" id="DyU-e4-Hry"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="uSp-zU-hRL">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="94"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                        <state key="normal" title="Authenticate With Rdio"/>
-                        <connections>
-                            <action selector="authenticateWithRdio:" destination="TwG-BO-lwe" eventType="touchUpInside" id="66P-3x-isg"/>
-                        </connections>
-                    </button>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button autoresizesSubviews="NO" opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sZX-Rq-ttd">
+                                <rect key="frame" x="40" y="38" width="88" height="33"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" backgroundImage="rdio-white"/>
+                                <connections>
+                                    <action selector="authenticateWithRdio:" destination="TwG-BO-lwe" eventType="touchUpInside" id="qch-ha-15T"/>
+                                </connections>
+                            </button>
+                            <button autoresizesSubviews="NO" opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zju-Eb-ays">
+                                <rect key="frame" x="184" y="35" width="103" height="39"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" backgroundImage="spotify-white"/>
+                                <connections>
+                                    <action selector="authenticateWithRdio:" destination="TwG-BO-lwe" eventType="touchUpInside" id="wlS-He-b9o"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Select a service to hear blips" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YSk-eQ-Van">
+                                <rect key="frame" x="20" y="0.0" width="280" height="36"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue-Thin" family="Helvetica Neue" pointSize="15"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                    </view>
                     <navigationItem key="navigationItem" id="Yb0-g3-TyX"/>
                     <connections>
-                        <outlet property="authenticateButton" destination="bcm-kr-1At" id="Ul5-D7-iib"/>
                         <segue destination="sFy-Er-0wD" kind="push" identifier="didAuthenticateSegue" id="hSG-yF-8gW"/>
                     </connections>
                 </viewController>
@@ -142,7 +167,7 @@
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="C0H-wJ-p96">
                                 <rect key="frame" x="20" y="8" width="83" height="78"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title=">" backgroundImage="album-art">
+                                <state key="normal" backgroundImage="album-art">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
@@ -163,6 +188,20 @@
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="s6f-ck-A2Q">
+                                <rect key="frame" x="267" y="6" width="16" height="22"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" image="heart">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ynt-Pi-xF7">
+                                <rect key="frame" x="291" y="6" width="16" height="22"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" image="comment">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     </view>
@@ -215,8 +254,12 @@
     <resources>
         <image name="album-art" width="85" height="85"/>
         <image name="bg" width="416" height="568"/>
+        <image name="comment" width="16" height="15"/>
         <image name="drop-blip" width="43" height="58"/>
+        <image name="heart" width="16" height="15"/>
         <image name="radar-bg" width="416" height="417"/>
+        <image name="rdio-white" width="256" height="98"/>
+        <image name="spotify-white" width="181" height="69"/>
     </resources>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>

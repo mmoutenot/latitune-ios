@@ -14,19 +14,14 @@
 {
     self = [super initWithFrame:frame];
     if (self) {
-      self.backgroundColor = [UIColor blueColor];
     }
     return self;
 }
 
 - (void)setBlip:(LTTBlip *)blip {
   _blip = blip;
-  // Just a hack for now
-  UILabel *titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(5, 5, 20, 20)];
-  titleLabel.text = [blip.song.title substringToIndex:3];
-  titleLabel.minimumScaleFactor = 0.1;
-  titleLabel.adjustsFontSizeToFitWidth = YES;
-  [self addSubview:titleLabel];
+  UIImageView *albumArt = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"blip"]];
+  [self addSubview:albumArt];
 }
 
 /*
