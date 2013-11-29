@@ -59,13 +59,8 @@
   [self.radarView setCenterLocation:self.currentLocation];
 }
 
-- (void)locationManager:(CLLocationManager *)manager didUpdateHeading:(CLHeading *)newHeading{
-  
-  // Convert Degree to Radian and move the needle
-//  float oldRad = -manager.heading.trueHeading * M_PI / 180.0f;
+- (void)locationManager:(CLLocationManager *)manager didUpdateHeading:(CLHeading *)newHeading {
   float newRad = -newHeading.trueHeading * M_PI / 180.0f;
-  NSLog(@"%f", newRad);
-//  CGAffineTransform rotationTransform = CGAffineTransformRotate(self.radarView.transform, newRad-oldRad);
   
   [UIView animateWithDuration:0.2
     animations:^{

@@ -15,7 +15,6 @@
 
 @interface LTTRadarViewController : UIViewController <CLLocationManagerDelegate, GetBlipsDelegate>
 
-
 @property (weak, nonatomic) IBOutlet LTTRadarView *radarView;
 @property (nonatomic,retain) CLLocationManager *locationManager;
 @property CLLocation *currentLocation;
