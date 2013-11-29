@@ -16,13 +16,13 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
-  
   [Crashlytics startWithAPIKey:@"2e702869be33210fc0417066e88ce3f5f2dfd615"]; 
   
   // Override point for customization after application launch.
   [ENAPIRequest setApiKey:@"DUQVSZTKUIUQIMZXI"];
   self.rdio = [[Rdio alloc] initWithConsumerKey:@"xya6sc2u4x73sgvsdtc8ef4k" andSecret:@"hs68psbjtH" delegate:nil];
   [[LTTCommunication sharedInstance] loginWithUsername:@"admin" password:@"admin" withDelegate:self];
+
   return YES;
 }
 

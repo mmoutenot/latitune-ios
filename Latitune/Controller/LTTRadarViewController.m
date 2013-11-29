@@ -15,7 +15,6 @@
 {
   self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
   if (self) {
-    // Custom initialization
   }
   return self;
 }
@@ -60,20 +59,17 @@
   [self.radarView setCenterLocation:self.currentLocation];
 }
 
-- (void)locationManager:(CLLocationManager *)manager didUpdateHeading:(CLHeading *)newHeading{
-  self.radarView.center = CGPointMake(160, 167);
-  
-  // Convert Degree to Radian and move the needle
-  float oldRad = -manager.heading.trueHeading * M_PI / 180.0f;
+- (void)locationManager:(CLLocationManager *)manager didUpdateHeading:(CLHeading *)newHeading {
   float newRad = -newHeading.trueHeading * M_PI / 180.0f;
   
-  [UIView animateWithDuration:0.2 animations:^{
-    CABasicAnimation* rotationAnimation = [CABasicAnimation animationWithKeyPath:@"transform.rotation"];
-    rotationAnimation.fromValue = [NSNumber numberWithFloat:oldRad];
-    rotationAnimation.toValue=[NSNumber numberWithFloat:newRad];
-    rotationAnimation.duration = 0.2;
-    [self.radarView.layer addAnimation:rotationAnimation forKey:@"AnimateFrame"];
-  }];
+  [UIView animateWithDuration:0.2
+    animations:^{
+      CGAffineTransform  xform = CGAffineTransformMakeRotation(newRad);
+      self.view.transform = xform;
+      [self.radarView setNeedsDisplay];
+      [self.view setNeedsDisplay];
+    } completion:^(BOOL finished){
+    }];
 }
 
 - (void)didReceiveMemoryWarning

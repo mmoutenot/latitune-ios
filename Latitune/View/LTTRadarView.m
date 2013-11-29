@@ -8,7 +8,7 @@
 
 #import "LTTRadarView.h"
 
-#define VIEWABLE_AREA_METERS 800 // x/y physical distance viewable on radar
+#define VIEWABLE_AREA_METERS 8000 // x/y physical distance viewable on radar
 
 // At latitude lat, how many meters is one degree of longitude or latitude? [via wikipedia]
 #define metersPerLatAt(lat) (111132.954 - (559.822 * cos(2.0*(lat))) + (1.175 * cos(4.0*(lat))))
@@ -56,6 +56,7 @@
     LTTBlipView *blipView = [[LTTBlipView alloc] initWithFrame:viewRect];
     [blipView setBlip:blip];
     [self addSubview:blipView];
+    [self bringSubviewToFront:blipView];
     [self.blipIDToView setObject:blipView forKey:@(blip.blipID)];
   }
   [self updateBlipViewLocations];

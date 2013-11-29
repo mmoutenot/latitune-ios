@@ -11,11 +11,11 @@
 		A60699A118394F97006E99E5 /* Crashlytics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A60699A018394F97006E99E5 /* Crashlytics.framework */; };
 		A63AFEE0182EC1BD007F19C0 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A63AFEDF182EC1BD007F19C0 /* CoreLocation.framework */; };
 		A63AFEE2182EC1C5007F19C0 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A63AFEE1182EC1C5007F19C0 /* QuartzCore.framework */; };
-		A6AA93F918300CD30022D276 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A6AA93F518300CD30022D276 /* Images.xcassets */; };
 		A6AA93FA18300CD30022D276 /* Main_iPad.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A6AA93F718300CD30022D276 /* Main_iPad.storyboard */; };
 		A6AA93FB18300CD30022D276 /* Main_iPhone.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A6AA93F818300CD30022D276 /* Main_iPhone.storyboard */; };
-		A6AA93FD18300DC50022D276 /* libENAPILibrary.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A6AA93FC18300DC50022D276 /* libENAPILibrary.a */; };
-		A6AA940118300DF00022D276 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A6AA940018300DF00022D276 /* libPods.a */; };
+		A6B9060E183AFA05003ED493 /* libENAPILibrary.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A6B9060D183AFA05003ED493 /* libENAPILibrary.a */; };
+		A6B90610183AFA0D003ED493 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A6B9060F183AFA0D003ED493 /* libPods.a */; };
+		A6DFD5651842839800369478 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A6DFD5641842839800369478 /* Images.xcassets */; };
 		A6FCCB29182EDD8300D682E9 /* LTTBlip.m in Sources */ = {isa = PBXBuildFile; fileRef = A6FCCB26182EDD8300D682E9 /* LTTBlip.m */; };
 		A6FCCB2A182EDD8300D682E9 /* LTTSong.m in Sources */ = {isa = PBXBuildFile; fileRef = A6FCCB28182EDD8300D682E9 /* LTTSong.m */; };
 		B51501AB18395469008ACE45 /* LTTPlayerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B51501AA18395469008ACE45 /* LTTPlayerViewController.m */; };
@@ -61,12 +61,11 @@
 		A60699A018394F97006E99E5 /* Crashlytics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Crashlytics.framework; sourceTree = "<group>"; };
 		A63AFEDF182EC1BD007F19C0 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		A63AFEE1182EC1C5007F19C0 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
-		A6AA93F518300CD30022D276 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		A6AA93F718300CD30022D276 /* Main_iPad.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main_iPad.storyboard; sourceTree = "<group>"; };
 		A6AA93F818300CD30022D276 /* Main_iPhone.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main_iPhone.storyboard; sourceTree = "<group>"; };
-		A6AA93FC18300DC50022D276 /* libENAPILibrary.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libENAPILibrary.a; path = "../../Library/Developer/Xcode/DerivedData/Latitune-giwqjdbkyyetdjdsnoqsooalnpwf/Build/Products/Debug-iphoneos/libENAPILibrary.a"; sourceTree = "<group>"; };
-		A6AA93FE18300DC90022D276 /* Rdio.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Rdio.framework; path = System/Library/Frameworks/Rdio.framework; sourceTree = SDKROOT; };
-		A6AA940018300DF00022D276 /* libPods.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libPods.a; path = "Pods/build/Debug-iphoneos/libPods.a"; sourceTree = "<group>"; };
+		A6B9060D183AFA05003ED493 /* libENAPILibrary.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libENAPILibrary.a; path = "../../Library/Developer/Xcode/DerivedData/Latitune-giwqjdbkyyetdjdsnoqsooalnpwf/Build/Products/Debug-iphoneos/libENAPILibrary.a"; sourceTree = "<group>"; };
+		A6B9060F183AFA0D003ED493 /* libPods.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libPods.a; path = "Pods/build/Debug-iphoneos/libPods.a"; sourceTree = "<group>"; };
+		A6DFD5641842839800369478 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		A6FCCB25182EDD8300D682E9 /* LTTBlip.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LTTBlip.h; sourceTree = "<group>"; };
 		A6FCCB26182EDD8300D682E9 /* LTTBlip.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LTTBlip.m; sourceTree = "<group>"; };
 		A6FCCB27182EDD8300D682E9 /* LTTSong.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LTTSong.h; sourceTree = "<group>"; };
@@ -113,8 +112,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A6AA940118300DF00022D276 /* libPods.a in Frameworks */,
-				A6AA93FD18300DC50022D276 /* libENAPILibrary.a in Frameworks */,
+				A6B90610183AFA0D003ED493 /* libPods.a in Frameworks */,
+				A6B9060E183AFA05003ED493 /* libENAPILibrary.a in Frameworks */,
 				B5729615182EE67200E9E23E /* Security.framework in Frameworks */,
 				B5729613182EE66B00E9E23E /* AudioToolbox.framework in Frameworks */,
 				B5729611182EE66400E9E23E /* SystemConfiguration.framework in Frameworks */,
@@ -144,7 +143,7 @@
 		A6AA93F418300CD30022D276 /* Resource */ = {
 			isa = PBXGroup;
 			children = (
-				A6AA93F518300CD30022D276 /* Images.xcassets */,
+				A6DFD5641842839800369478 /* Images.xcassets */,
 				A6AA93F618300CD30022D276 /* Storyboard */,
 			);
 			path = Resource;
@@ -189,10 +188,9 @@
 		BF7C0EA4182EB5B9004ED756 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				A6B9060F183AFA0D003ED493 /* libPods.a */,
+				A6B9060D183AFA05003ED493 /* libENAPILibrary.a */,
 				A60699A018394F97006E99E5 /* Crashlytics.framework */,
-				A6AA940018300DF00022D276 /* libPods.a */,
-				A6AA93FE18300DC90022D276 /* Rdio.framework */,
-				A6AA93FC18300DC50022D276 /* libENAPILibrary.a */,
 				B5729614182EE67200E9E23E /* Security.framework */,
 				B5729612182EE66B00E9E23E /* AudioToolbox.framework */,
 				B5729610182EE66400E9E23E /* SystemConfiguration.framework */,
@@ -387,9 +385,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				A6AA93FB18300CD30022D276 /* Main_iPhone.storyboard in Resources */,
+				A6DFD5651842839800369478 /* Images.xcassets in Resources */,
 				A6AA93FA18300CD30022D276 /* Main_iPad.storyboard in Resources */,
 				BF7C0EF5182EB905004ED756 /* InfoPlist.strings in Resources */,
-				A6AA93F918300CD30022D276 /* Images.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -587,6 +585,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 26D49302A81345AA96627698 /* Pods.xcconfig */;
 			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD)";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
@@ -599,7 +598,10 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Latitune/Shared/Latitune-Prefix.pch";
 				INFOPLIST_FILE = "$(SRCROOT)/Latitune/Shared/Latitune-Info.plist";
-				LIBRARY_SEARCH_PATHS = "$(inherited)";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(USER_LIBRARY_DIR)/Developer/Xcode/DerivedData/Latitune-giwqjdbkyyetdjdsnoqsooalnpwf/Build/Products/Debug-iphoneos",
+				);
 				OTHER_LDFLAGS = (
 					"-force_load",
 					"${SRCROOT}/Pods/Rdio/Rdio.framework/Versions/Current/Rdio",
@@ -607,6 +609,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				USER_HEADER_SEARCH_PATHS = "${SRCROOT}/**";
+				VALID_ARCHS = "armv7 armv7s";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -615,6 +618,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 26D49302A81345AA96627698 /* Pods.xcconfig */;
 			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD)";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
@@ -627,7 +631,10 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Latitune/Shared/Latitune-Prefix.pch";
 				INFOPLIST_FILE = "$(SRCROOT)/Latitune/Shared/Latitune-Info.plist";
-				LIBRARY_SEARCH_PATHS = "$(inherited)";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(USER_LIBRARY_DIR)/Developer/Xcode/DerivedData/Latitune-giwqjdbkyyetdjdsnoqsooalnpwf/Build/Products/Debug-iphoneos",
+				);
 				OTHER_LDFLAGS = (
 					"-force_load",
 					"${SRCROOT}/Pods/Rdio/Rdio.framework/Versions/Current/Rdio",
@@ -635,6 +642,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				USER_HEADER_SEARCH_PATHS = "${SRCROOT}/**";
+				VALID_ARCHS = "armv7 armv7s";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
