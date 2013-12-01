@@ -71,6 +71,22 @@
   }
 }
 
+// rotates view by rad. Also roates blip subviews the negative amount
+- (void)rotate:(NSNumber *) rad {
+  [UIView animateWithDuration:0.2
+                   animations:^{
+                     CGAffineTransform  xform = CGAffineTransformMakeRotation(rad.floatValue);
+                     self.transform = xform;
+                     [self setNeedsDisplay];
+                   } completion:^(BOOL finished){
+                   }];
+//  NSNumber *negRad = [NSNumber numberWithFloat:rad.floatValue * -1];
+//  for (LTTBlip *blip in _blips) {
+//    LTTBlipView *blipView = [_blipIDToView objectForKey:@(blip.blipID)];
+//    [blipView rotate:negRad];
+//  }
+}
+
 - (CGPoint)getCenterPointForBlip:(LTTBlip *)blip {
   CLLocation *blipLocation = [[CLLocation alloc] initWithLatitude:blip.lat longitude:blip.lng];
   CGVector screenDistances = [self getVectorBetweenCenterAndLocation:blipLocation];

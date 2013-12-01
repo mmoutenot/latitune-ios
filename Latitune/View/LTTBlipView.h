@@ -14,5 +14,6 @@
 @property (nonatomic) LTTBlip *blip;
 
 - (void)setBlip:(LTTBlip *)blip;
+- (void)rotate:(NSNumber *) rad;
 
 @end

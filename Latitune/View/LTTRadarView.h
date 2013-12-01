@@ -19,5 +19,6 @@
 - (void)setCenterLocation:(CLLocation *)center;
 - (void)setBlips:(NSArray *)blips;
 - (void)updateBlipViewLocations;
+- (void)rotate:(NSNumber *) rad;
 
 @end

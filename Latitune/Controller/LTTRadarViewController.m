@@ -24,24 +24,24 @@
   [super viewDidLoad];
   
   // initialize our geolocation and start updating
-  self.locationManager = [[CLLocationManager alloc] init];
-  self.locationManager.desiredAccuracy = kCLLocationAccuracyBest;
-  self.locationManager.headingFilter = 1;
-  self.locationManager.delegate=self;
-  [self.locationManager startUpdatingHeading];
-  [self.locationManager startUpdatingLocation];
+  _locationManager = [[CLLocationManager alloc] init];
+  _locationManager.desiredAccuracy = kCLLocationAccuracyBest;
+  _locationManager.headingFilter = 1;
+  _locationManager.delegate = self;
+  [_locationManager startUpdatingHeading];
+  [_locationManager startUpdatingLocation];
 }
 
 // Allow adding a just created blip to the radar
 - (void)addBlip:(LTTBlip *)blip {
-  self.blips = [self.blips arrayByAddingObject:blip];
-  [self.radarView setBlips:self.blips];
+  _blips = [_blips arrayByAddingObject:blip];
+  [_radarView setBlips:_blips];
 }
 
 #pragma mark - Get Blip Delegate
 
 - (void) getBlipsDidSucceedWithBlips:(NSArray *)blips {
-  [self.radarView setBlips:blips];
+  [_radarView setBlips:blips];
 }
 
 - (void) getBlipsDidFail {
@@ -51,25 +51,17 @@
 #pragma mark - Location Manager Delegate
 
 - (void)locationManager:(CLLocationManager *)manager didUpdateLocations:(NSArray *)locations {
-  CLLocation *previousLocation = self.currentLocation;
-  self.currentLocation = [locations lastObject];
-  if (!previousLocation || [previousLocation distanceFromLocation:self.currentLocation] > 100) {
+  CLLocation *previousLocation = _currentLocation;
+  _currentLocation = [locations lastObject];
+  if (!previousLocation || [previousLocation distanceFromLocation:_currentLocation] > 100) {
     [[LTTCommunication sharedInstance] getBlipsNearLocation:self.currentLocation.coordinate withDelegate:self];
   }
-  [self.radarView setCenterLocation:self.currentLocation];
+  [_radarView setCenterLocation:_currentLocation];
 }
 
 - (void)locationManager:(CLLocationManager *)manager didUpdateHeading:(CLHeading *)newHeading {
-  float newRad = -newHeading.trueHeading * M_PI / 180.0f;
-  
-  [UIView animateWithDuration:0.2
-    animations:^{
-      CGAffineTransform  xform = CGAffineTransformMakeRotation(newRad);
-      self.view.transform = xform;
-      [self.radarView setNeedsDisplay];
-      [self.view setNeedsDisplay];
-    } completion:^(BOOL finished){
-    }];
+  NSNumber *rad = [NSNumber numberWithFloat:(-newHeading.trueHeading * M_PI / 180.0f)];
+  [_radarView performSelectorOnMainThread:@selector(rotate:) withObject:rad waitUntilDone:NO];
 }
 
 - (void)didReceiveMemoryWarning

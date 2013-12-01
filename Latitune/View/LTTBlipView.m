@@ -24,6 +24,16 @@
   [self addSubview:albumArt];
 }
 
+- (void)rotate:(NSNumber *) rad {
+  [UIView animateWithDuration:0.2
+                   animations:^{
+                     CGAffineTransform  xform = CGAffineTransformMakeRotation(rad.floatValue);
+                     self.transform = xform;
+                     [self setNeedsDisplay];
+                   } completion:^(BOOL finished){
+                   }];
+}
+
 /*
 // Only override drawRect: if you perform custom drawing.
 // An empty implementation adversely affects performance during animation.

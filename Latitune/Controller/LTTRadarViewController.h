@@ -21,5 +21,6 @@
 @property NSArray *blips;
 
 - (void)addBlip:(LTTBlip *)blip;
+- (void)rotateTo:(NSNumber *) rad;
 
 @end
