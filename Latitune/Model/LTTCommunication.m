@@ -101,18 +101,12 @@
       [self performSelector:failSelector withObject:responseDict[@"meta"][@"status"] withObject:cl];
     }
   } failure:^(AFHTTPRequestOperation *operation, id response){
-    [self performSelector:failSelector withObject:cl];
+    [self performSelector:failSelector withObject:@(FailedToConnect) withObject:cl];
   }];
 }
 
 - (void)putURL:(NSString*)urlString parameters:(NSDictionary*)params succeedSelector:(SEL)succeedSelector
         failSelector:(SEL) failSelector closure:(NSDictionary*)cl; {
-//    NSString *paramString = [NSString stringWithFormat:@"username=%@&password=%@",self.username,self.password];
-//    for (id key in [params allKeys]) {
-//        paramString = [NSString stringWithFormat:@"%@&%@=%@",paramString,key,params[key]];
-//        [request setPostValue:params[key] forKey:key];
-//    }
-
   NSMutableDictionary *parameters = [NSMutableDictionary dictionaryWithDictionary:params];
   [parameters setObject:self.username forKey:@"username"];
   [parameters setObject:self.password forKey:@"password"];
@@ -125,7 +119,7 @@
       [self performSelector:failSelector withObject:response[@"meta"][@"status"] withObject:cl];
     }
   } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-    [self performSelector:failSelector withObject:cl];
+    [self performSelector:failSelector withObject:@(FailedToConnect) withObject:cl];
   }];
 }
 

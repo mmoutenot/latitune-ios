@@ -24,7 +24,8 @@ typedef enum {
   InvalidSongID = 40,
   InvalidBlipID = 50,
   InvalidCommentID = 60,
-  InvalidFavoriteID = 70
+  InvalidFavoriteID = 70,
+  FailedToConnect = 600
 } LatituneServerStatus;
 
 @protocol AddSongDelegate <NSObject>
