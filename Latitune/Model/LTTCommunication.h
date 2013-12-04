@@ -13,6 +13,10 @@
 #import "LTTSong.h"
 #import "LTTBlip.h"
 #import "LTTSongProvider.h"
+#import "Reachability.h"
+
+NSString *NO_INTERNET_ALERT_MESSAGE = @"Latitune can't connect to the tunes! ";
+NSString *NO_INTERNET_ALERT_TITLE = @"Can't Connect";
 
 typedef enum {
   Success = 20,
@@ -67,10 +71,12 @@ typedef enum {
 
 @property (strong,nonatomic) NSString *username, *password;
 @property (nonatomic) NSInteger userID;
+@property (nonatomic) NSDate *lastNoInternetAlert;
 @property (nonatomic) AFHTTPRequestOperationManager *http;
+@property (nonatomic) Reachability *internetReachability;
 
 +(id)sharedInstance;
-- (void) loginWithStoredData;
+- (void) loginWithStoredDataWithDelegate:(NSObject <LoginDelegate>*)delegate;
 - (void) loginWithUsername:(NSString *)uname password:(NSString *)password withDelegate:(NSObject <LoginDelegate>*)delegate;
 - (void) createUserWithUsername:(NSString *)uname email:(NSString*)uemail password:(NSString*)upassword
                    withDelegate:(NSObject<CreateUserDelegate>*) delegate;
@@ -79,5 +85,6 @@ typedef enum {
 - (void) getBlipsWithDelegate:(NSObject <GetBlipsDelegate> *)delegate;
 - (void) getBlipsNearLocation:(CLLocationCoordinate2D)loc withDelegate:(NSObject<GetBlipsDelegate>*)delegate;
 - (void) getBlipWithID:(NSInteger)blipID withDelegate:(NSObject<GetBlipsDelegate>*)delegate;
+- (void) processAndDelegateNetworkFailureToSelector:(SEL)failSelector withError:(NSError*) error closure:(NSDictionary*)cl;
 
 @end
