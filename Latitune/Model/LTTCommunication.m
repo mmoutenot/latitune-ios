@@ -51,17 +51,24 @@
 - (id) init {
   self = [super init];
   if (self) {
-    if ([[SSKeychain accountsForService:@"latitune"] count]>0) {
-      NSLog(@"loading account");
-      NSString *username = [[NSUserDefaults standardUserDefaults] objectForKey:@"username"];
-      NSLog(@"%@", username);
-      NSString *password = [SSKeychain passwordForService:@"latitune" account:username];
-      NSLog(@"%@", password);
-      [self loginWithUsername:username password:password withDelegate:nil];
-    }
+    [self loginWithStoredDataWithDelegate:nil];
     self.http = [AFHTTPRequestOperationManager manager];
+    self.internetReachability = [Reachability reachabilityForInternetConnection];
+    [self.internetReachability startNotifier];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(connectivityChanged:)
+                                                 name:kReachabilityChangedNotification object:nil];
   }
   return self;
+}
+
+- (void) connectivityChanged:(NSNotification *)notification {
+  // Can also use [self.internetReachability currentReachabilityStatus] for wifi/cellular connection status
+  if ([self.internetReachability connectionRequired]) {
+    NSLog(@"Lost internet connection");
+  } else {
+    NSLog(@"We have internet, party on");
+    [self loginWithStoredDataWithDelegate:nil];
+  }
 }
 
 - (id) performSelector: (SEL) selector withObject:(id) p1 withObject: (id) p2 {
@@ -100,8 +107,8 @@
     } else {
       [self performSelector:failSelector withObject:responseDict[@"meta"][@"status"] withObject:cl];
     }
-  } failure:^(AFHTTPRequestOperation *operation, id response){
-    [self performSelector:failSelector withObject:@(FailedToConnect) withObject:cl];
+  } failure:^(AFHTTPRequestOperation *operation, NSError *error){
+    [self processAndDelegateNetworkFailureToSelector:failSelector withError:error closure:cl];
   }];
 }
 
@@ -119,8 +126,23 @@
       [self performSelector:failSelector withObject:response[@"meta"][@"status"] withObject:cl];
     }
   } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-    [self performSelector:failSelector withObject:@(FailedToConnect) withObject:cl];
+    [self processAndDelegateNetworkFailureToSelector:failSelector withError:error closure:cl];
   }];
+}
+
+// Intercepts network failures and performs common failure response activities such as notifying the
+// user and eventually queueing up network requests for later.
+- (void) processAndDelegateNetworkFailureToSelector:(SEL)failSelector withError:(NSError*) error closure:(NSDictionary*)cl {
+  if (!self.lastNoInternetAlert || abs([self.lastNoInternetAlert timeIntervalSinceNow]) > 900) {
+    self.lastNoInternetAlert = [NSDate date];
+    NSString *alertMessage = [@"Latitune can't connect to the tunes! " stringByAppendingString:[error localizedDescription]];
+    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Can't Connect"
+                                                    message:alertMessage
+                                                   delegate:nil
+                                          cancelButtonTitle:@"Okay" otherButtonTitles:nil];
+    [alert show];
+  }
+  [self performSelector:failSelector withObject:@(FailedToConnect) withObject:cl];
 }
 
 - (void) requestToAddUserDidSucceedWithResponse:(NSDictionary*)response closure:(NSDictionary*)cl {
@@ -166,11 +188,19 @@
     failSelector:@selector(requestToLoginDidFailWithErrorCode:closure:) closure:cl];
 }
 
+- (void) loginWithStoredDataWithDelegate:(NSObject <LoginDelegate>*)delegate {
+  if ([[SSKeychain accountsForService:@"latitune"] count] > 0) {
+    NSString *username = [[NSUserDefaults standardUserDefaults] objectForKey:@"username"];
+    NSString *password = [SSKeychain passwordForService:@"latitune" account:username];
+    [self loginWithUsername:username password:password withDelegate:delegate];
+  }
+}
+
 - (void) addSong:(LTTSong *)song withDelegate:(NSObject<AddSongDelegate> *)delegate {
     NSDictionary *params = [song asDictionary];
     NSDictionary *cl = @{@"delegate":delegate};
     [self putURL:SONG_ROUTE parameters:params succeedSelector:@selector(requestToAddSongDidSucceedWithResponse:closure:)
-          failSelector:@selector(requestToAddSongDidFailWithClosure:) closure:cl];
+    failSelector:@selector(requestToAddSongDidFailWithResponse:withClosure:) closure:cl];
 }
 
 - (void) requestToAddSongDidSucceedWithResponse:(NSDictionary*)response closure:(NSDictionary*)cl {
@@ -180,7 +210,7 @@
     [cl[@"delegate"] performSelector:@selector(addSongDidSucceedWithSong:) withObject:toReturn];
 }
 
-- (void) requestToAddSongDidFailWithClosure:(NSDictionary *)cl {
+- (void) requestToAddSongDidFailWithResponse:(NSDictionary *)response withClosure:(NSDictionary *)cl {
     [cl[@"delegate"] performSelector:@selector(addSongDidFail)];
 }
 
@@ -247,7 +277,7 @@
   [cl[@"delegate"] performSelector:@selector(getBlipsDidSucceedWithBlips:) withObject:toReturn];
 }
 
-- (void) requestToGetBlipsDidFailWithClosure:(NSDictionary*)cl {
+- (void) requestToGetBlipsDidFailWithResponse:(NSDictionary*)response withClosure:(NSDictionary*)cl {
   [cl[@"delegate"] performSelector:@selector(getBlipsDidFail)];
 }
 

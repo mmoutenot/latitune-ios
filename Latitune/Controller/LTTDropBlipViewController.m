@@ -43,7 +43,16 @@
 
 - (IBAction)dropButton:(id)sender {
   LTTSong *song = [self getCurrentExternalSong];
-  [song populateEchonestIDWithDelegate:self];
+  if (song) {
+    [song populateEchonestIDWithDelegate:self];
+  } else {
+    NSString *alertMessage = @"Which song should we drop? Please play a song using the music app and try again.";
+    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Give us a tune!"
+                                                    message:alertMessage
+                                                   delegate:nil
+                                          cancelButtonTitle:@"Okay" otherButtonTitles:nil];
+    [alert show];
+  }
 }
 
 - (LTTSong *)getCurrentExternalSong {
@@ -70,8 +79,11 @@
     NSLog(@"%@", );
   }
    */
-  LTTSong* song = [[LTTSong new] initWithTitle:title artist:artist album:album];
-  return song;
+  if (title) {
+    return [[LTTSong new] initWithTitle:title artist:artist album:album];
+  } else {
+    return nil;
+  }
 }
 
 #pragma callbacks

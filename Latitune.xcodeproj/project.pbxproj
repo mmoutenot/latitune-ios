@@ -41,6 +41,7 @@
 		BF7C0EF7182EB905004ED756 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = BF7C0EEF182EB905004ED756 /* main.m */; };
 		BF7C0EFA182EBEB5004ED756 /* LTTDropBlipViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BF7C0EF9182EBEB5004ED756 /* LTTDropBlipViewController.m */; };
 		BF7C0EFD182EBF14004ED756 /* LTTRadarViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BF7C0EFC182EBF14004ED756 /* LTTRadarViewController.m */; };
+		BFCBBFA0184BFA29006C2394 /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = BFCBBF9E184BFA29006C2394 /* Reachability.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -101,6 +102,8 @@
 		BF7C0EF9182EBEB5004ED756 /* LTTDropBlipViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LTTDropBlipViewController.m; sourceTree = "<group>"; };
 		BF7C0EFB182EBF14004ED756 /* LTTRadarViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LTTRadarViewController.h; sourceTree = "<group>"; };
 		BF7C0EFC182EBF14004ED756 /* LTTRadarViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LTTRadarViewController.m; sourceTree = "<group>"; };
+		BFCBBF9E184BFA29006C2394 /* Reachability.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Reachability.m; sourceTree = "<group>"; };
+		BFCBBF9F184BFA29006C2394 /* Reachability.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Reachability.h; sourceTree = "<group>"; };
 		BFEEB0D418300FC0005931D9 /* LTTRadarView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LTTRadarView.h; sourceTree = "<group>"; };
 		BFEEB0D518300FC0005931D9 /* LTTRadarView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LTTRadarView.m; sourceTree = "<group>"; };
 		BFEEB0D718301500005931D9 /* LTTBlipView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LTTBlipView.h; sourceTree = "<group>"; };
@@ -282,6 +285,8 @@
 		BF7C0EEA182EB905004ED756 /* Shared */ = {
 			isa = PBXGroup;
 			children = (
+				BFCBBF9E184BFA29006C2394 /* Reachability.m */,
+				BFCBBF9F184BFA29006C2394 /* Reachability.h */,
 				BF7C0EEB182EB905004ED756 /* InfoPlist.strings */,
 				BF7C0EED182EB905004ED756 /* Latitune-Info.plist */,
 				BF7C0EEE182EB905004ED756 /* Latitune-Prefix.pch */,
@@ -463,6 +468,7 @@
 				B51501AB18395469008ACE45 /* LTTPlayerViewController.m in Sources */,
 				BF7C0EF7182EB905004ED756 /* main.m in Sources */,
 				A606999D1837FA67006E99E5 /* LTTSongProvider.m in Sources */,
+				BFCBBFA0184BFA29006C2394 /* Reachability.m in Sources */,
 				B572961D182F2F1200E9E23E /* LTTCommunication.m in Sources */,
 				A6FCCB2A182EDD8300D682E9 /* LTTSong.m in Sources */,
 				BF7C0EF1182EB905004ED756 /* LTTViewController.m in Sources */,
