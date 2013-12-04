@@ -135,8 +135,8 @@
 - (void) processAndDelegateNetworkFailureToSelector:(SEL)failSelector withError:(NSError*) error closure:(NSDictionary*)cl {
   if (!self.lastNoInternetAlert || abs([self.lastNoInternetAlert timeIntervalSinceNow]) > 900) {
     self.lastNoInternetAlert = [NSDate date];
-    NSString *alertMessage = [@"Latitune can't connect to the tunes! " stringByAppendingString:[error localizedDescription]];
-    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Can't Connect"
+    NSString *alertMessage = [NO_INTERNET_ALERT_MESSAGE stringByAppendingString:[error localizedDescription]];
+    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:NO_INTERNET_ALERT_TITLE
                                                     message:alertMessage
                                                    delegate:nil
                                           cancelButtonTitle:@"Okay" otherButtonTitles:nil];

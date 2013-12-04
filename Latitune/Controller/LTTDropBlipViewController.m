@@ -46,8 +46,8 @@
   if (song) {
     [song populateEchonestIDWithDelegate:self];
   } else {
-    NSString *alertMessage = @"Which song should we drop? Please play a song using the music app and try again.";
-    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Give us a tune!"
+    NSString *alertMessage = NO_SONG_ALERT_MESSAGE;
+    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:NO_SONG_ALERT_TITLE
                                                     message:alertMessage
                                                    delegate:nil
                                           cancelButtonTitle:@"Okay" otherButtonTitles:nil];

@@ -15,6 +15,9 @@
 #import "LTTSongProvider.h"
 #import "Reachability.h"
 
+NSString *NO_INTERNET_ALERT_MESSAGE = @"Latitune can't connect to the tunes! ";
+NSString *NO_INTERNET_ALERT_TITLE = @"Can't Connect";
+
 typedef enum {
   Success = 20,
   MissingRequiredParameters = 10,

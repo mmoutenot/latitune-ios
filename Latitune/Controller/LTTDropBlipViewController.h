@@ -8,6 +8,9 @@
 #import <CoreLocation/CoreLocation.h>
 #import <UIKit/UIKit.h>
 
+NSString *NO_SONG_ALERT_MESSAGE = @"Latitune can't connect to the tunes! ";
+NSString *NO_SONG_ALERT_TITLE = @"Give us a tune!";
+
 @interface LTTDropBlipViewController : UIViewController <AddBlipDelegate, AddSongDelegate, CLLocationManagerDelegate, LTTSongDelegate>
 
 - (IBAction)dropButton:(id)sender;
