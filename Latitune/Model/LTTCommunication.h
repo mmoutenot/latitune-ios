@@ -36,36 +36,36 @@ typedef enum {
 
 @protocol AddSongDelegate <NSObject>
 
-- (void) addSongDidFail;
-- (void) addSongDidSucceedWithSong:(LTTSong*) song;
+- (void)addSongDidFail;
+- (void)addSongDidSucceedWithSong:(LTTSong*) song;
 
 @end
 
 @protocol AddBlipDelegate <NSObject>
 
-- (void) addBlipDidFail;
-- (void) addBlipDidSucceedWithBlip:(LTTBlip*) song;
+- (void)addBlipDidFail;
+- (void)addBlipDidSucceedWithBlip:(LTTBlip*) song;
 
 @end
 
 @protocol GetBlipsDelegate <NSObject>
 
-- (void) getBlipsDidFail;
-- (void) getBlipsDidSucceedWithBlips:(NSArray *)blips;
+- (void)getBlipsDidFail;
+- (void)getBlipsDidSucceedWithBlips:(NSArray *)blips;
 
 @end
 
 @protocol CreateUserDelegate <NSObject>
 
-- (void) createUserDidFailWithError:(NSNumber *)errorCode;
-- (void) createUserDidSucceedWithUser:(NSDictionary*)user;
+- (void)createUserDidFailWithError:(NSNumber *)errorCode;
+- (void)createUserDidSucceedWithUser:(NSDictionary*)user;
 
 @end
 
 @protocol LoginDelegate <NSObject>
 
-- (void) loginDidFailWithError:(NSNumber *)errorCode;
-- (void) loginDidSucceedWithUser:(NSDictionary*)user;
+- (void)loginDidFailWithError:(NSNumber *)errorCode;
+- (void)loginDidSucceedWithUser:(NSDictionary*)user;
 
 @end
 
@@ -74,14 +74,14 @@ typedef enum {
 @property (nonatomic) Reachability *internetReachability;
 
 + (instancetype)sharedInstance;
-- (void) createUserWithUsername:(NSString *)uname email:(NSString*)uemail password:(NSString*)upassword
-                   withDelegate:(NSObject<CreateUserDelegate>*) delegate;
-- (void) loginWithStoredDataWithDelegate:(NSObject <LoginDelegate>*)delegate;
-- (void) loginWithUsername:(NSString *)uname password:(NSString *)password withDelegate:(NSObject <LoginDelegate>*)delegate;
-- (void) addSong:(LTTSong *)song withDelegate:(NSObject <AddSongDelegate>*)delegate;
-- (void) addBlipWithSong:(LTTSong *)song atLocation:(CLLocationCoordinate2D)loc withDelegate:(NSObject <AddBlipDelegate>*)delegate;
-- (void) getBlipsWithDelegate:(NSObject <GetBlipsDelegate> *)delegate;
-- (void) getBlipsNearLocation:(CLLocationCoordinate2D)loc withDelegate:(NSObject<GetBlipsDelegate>*)delegate;
-- (void) getBlipWithID:(NSInteger)blipID withDelegate:(NSObject<GetBlipsDelegate>*)delegate;
+- (void)createUserWithUsername:(NSString *)uname email:(NSString*)uemail password:(NSString*)upassword
+                  withDelegate:(NSObject<CreateUserDelegate>*) delegate;
+- (void)loginWithStoredDataWithDelegate:(NSObject <LoginDelegate>*)delegate;
+- (void)loginWithUsername:(NSString *)uname password:(NSString *)password withDelegate:(NSObject <LoginDelegate>*)delegate;
+- (void)addSong:(LTTSong *)song withDelegate:(NSObject <AddSongDelegate>*)delegate;
+- (void)addBlipWithSong:(LTTSong *)song atLocation:(CLLocationCoordinate2D)loc withDelegate:(NSObject <AddBlipDelegate>*)delegate;
+- (void)getBlipsWithDelegate:(NSObject <GetBlipsDelegate> *)delegate;
+- (void)getBlipsNearLocation:(CLLocationCoordinate2D)loc withDelegate:(NSObject<GetBlipsDelegate>*)delegate;
+- (void)getBlipWithID:(NSInteger)blipID withDelegate:(NSObject<GetBlipsDelegate>*)delegate;
 
 @end
