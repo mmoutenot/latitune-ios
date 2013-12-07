@@ -14,3 +14,11 @@
   #import <UIKit/UIKit.h>
   #import <Foundation/Foundation.h>
 #endif
+
+#pragma mark - Strings
+
+#ifndef LTTStrings
+#define LTTStrings 1
+//NSString *NO_INTERNET_ALERT_MESSAGE = @"Latitune can't connect to the tunes! ";
+// NSString *NO_INTERNET_ALERT_TITLE = @"Can't Connect";
+#endif

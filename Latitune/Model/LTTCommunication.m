@@ -37,9 +37,18 @@
 
 @end
 
+@interface LTTCommunication ()
+
+@property (strong,nonatomic) NSString *username, *password;
+@property (nonatomic) NSInteger userID;
+@property (nonatomic) NSDate *lastNoInternetAlert;
+@property (nonatomic) AFHTTPRequestOperationManager *http;
+
+@end
+
 @implementation LTTCommunication
 
-+ (id)sharedInstance {
++ (instancetype)sharedInstance {
     static dispatch_once_t pred = 0;
     __strong static id _sharedObject = nil;
     dispatch_once(&pred, ^{
@@ -61,16 +70,6 @@
   return self;
 }
 
-- (void) connectivityChanged:(NSNotification *)notification {
-  // Can also use [self.internetReachability currentReachabilityStatus] for wifi/cellular connection status
-  if ([self.internetReachability connectionRequired]) {
-    NSLog(@"Lost internet connection");
-  } else {
-    NSLog(@"We have internet, party on");
-    [self loginWithStoredDataWithDelegate:nil];
-  }
-}
-
 - (id) performSelector: (SEL) selector withObject:(id) p1 withObject: (id) p2 {
     NSMethodSignature *sig = [self methodSignatureForSelector:selector];
     if (!sig)
@@ -89,6 +88,8 @@
     }
     return nil;
 }
+
+#pragma mark - Common HTTP
 
 #pragma clang diagnostic push
 #pragma clang diagnostic ignored "-Warc-performSelector-leaks"
@@ -135,8 +136,13 @@
 - (void) processAndDelegateNetworkFailureToSelector:(SEL)failSelector withError:(NSError*) error closure:(NSDictionary*)cl {
   if (!self.lastNoInternetAlert || abs([self.lastNoInternetAlert timeIntervalSinceNow]) > 900) {
     self.lastNoInternetAlert = [NSDate date];
-    NSString *alertMessage = [NO_INTERNET_ALERT_MESSAGE stringByAppendingString:[error localizedDescription]];
-    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:NO_INTERNET_ALERT_TITLE
+    NSString *alertMessage;
+    if ([error isKindOfClass:NSClassFromString(@"NSURLError")]) {
+      alertMessage = [NSString stringWithFormat:@"%@ %@", CONNECTION_FAIL_ALERT_MESSAGE, NO_INTERNET_MESSAGE];
+    } else {
+      alertMessage = [NSString stringWithFormat:@"%@ %@", CONNECTION_FAIL_ALERT_MESSAGE, PROBLEMS_MESSAGE];
+    }
+    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:CONNECTION_FAIL_ALERT_TITLE
                                                     message:alertMessage
                                                    delegate:nil
                                           cancelButtonTitle:@"Okay" otherButtonTitles:nil];
@@ -145,17 +151,17 @@
   [self performSelector:failSelector withObject:@(FailedToConnect) withObject:cl];
 }
 
-- (void) requestToAddUserDidSucceedWithResponse:(NSDictionary*)response closure:(NSDictionary*)cl {
-  NSDictionary *user = response[@"objects"][0];
-  [[NSUserDefaults standardUserDefaults] setValue:self.username forKey:@"username"];
-  [SSKeychain setPassword:self.password forService:@"latitune" account:self.username];
-  self.userID = [user[@"id"] integerValue];
-  [cl[@"delegate"] performSelector:@selector(createUserDidSucceedWithUser:) withObject:user];
+- (void) connectivityChanged:(NSNotification *)notification {
+  // Can also use [self.internetReachability currentReachabilityStatus] for wifi/cellular connection status
+  if ([self.internetReachability connectionRequired]) {
+    NSLog(@"Lost internet connection");
+  } else {
+    NSLog(@"We have internet, party on");
+    [self loginWithStoredDataWithDelegate:nil];
+  }
 }
 
-- (void) requestToAddUserDidFailWithErrorCode:(NSNumber *)errorCode closure:(NSDictionary*)cl {
-  [cl[@"delegate"] performSelector:@selector(createUserDidFailWithError:) withObject:errorCode];
-}
+#pragma mark - Create User
 
 - (void) createUserWithUsername:(NSString *)uname email:(NSString*)uemail password:(NSString*)upassword
                    withDelegate:(NSObject<CreateUserDelegate>*) delegate {
@@ -163,21 +169,23 @@
   self.password = upassword;
   NSDictionary *params = @{@"email":uemail};
   NSDictionary *cl = @{@"delegate":delegate};
-  [self putURL:USER_ROUTE parameters:params succeedSelector:@selector(requestToAddUserDidSucceedWithResponse:closure:)
-  failSelector:@selector(requestToAddUserDidFailWithErrorCode:closure:) closure:cl];
+  [self putURL:USER_ROUTE parameters:params succeedSelector:@selector(requestToCreateUserDidSucceedWithResponse:closure:)
+  failSelector:@selector(requestToCreateUserDidFailWithErrorCode:closure:) closure:cl];
 }
 
-- (void) requestToLoginDidSucceedWithResponse:(NSDictionary*)response closure:(NSDictionary*)cl {
+- (void) requestToCreateUserDidSucceedWithResponse:(NSDictionary*)response closure:(NSDictionary*)cl {
   NSDictionary *user = response[@"objects"][0];
   [[NSUserDefaults standardUserDefaults] setValue:self.username forKey:@"username"];
   [SSKeychain setPassword:self.password forService:@"latitune" account:self.username];
   self.userID = [user[@"id"] integerValue];
-  [cl[@"delegate"] performSelector:@selector(loginDidSucceedWithUser:) withObject:user];
+  [cl[@"delegate"] performSelector:@selector(createUserDidSucceedWithUser:) withObject:user];
 }
 
-- (void) requestToLoginDidFailWithErrorCode:(NSNumber *)errorCode closure:(NSDictionary*)cl {
-    [cl[@"delegate"] performSelector:@selector(loginDidFailWithError:) withObject:errorCode];
+- (void) requestToCreateUserDidFailWithErrorCode:(NSNumber *)errorCode closure:(NSDictionary*)cl {
+  [cl[@"delegate"] performSelector:@selector(createUserDidFailWithError:) withObject:errorCode];
 }
+
+#pragma mark - Login
 
 - (void) loginWithUsername:(NSString *)uname password:(NSString *)upassword withDelegate:(NSObject <LoginDelegate>*)delegate {
   if (delegate == nil) delegate = [NSNull null];
@@ -195,6 +203,20 @@
     [self loginWithUsername:username password:password withDelegate:delegate];
   }
 }
+
+- (void) requestToLoginDidSucceedWithResponse:(NSDictionary*)response closure:(NSDictionary*)cl {
+  NSDictionary *user = response[@"objects"][0];
+  [[NSUserDefaults standardUserDefaults] setValue:self.username forKey:@"username"];
+  [SSKeychain setPassword:self.password forService:@"latitune" account:self.username];
+  self.userID = [user[@"id"] integerValue];
+  [cl[@"delegate"] performSelector:@selector(loginDidSucceedWithUser:) withObject:user];
+}
+
+- (void) requestToLoginDidFailWithErrorCode:(NSNumber *)errorCode closure:(NSDictionary*)cl {
+    [cl[@"delegate"] performSelector:@selector(loginDidFailWithError:) withObject:errorCode];
+}
+
+#pragma mark - Add Song
 
 - (void) addSong:(LTTSong *)song withDelegate:(NSObject<AddSongDelegate> *)delegate {
     NSDictionary *params = [song asDictionary];
@@ -214,15 +236,12 @@
     [cl[@"delegate"] performSelector:@selector(addSongDidFail)];
 }
 
+#pragma mark - Add Blip
+
 - (void) addBlipWithSong:(LTTSong *)song atLocation:(CLLocationCoordinate2D)loc withDelegate:(NSObject <AddBlipDelegate>*)delegate {
     NSDictionary *params = @{ @"song_id":@(song.songID), @"latitude":@(loc.latitude), @"longitude":@(loc.longitude), @"user_id":@(_userID)};
     NSDictionary *cl = @{@"delegate":delegate};
     [self putURL:BLIP_ROUTE parameters:params succeedSelector:@selector(requestToAddBlipDidSucceedWithResponse:closure:) failSelector:@selector(requestToAddBlipDidFailWithClosure:) closure:cl];
-}
-
-- (void) getBlipsWithDelegate:(NSObject<GetBlipsDelegate> *)delegate {
-    NSDictionary *cl = @{@"delegate":delegate};
-    [self getURL:BLIP_ROUTE parameters:nil succeedSelector:@selector(requestToGetBlipsDidSucceedWithResponse:closure:) failSelector:@selector(requestToGetBlipsDidFailWithClosure:) closure:cl];
 }
 
 - (void) requestToAddBlipDidSucceedWithResponse:(NSDictionary*)response closure:(NSDictionary*)cl {
@@ -248,6 +267,26 @@
 
 - (void) requestToAddBlipDidFailWithClosure:(NSDictionary *)cl {
     [cl[@"delegate"] performSelector:@selector(addBlipDidFail)];
+}
+
+#pragma mark - Get Blips
+
+- (void) getBlipsNearLocation:(CLLocationCoordinate2D)loc withDelegate:(NSObject<GetBlipsDelegate>*)delegate {
+    NSDictionary *params = @{@"latitude":@(loc.latitude),@"longitude":@(loc.longitude)};
+    NSDictionary *cl = @{@"delegate":delegate};
+    [self getURL:BLIP_ROUTE parameters:params succeedSelector:@selector(requestToGetBlipsDidSucceedWithResponse:closure:) failSelector:@selector(requestToGetBlipsDidFailWithClosure:) closure:cl];
+}
+
+- (void) getBlipWithID:(NSInteger)blipID withDelegate:(NSObject<GetBlipsDelegate> *)delegate {
+    NSDictionary *params = @{@"id":@(blipID)};
+    NSDictionary *cl = @{@"delegate":delegate};
+       [self getURL:BLIP_ROUTE parameters:params succeedSelector:@selector(requestToGetBlipsDidSucceedWithResponse:closure:) failSelector:@selector(requestToGetBlipsDidFailWithClosure:) closure:cl];
+}
+
+// Just for debug, will grind to halt when we have trillions of blips
+- (void) getBlipsWithDelegate:(NSObject<GetBlipsDelegate> *)delegate {
+    NSDictionary *cl = @{@"delegate":delegate};
+    [self getURL:BLIP_ROUTE parameters:nil succeedSelector:@selector(requestToGetBlipsDidSucceedWithResponse:closure:) failSelector:@selector(requestToGetBlipsDidFailWithClosure:) closure:cl];
 }
 
 - (void) requestToGetBlipsDidSucceedWithResponse:(NSDictionary*)response closure:(NSDictionary*)cl {
@@ -279,18 +318,6 @@
 
 - (void) requestToGetBlipsDidFailWithResponse:(NSDictionary*)response withClosure:(NSDictionary*)cl {
   [cl[@"delegate"] performSelector:@selector(getBlipsDidFail)];
-}
-
-- (void) getBlipsNearLocation:(CLLocationCoordinate2D)loc withDelegate:(NSObject<GetBlipsDelegate>*)delegate {
-    NSDictionary *params = @{@"latitude":@(loc.latitude),@"longitude":@(loc.longitude)};
-    NSDictionary *cl = @{@"delegate":delegate};
-    [self getURL:BLIP_ROUTE parameters:params succeedSelector:@selector(requestToGetBlipsDidSucceedWithResponse:closure:) failSelector:@selector(requestToGetBlipsDidFailWithClosure:) closure:cl];
-}
-
-- (void) getBlipWithID:(NSInteger)blipID withDelegate:(NSObject<GetBlipsDelegate> *)delegate {
-    NSDictionary *params = @{@"id":@(blipID)};
-    NSDictionary *cl = @{@"delegate":delegate};
-       [self getURL:BLIP_ROUTE parameters:params succeedSelector:@selector(requestToGetBlipsDidSucceedWithResponse:closure:) failSelector:@selector(requestToGetBlipsDidFailWithClosure:) closure:cl];
 }
 
 #pragma clang diagnostic pop

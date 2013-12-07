@@ -15,8 +15,10 @@
 #import "LTTSongProvider.h"
 #import "Reachability.h"
 
-NSString *NO_INTERNET_ALERT_MESSAGE = @"Latitune can't connect to the tunes! ";
-NSString *NO_INTERNET_ALERT_TITLE = @"Can't Connect";
+#define CONNECTION_FAIL_ALERT_TITLE @"Can't Connect"
+#define CONNECTION_FAIL_ALERT_MESSAGE @"Latitune can't connect to the tunes!"
+#define NO_INTERNET_MESSAGE @"The internet connection appears to be offline."
+#define PROBLEMS_MESSAGE @"We've got problems."
 
 typedef enum {
   Success = 20,
@@ -69,22 +71,17 @@ typedef enum {
 
 @interface LTTCommunication : NSObject
 
-@property (strong,nonatomic) NSString *username, *password;
-@property (nonatomic) NSInteger userID;
-@property (nonatomic) NSDate *lastNoInternetAlert;
-@property (nonatomic) AFHTTPRequestOperationManager *http;
 @property (nonatomic) Reachability *internetReachability;
 
-+(id)sharedInstance;
-- (void) loginWithStoredDataWithDelegate:(NSObject <LoginDelegate>*)delegate;
-- (void) loginWithUsername:(NSString *)uname password:(NSString *)password withDelegate:(NSObject <LoginDelegate>*)delegate;
++ (instancetype)sharedInstance;
 - (void) createUserWithUsername:(NSString *)uname email:(NSString*)uemail password:(NSString*)upassword
                    withDelegate:(NSObject<CreateUserDelegate>*) delegate;
+- (void) loginWithStoredDataWithDelegate:(NSObject <LoginDelegate>*)delegate;
+- (void) loginWithUsername:(NSString *)uname password:(NSString *)password withDelegate:(NSObject <LoginDelegate>*)delegate;
 - (void) addSong:(LTTSong *)song withDelegate:(NSObject <AddSongDelegate>*)delegate;
 - (void) addBlipWithSong:(LTTSong *)song atLocation:(CLLocationCoordinate2D)loc withDelegate:(NSObject <AddBlipDelegate>*)delegate;
 - (void) getBlipsWithDelegate:(NSObject <GetBlipsDelegate> *)delegate;
 - (void) getBlipsNearLocation:(CLLocationCoordinate2D)loc withDelegate:(NSObject<GetBlipsDelegate>*)delegate;
 - (void) getBlipWithID:(NSInteger)blipID withDelegate:(NSObject<GetBlipsDelegate>*)delegate;
-- (void) processAndDelegateNetworkFailureToSelector:(SEL)failSelector withError:(NSError*) error closure:(NSDictionary*)cl;
 
 @end
