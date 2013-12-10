@@ -17,8 +17,8 @@
     self = [super init];
     if (self)
     {
-        self.provider = _provider;
-        self.providerKey = _providerKey;
+        _provider = _provider;
+        _providerKey = _providerKey;
     }
     return self;
 }

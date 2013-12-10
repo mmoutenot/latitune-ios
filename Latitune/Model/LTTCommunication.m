@@ -95,11 +95,11 @@
 
 - (void)getURL:(NSString*)urlString parameters:(NSDictionary*)params succeedSelector:(SEL)succeedSelector
   failSelector:(SEL) failSelector closure:(NSDictionary*)cl; {
-  urlString = [NSString stringWithFormat:@"%@?username=%@&password=%@",urlString,self.username,self.password];
+  urlString = [NSString stringWithFormat:@"%@?username=%@&password=%@",urlString,_username,_password];
   for (id key in [params allKeys]) {
     urlString = [NSString stringWithFormat:@"%@&%@=%@",urlString,key,params[key]];
   }
-  [self.http GET:urlString parameters:params success:^(AFHTTPRequestOperation *operation, id response){
+  [_http GET:urlString parameters:params success:^(AFHTTPRequestOperation *operation, id response){
     NSLog(@"GET. Operation:%@ resp: %@", operation, response);
     NSDictionary *responseDict = (NSDictionary *)response;
     if ([responseDict[@"meta"][@"status"] isEqualToNumber:@(Success)]) {
@@ -114,11 +114,12 @@
 
 - (void)putURL:(NSString*)urlString parameters:(NSDictionary*)params succeedSelector:(SEL)succeedSelector
         failSelector:(SEL) failSelector closure:(NSDictionary*)cl; {
-  NSMutableDictionary *parameters = [NSMutableDictionary dictionaryWithDictionary:params];
-  [parameters setObject:self.username forKey:@"username"];
-  [parameters setObject:self.password forKey:@"password"];
 
-  [self.http PUT:urlString parameters:parameters success:^(AFHTTPRequestOperation *operation, id response) {
+  NSMutableDictionary *parameters = [NSMutableDictionary dictionaryWithDictionary:params];
+  [parameters setObject:_username forKey:@"username"];
+  [parameters setObject:_password forKey:@"password"];
+
+  [_http PUT:urlString parameters:parameters success:^(AFHTTPRequestOperation *operation, id response) {
     NSLog(@"PUT. Operation:%@ resp: %@", operation, response);
     if ([response[@"meta"][@"status"] isEqualToNumber:@(Success)]) {
       [self performSelector:succeedSelector withObject:response withObject:cl];
@@ -147,9 +148,9 @@
 
 - (void) requestToAddUserDidSucceedWithResponse:(NSDictionary*)response closure:(NSDictionary*)cl {
   NSDictionary *user = response[@"objects"][0];
-  [[NSUserDefaults standardUserDefaults] setValue:self.username forKey:@"username"];
-  [SSKeychain setPassword:self.password forService:@"latitune" account:self.username];
-  self.userID = [user[@"id"] integerValue];
+  [[NSUserDefaults standardUserDefaults] setValue:_username forKey:@"username"];
+  [SSKeychain setPassword:_password forService:@"latitune" account:_username];
+  _userID = [user[@"id"] integerValue];
   [cl[@"delegate"] performSelector:@selector(createUserDidSucceedWithUser:) withObject:user];
 }
 
@@ -159,8 +160,8 @@
 
 - (void) createUserWithUsername:(NSString *)uname email:(NSString*)uemail password:(NSString*)upassword
                    withDelegate:(NSObject<CreateUserDelegate>*) delegate {
-  self.username = uname;
-  self.password = upassword;
+  _username = uname;
+  _password = upassword;
   NSDictionary *params = @{@"email":uemail};
   NSDictionary *cl = @{@"delegate":delegate};
   [self putURL:USER_ROUTE parameters:params succeedSelector:@selector(requestToAddUserDidSucceedWithResponse:closure:)
@@ -169,9 +170,9 @@
 
 - (void) requestToLoginDidSucceedWithResponse:(NSDictionary*)response closure:(NSDictionary*)cl {
   NSDictionary *user = response[@"objects"][0];
-  [[NSUserDefaults standardUserDefaults] setValue:self.username forKey:@"username"];
-  [SSKeychain setPassword:self.password forService:@"latitune" account:self.username];
-  self.userID = [user[@"id"] integerValue];
+  [[NSUserDefaults standardUserDefaults] setValue:_username forKey:@"username"];
+  [SSKeychain setPassword:_password forService:@"latitune" account:_username];
+  _userID = [user[@"id"] integerValue];
   [cl[@"delegate"] performSelector:@selector(loginDidSucceedWithUser:) withObject:user];
 }
 
@@ -181,8 +182,8 @@
 
 - (void) loginWithUsername:(NSString *)uname password:(NSString *)upassword withDelegate:(NSObject <LoginDelegate>*)delegate {
   if (delegate == nil) delegate = [NSNull null];
-    self.username = uname;
-    self.password = upassword;
+    _username = uname;
+    _password = upassword;
     NSDictionary *cl = @{@"delegate":delegate};
     [self getURL:USER_ROUTE parameters:nil succeedSelector:@selector(requestToLoginDidSucceedWithResponse:closure:)
     failSelector:@selector(requestToLoginDidFailWithErrorCode:closure:) closure:cl];

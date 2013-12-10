@@ -9,18 +9,17 @@
 #import <UIKit/UIKit.h>
 #import <CoreLocation/CoreLocation.h>
 #import <QuartzCore/QuartzCore.h>
+
+#import "LTTAppDelegate.h"
 #import "LTTCommunication.h"
 #import "LTTRadarView.h"
 #import "LTTBlip.h"
 
-@interface LTTRadarViewController : UIViewController <CLLocationManagerDelegate, GetBlipsDelegate>
+@interface LTTRadarViewController : UIViewController <CLLocationManagerDelegate, GetBlipsDelegate, AddBlipDelegate>
 
 @property (weak, nonatomic) IBOutlet LTTRadarView *radarView;
 @property (nonatomic,retain) CLLocationManager *locationManager;
 @property CLLocation *currentLocation;
 @property NSArray *blips;
-
-- (void)addBlip:(LTTBlip *)blip;
-- (void)rotateTo:(NSNumber *) rad;
 
 @end

@@ -17,8 +17,10 @@
 - (LTTRadarView *)initialze;
 
 - (void)setCenterLocation:(CLLocation *)center;
-- (void)setBlips:(NSArray *)blips;
+- (void)addBlips:(NSArray *)blips;
 - (void)updateBlipViewLocations;
-- (void)rotate:(NSNumber *) rad;
+- (void) rotateBlipViews:(NSNumber *) rad;
+
+@property (readonly, nonatomic) NSMutableDictionary *blipIDToView;
 
 @end

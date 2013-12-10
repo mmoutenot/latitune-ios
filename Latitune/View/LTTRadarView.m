@@ -8,7 +8,7 @@
 
 #import "LTTRadarView.h"
 
-#define VIEWABLE_AREA_METERS 8000 // x/y physical distance viewable on radar
+#define VIEWABLE_AREA_METERS 500 // x/y physical distance viewable on radar
 
 // At latitude lat, how many meters is one degree of longitude or latitude? [via wikipedia]
 #define metersPerLatAt(lat) (111132.954 - (559.822 * cos(2.0*(lat))) + (1.175 * cos(4.0*(lat))))
@@ -39,65 +39,76 @@
 - (LTTRadarView *)initialze
 {
   if (self) {
-    self.blipIDToView = [NSMutableDictionary dictionary];
+    _blipIDToView = [NSMutableDictionary dictionary];
+    _blips = @[];
+    CLLocationCoordinate2D coord;
+    coord.latitude = 90.5;
+    coord.longitude = -40.7;
+    CLLocation *loc = [[CLLocation alloc] initWithCoordinate:coord altitude:1000.0 horizontalAccuracy:100 verticalAccuracy:100 course:5 speed:5 timestamp:nil];
+    [self setCenterLocation: loc];
   }
   return self;
 }
 
 - (void)setCenterLocation:(CLLocation *)location {
-  self.location = location;
+  _location = location;
+  
   [self updateBlipViewLocations];
 }
 
-- (void)setBlips:(NSArray *)blips {
-  _blips = blips;
-  for (LTTBlip *blip in blips) {
-    CGRect viewRect = CGRectMake(0, 0, 30, 30);
+- (void)addBlips:(NSArray *)blips {
+  _blips = [_blips arrayByAddingObjectsFromArray:blips];
+  for (LTTBlip *blip in _blips) {
+    CGRect viewRect = CGRectMake(0, 0, 40, 40);
     LTTBlipView *blipView = [[LTTBlipView alloc] initWithFrame:viewRect];
+    blipView.layer.opacity = 0.f;
     [blipView setBlip:blip];
     [self addSubview:blipView];
     [self bringSubviewToFront:blipView];
-    [self.blipIDToView setObject:blipView forKey:@(blip.blipID)];
+    [_blipIDToView setObject:blipView forKey:@(blip.blipID)];
+    
+    // animate fade in and grow
+    [UIView animateWithDuration:1.5f animations:^{
+      blipView.layer.opacity = 1.f;
+    }];
   }
   [self updateBlipViewLocations];
 }
 
 - (void)updateBlipViewLocations {
-  if (!self.blips || !self.location) return;
-  for (LTTBlip *blip in self.blips) {
-    LTTBlipView *blipView = [self.blipIDToView objectForKey:@(blip.blipID)];
+  if (!_blips || !_location) return;
+  for (LTTBlip *blip in _blips) {
+    LTTBlipView *blipView = [_blipIDToView objectForKey:@(blip.blipID)];
     // TODO animate it real fancy like
     blipView.center = [self getCenterPointForBlip:blip];
   }
 }
 
-// rotates view by rad. Also roates blip subviews the negative amount
-- (void)rotate:(NSNumber *) rad {
-  [UIView animateWithDuration:0.2
-                   animations:^{
-                     CGAffineTransform  xform = CGAffineTransformMakeRotation(rad.floatValue);
-                     self.transform = xform;
-                     [self setNeedsDisplay];
-                   } completion:^(BOOL finished){
-                   }];
-//  NSNumber *negRad = [NSNumber numberWithFloat:rad.floatValue * -1];
-//  for (LTTBlip *blip in _blips) {
-//    LTTBlipView *blipView = [_blipIDToView objectForKey:@(blip.blipID)];
-//    [blipView rotate:negRad];
-//  }
+- (void) rotateBlipViews:(NSNumber *)rad {
+  for (LTTBlip *blip in _blips) {
+    LTTBlipView *blipView = [_blipIDToView objectForKey:@(blip.blipID)];
+    [UIView animateWithDuration:0.5 animations:^{
+      CGAffineTransform  xform = CGAffineTransformMakeRotation(rad.floatValue);
+      blipView.transform = xform;
+      [self setNeedsDisplay];
+      [blipView setNeedsDisplay];
+    } completion:^(BOOL finished){
+    }];
+  }
 }
 
 - (CGPoint)getCenterPointForBlip:(LTTBlip *)blip {
   CLLocation *blipLocation = [[CLLocation alloc] initWithLatitude:blip.lat longitude:blip.lng];
   CGVector screenDistances = [self getVectorBetweenCenterAndLocation:blipLocation];
   double halfWidth = self.frame.size.width / 2;
-  double yPosition = (self.frame.size.height - (screenDistances.dy + halfWidth)); // convert to upper left based coordinate system
+  double halfHeight = self.frame.size.height / 2;
+  double yPosition = (self.frame.size.height - (screenDistances.dy + halfHeight)); // convert to upper left based coordinate system
   double xPosition = screenDistances.dx + halfWidth;
   return CGPointMake(xPosition, yPosition);
 }
 
 - (CGVector)getVectorBetweenCenterAndLocation:(CLLocation *)location {
-  return [self getVectorBetweenLocation:self.location andLocation:location];
+  return [self getVectorBetweenLocation:_location andLocation:location];
 }
 
 // Returns the screen point (pixel) dx and dy between the two geographic locations
