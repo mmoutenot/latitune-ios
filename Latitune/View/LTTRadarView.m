@@ -41,11 +41,6 @@
   if (self) {
     _blipIDToView = [NSMutableDictionary dictionary];
     _blips = @[];
-    CLLocationCoordinate2D coord;
-    coord.latitude = 90.5;
-    coord.longitude = -40.7;
-    CLLocation *loc = [[CLLocation alloc] initWithCoordinate:coord altitude:1000.0 horizontalAccuracy:100 verticalAccuracy:100 course:5 speed:5 timestamp:nil];
-    [self setCenterLocation: loc];
   }
   return self;
 }

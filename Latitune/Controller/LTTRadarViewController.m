@@ -7,10 +7,6 @@
 //
 #import "LTTRadarViewController.h"
 
-@interface LTTRadarViewController()
-
-@end
-
 @implementation LTTRadarViewController
 
 # pragma mark - Init / Load
