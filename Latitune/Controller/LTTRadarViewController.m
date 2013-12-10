@@ -44,8 +44,9 @@
   [_radarView setBlips:blips];
 }
 
-- (void) getBlipsDidFail {
+- (void) getBlipsDidFailWithError:(NSNumber *)errorCode {
   // not cool man
+  NSLog(@"get blips did fail: %@", errorCode);
 }
 
 #pragma mark - Location Manager Delegate

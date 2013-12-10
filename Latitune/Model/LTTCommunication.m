@@ -28,11 +28,11 @@
 - (void)loginDidSucceedWithUser:(NSDictionary *)user {}
 - (void)createUserDidFailWithError:(NSNumber *)errorCode {}
 - (void)createUserDidSucceedWithUser:(NSDictionary *)user {}
-- (void)getBlipsDidFail {}
+- (void)getBlipsDidFailWithError:(NSNumber *)errorCode {}
 - (void)getBlipsDidSucceedWithBlips:(NSArray *)blips {}
-- (void)addBlipDidFail {}
+- (void)addBlipDidFailWithError:(NSNumber *)errorCode {}
 - (void)addBlipDidSucceedWithBlip:(LTTBlip *)blip {}
-- (void)addSongDidFail {}
+- (void)addSongDidFailWithError:(NSNumber *)errorCode {}
 - (void)addSongDidSucceedWithSong:(LTTSong *)song {}
 
 @end
@@ -189,11 +189,11 @@
 
 - (void)loginWithUsername:(NSString *)uname password:(NSString *)upassword withDelegate:(NSObject <LoginDelegate>*)delegate {
   if (delegate == nil) delegate = [NSNull null];
-    self.username = uname;
-    self.password = upassword;
-    NSDictionary *cl = @{@"delegate":delegate};
-    [self getURL:USER_ROUTE parameters:nil succeedSelector:@selector(requestToLoginDidSucceedWithResponse:closure:)
-    failSelector:@selector(requestToLoginDidFailWithErrorCode:closure:) closure:cl];
+  self.username = uname;
+  self.password = upassword;
+  NSDictionary *cl = @{@"delegate":delegate};
+  [self getURL:USER_ROUTE parameters:nil succeedSelector:@selector(requestToLoginDidSucceedWithResponse:closure:)
+  failSelector:@selector(requestToLoginDidFailWithErrorCode:closure:) closure:cl];
 }
 
 - (void)loginWithStoredDataWithDelegate:(NSObject <LoginDelegate>*)delegate {
@@ -222,7 +222,7 @@
     NSDictionary *params = [song asDictionary];
     NSDictionary *cl = @{@"delegate":delegate};
     [self putURL:SONG_ROUTE parameters:params succeedSelector:@selector(requestToAddSongDidSucceedWithResponse:closure:)
-    failSelector:@selector(requestToAddSongDidFailWithResponse:withClosure:) closure:cl];
+    failSelector:@selector(requestToAddSongDidFailWithErrorCode:closure:) closure:cl];
 }
 
 - (void)requestToAddSongDidSucceedWithResponse:(NSDictionary*)response closure:(NSDictionary*)cl {
@@ -232,8 +232,8 @@
     [cl[@"delegate"] performSelector:@selector(addSongDidSucceedWithSong:) withObject:toReturn];
 }
 
-- (void)requestToAddSongDidFailWithResponse:(NSDictionary *)response withClosure:(NSDictionary *)cl {
-    [cl[@"delegate"] performSelector:@selector(addSongDidFail)];
+- (void)requestToAddSongDidFailWithErrorCode:(NSNumber *)errorCode closure:(NSDictionary *)cl {
+    [cl[@"delegate"] performSelector:@selector(addSongDidFailWithError:) withObject:errorCode];
 }
 
 #pragma mark - Add Blip
@@ -241,7 +241,7 @@
 - (void)addBlipWithSong:(LTTSong *)song atLocation:(CLLocationCoordinate2D)loc withDelegate:(NSObject <AddBlipDelegate>*)delegate {
     NSDictionary *params = @{ @"song_id":@(song.songID), @"latitude":@(loc.latitude), @"longitude":@(loc.longitude), @"user_id":@(_userID)};
     NSDictionary *cl = @{@"delegate":delegate};
-    [self putURL:BLIP_ROUTE parameters:params succeedSelector:@selector(requestToAddBlipDidSucceedWithResponse:closure:) failSelector:@selector(requestToAddBlipDidFailWithClosure:) closure:cl];
+  [self putURL:BLIP_ROUTE parameters:params succeedSelector:@selector(requestToAddBlipDidSucceedWithResponse:closure:) failSelector:@selector(requestToAddBlipDidFailWithErrorCode:closure:) closure:cl];
 }
 
 - (void)requestToAddBlipDidSucceedWithResponse:(NSDictionary*)response closure:(NSDictionary*)cl {
@@ -265,8 +265,8 @@
     [cl[@"delegate"] performSelector:@selector(addBlipDidSucceedWithBlip:) withObject:toReturn];
 }
 
-- (void)requestToAddBlipDidFailWithClosure:(NSDictionary *)cl {
-    [cl[@"delegate"] performSelector:@selector(addBlipDidFail)];
+- (void)requestToAddBlipDidFailWithErrorCode:(NSNumber *)errorCode closure:(NSDictionary *)cl {
+    [cl[@"delegate"] performSelector:@selector(addBlipDidFailWithError:) withObject:errorCode];
 }
 
 #pragma mark - Get Blips
@@ -274,19 +274,19 @@
 - (void)getBlipsNearLocation:(CLLocationCoordinate2D)loc withDelegate:(NSObject<GetBlipsDelegate>*)delegate {
     NSDictionary *params = @{@"latitude":@(loc.latitude),@"longitude":@(loc.longitude)};
     NSDictionary *cl = @{@"delegate":delegate};
-    [self getURL:BLIP_ROUTE parameters:params succeedSelector:@selector(requestToGetBlipsDidSucceedWithResponse:closure:) failSelector:@selector(requestToGetBlipsDidFailWithClosure:) closure:cl];
+  [self getURL:BLIP_ROUTE parameters:params succeedSelector:@selector(requestToGetBlipsDidSucceedWithResponse:closure:) failSelector:@selector(requestToGetBlipsDidFailWithErrorCode:closure:) closure:cl];
 }
 
 - (void)getBlipWithID:(NSInteger)blipID withDelegate:(NSObject<GetBlipsDelegate> *)delegate {
     NSDictionary *params = @{@"id":@(blipID)};
     NSDictionary *cl = @{@"delegate":delegate};
-       [self getURL:BLIP_ROUTE parameters:params succeedSelector:@selector(requestToGetBlipsDidSucceedWithResponse:closure:) failSelector:@selector(requestToGetBlipsDidFailWithClosure:) closure:cl];
+  [self getURL:BLIP_ROUTE parameters:params succeedSelector:@selector(requestToGetBlipsDidSucceedWithResponse:closure:) failSelector:@selector(requestToGetBlipsDidFailWithErrorCode:closure:) closure:cl];
 }
 
-// Just for debug, will grind to halt when we have trillions of blips
+// Just for debug, will grind to halt when we have bajillion trillion blips
 - (void)getBlipsWithDelegate:(NSObject<GetBlipsDelegate> *)delegate {
     NSDictionary *cl = @{@"delegate":delegate};
-    [self getURL:BLIP_ROUTE parameters:nil succeedSelector:@selector(requestToGetBlipsDidSucceedWithResponse:closure:) failSelector:@selector(requestToGetBlipsDidFailWithClosure:) closure:cl];
+  [self getURL:BLIP_ROUTE parameters:nil succeedSelector:@selector(requestToGetBlipsDidSucceedWithResponse:closure:) failSelector:@selector(requestToGetBlipsDidFailWithErrorCode:closure:) closure:cl];
 }
 
 - (void)requestToGetBlipsDidSucceedWithResponse:(NSDictionary*)response closure:(NSDictionary*)cl {
@@ -316,8 +316,8 @@
   [cl[@"delegate"] performSelector:@selector(getBlipsDidSucceedWithBlips:) withObject:toReturn];
 }
 
-- (void)requestToGetBlipsDidFailWithResponse:(NSDictionary*)response withClosure:(NSDictionary*)cl {
-  [cl[@"delegate"] performSelector:@selector(getBlipsDidFail)];
+- (void)requestToGetBlipsDidFailWithErrorCode:(NSNumber *)errorCode closure:(NSDictionary*)cl {
+  [cl[@"delegate"] performSelector:@selector(getBlipsDidFailWithError:)];
 }
 
 #pragma clang diagnostic pop

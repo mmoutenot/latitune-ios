@@ -115,9 +115,9 @@
     NSLog(@"%@",blip.song.providers);
 }
 
-- (void)getBlipsDidFail
+- (void)getBlipsDidFailWithError:(NSNumber *)errorCode
 {
-    NSLog(@"getBlipdsFailed");
+    NSLog(@"Get Blips Failed: %@", errorCode);
 }
 
 #pragma mark Play background music

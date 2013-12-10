@@ -91,8 +91,12 @@
   [[LTTCommunication sharedInstance] addSong:song withDelegate:self];
 }
 
--(void) addSongDidFail {
-  NSLog(@"Adding song failed");
+- (void) populateEchonestIDFailed {
+  NSLog(@"Populate echonest id failed");
+}
+
+-(void) addSongDidFailWithError:(NSNumber *)errorCode {
+  NSLog(@"Adding song failed: %@", errorCode);
 }
 
 -(void) addSongDidSucceedWithSong:(LTTSong *)song {
@@ -100,8 +104,8 @@
   [[LTTCommunication sharedInstance] addBlipWithSong:song atLocation:loc withDelegate:self];
 }
 
--(void) addBlipDidFail {
-  NSLog(@"Adding blip failed");
+-(void) addBlipDidFailWithError:(NSNumber *)errorCode {
+  NSLog(@"Adding blip failed: %@", errorCode);
 }
 
 -(void) addBlipDidSucceedWithBlip:(LTTBlip *)blip {
