@@ -18,20 +18,23 @@
 
 - (id)initWithFrame:(CGRect)frame
 {
-    self = [super initWithFrame:frame];
-    if (self) {
-      _albumArt = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"blip"]];
-      [_albumArt setContentMode:UIViewContentModeCenter];
-      [self addSubview:_albumArt];
-      
-      _heart = [[UIButton alloc] init];
-      _heart.frame = CGRectMake(0, 0, 30, 30);
-      [_heart setImage:[UIImage imageNamed:@"heart"] forState:UIControlStateNormal];
-      _heart.layer.opacity = .0f;
-      [self addSubview:_heart];
-      [self sendSubviewToBack:_heart];
-    }
-    return self;
+  self = [super initWithFrame:frame];
+
+  if (self) {
+    _albumArt = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"blip"]];
+    [_albumArt setContentMode:UIViewContentModeCenter];
+    _albumArt.userInteractionEnabled = NO;
+    [self addSubview:_albumArt];
+    
+    _heart = [[UIButton alloc] init];
+    _heart.frame = CGRectMake(0, 0, 30, 30);
+    [_heart setImage:[UIImage imageNamed:@"heart"] forState:UIControlStateNormal];
+    _heart.layer.opacity = .0f;
+    _heart.userInteractionEnabled = NO;
+    [self addSubview:_heart];
+    [self sendSubviewToBack:_heart];
+  }
+  return self;
 }
 
 - (void)setBlip:(LTTBlip *)blip {

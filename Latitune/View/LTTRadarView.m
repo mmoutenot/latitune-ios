@@ -52,7 +52,6 @@
 
 - (void)setCenterLocation:(CLLocation *)location {
   _location = location;
-  
   [self updateBlipViewLocations];
 }
 
@@ -79,8 +78,10 @@
   if (!_blips || !_location) return;
   for (LTTBlip *blip in _blips) {
     LTTBlipView *blipView = [_blipIDToView objectForKey:@(blip.blipID)];
-    // TODO animate it real fancy like
-    blipView.center = [self getCenterPointForBlip:blip];
+    [UIView animateWithDuration:0.5 animations:^{
+      blipView.center = [self getCenterPointForBlip:blip];
+    }completion:^(BOOL finished){
+    }];
   }
 }
 
