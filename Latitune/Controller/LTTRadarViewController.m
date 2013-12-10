@@ -32,20 +32,24 @@
   [_locationManager startUpdatingLocation];
 }
 
-// Allow adding a just created blip to the radar
-- (void)addBlip:(LTTBlip *)blip {
-  _blips = [_blips arrayByAddingObject:blip];
-  [_radarView setBlips:_blips];
-}
-
 #pragma mark - Get Blip Delegate
 
 - (void) getBlipsDidSucceedWithBlips:(NSArray *)blips {
-  [_radarView setBlips:blips];
+  [_radarView addBlips:blips];
 }
 
 - (void) getBlipsDidFail {
   // not cool man
+}
+
+#pragma mark - Add Blip Delegate
+
+-(void) addBlipDidFail {
+  NSLog(@"Adding blip failed");
+}
+
+-(void) addBlipDidSucceedWithBlip:(LTTBlip *)blip {
+  [_radarView addBlips:@[blip]];
 }
 
 #pragma mark - Location Manager Delegate
@@ -54,14 +58,26 @@
   CLLocation *previousLocation = _currentLocation;
   _currentLocation = [locations lastObject];
   if (!previousLocation || [previousLocation distanceFromLocation:_currentLocation] > 100) {
-    [[LTTCommunication sharedInstance] getBlipsNearLocation:self.currentLocation.coordinate withDelegate:self];
+    [[LTTCommunication sharedInstance] getBlipsNearLocation:_currentLocation.coordinate withDelegate:self];
   }
   [_radarView setCenterLocation:_currentLocation];
 }
 
 - (void)locationManager:(CLLocationManager *)manager didUpdateHeading:(CLHeading *)newHeading {
   NSNumber *rad = [NSNumber numberWithFloat:(-newHeading.trueHeading * M_PI / 180.0f)];
-  [_radarView performSelectorOnMainThread:@selector(rotate:) withObject:rad waitUntilDone:NO];
+  [self rotateRadarView:rad];
+}
+
+// rotates view by rad. Also roates blip subviews the negative amount
+- (void)rotateRadarView:(NSNumber *) rad {
+  [UIView animateWithDuration:0.5 animations:^{
+    CGAffineTransform  xform = CGAffineTransformMakeRotation(rad.floatValue);
+    self.view.transform = xform;
+    [self.radarView setNeedsDisplay];
+    [self.view setNeedsDisplay];
+  } completion:^(BOOL finished){
+  }];
+  [_radarView rotateBlipViews: [NSNumber numberWithFloat:rad.floatValue * -1]];
 }
 
 - (void)didReceiveMemoryWarning

@@ -15,8 +15,8 @@
 #import "LTTSongProvider.h"
 #import "Reachability.h"
 
-NSString *NO_INTERNET_ALERT_MESSAGE = @"Latitune can't connect to the tunes! ";
-NSString *NO_INTERNET_ALERT_TITLE = @"Can't Connect";
+#define NO_INTERNET_ALERT_MESSAGE @"Latitune can't connect to the tunes!"
+#define NO_INTERNET_ALERT_TITLE @"Can't Connect"
 
 typedef enum {
   Success = 20,
@@ -42,7 +42,7 @@ typedef enum {
 @protocol AddBlipDelegate <NSObject>
 
 - (void) addBlipDidFail;
-- (void) addBlipDidSucceedWithBlip:(LTTBlip*) song;
+- (void) addBlipDidSucceedWithBlip:(LTTBlip*) blip;
 
 @end
 

@@ -20,9 +20,9 @@
 - (id) initWithTitle:(NSString *)title artist:(NSString*)artist album:(NSString*)album {
   self = [super init];
   if (self) {
-    self.title = title;
-    self.artist = artist;
-    self.album = album;
+    _title = title;
+    _artist = artist;
+    _album = album;
   }
   return self;
 }
@@ -30,28 +30,30 @@
 - (id) initWithTitle:(NSString *)title artist:(NSString *)artist album:(NSString *)album echonestID:(NSString *)echonestID {
   self = [super init];
   if (self) {
-    self.title = title;
-    self.artist = artist;
-    self.album = album;
-    self.echonestID = echonestID;
-    self.providers = @[];
+    _title = title;
+    _artist = artist;
+    _album = album;
+    _echonestID = echonestID;
+    _providers = @[];
   }
   return self;
 }
 
 - (void) populateEchonestIDWithDelegate:(NSObject <LTTSongDelegate>*)delegate {
-  NSMutableDictionary *songSearchParameters = [@{ @"title" : self.title, @"artist" : self.artist } mutableCopy];
-  [ENAPIRequest GETWithEndpoint:@"song/search" andParameters:songSearchParameters andCompletionBlock:
-   ^(ENAPIRequest *request) {
-     self.echonestID = request.response[@"response"][@"songs"][0][@"id"];
-     [delegate populateEchonestIDSucceededForSong:self];
-   }];
+  _echonestID = @"1";
+  [delegate populateEchonestIDSucceededForSong:self];
+//  NSMutableDictionary *songSearchParameters = [@{ @"title" : _title, @"artist" : _artist } mutableCopy];
+//  [ENAPIRequest GETWithEndpoint:@"song/search" andParameters:songSearchParameters andCompletionBlock:
+//   ^(ENAPIRequest *request) {
+//     _echonestID = request.response[@"response"][@"songs"][0][@"id"];
+//     [delegate populateEchonestIDSucceededForSong:self];
+//   }];
 }
 
 - (NSDictionary *)asDictionary {
-  return @{ @"title": self.title,
-            @"artist": self.artist,
-            @"album": self.album,
-	    @"echonest_id":self.echonestID};
+  return @{ @"title": _title,
+            @"artist": _artist,
+            @"album": _album,
+	    @"echonest_id": _echonestID};
 }
 @end

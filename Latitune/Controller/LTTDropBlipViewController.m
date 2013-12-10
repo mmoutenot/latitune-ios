@@ -11,6 +11,7 @@
 
 #import "LTTSong.h"
 #import "LTTAppDelegate.h"
+#import "LTTRadarViewController.h"
 #import "LTTDropBlipViewController.h"
 
 @implementation LTTDropBlipViewController
@@ -28,11 +29,11 @@
 {
   [super viewDidLoad];
 // Do any additional setup after loading the view.
-  self.locationManager = [[CLLocationManager alloc] init];
-  self.locationManager.delegate = self;
-  self.locationManager.distanceFilter = kCLDistanceFilterNone;
-  self.locationManager.desiredAccuracy = kCLLocationAccuracyBest;
-  [self.locationManager startUpdatingLocation];
+  _locationManager = [[CLLocationManager alloc] init];
+  _locationManager.delegate = self;
+  _locationManager.distanceFilter = kCLDistanceFilterNone;
+  _locationManager.desiredAccuracy = kCLLocationAccuracyBest;
+  [_locationManager startUpdatingLocation];
 }
 
 - (void)didReceiveMemoryWarning
@@ -86,9 +87,14 @@
   }
 }
 
-#pragma callbacks
+#pragma mark - LTTSong Delegate
+
 - (void) populateEchonestIDSucceededForSong:(LTTSong *)song{
   [[LTTCommunication sharedInstance] addSong:song withDelegate:self];
+}
+
+- (void) populateEchonestIDFailed {
+  
 }
 
 -(void) addSongDidFail {

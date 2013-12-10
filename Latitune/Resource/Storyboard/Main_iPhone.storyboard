@@ -215,10 +215,10 @@
             </objects>
             <point key="canvasLocation" x="2265" y="-279"/>
         </scene>
-        <!--Radar View Controller-->
+        <!--radar-->
         <scene sceneID="5O5-Vm-1sh">
             <objects>
-                <viewController automaticallyAdjustsScrollViewInsets="NO" id="E9V-Nh-C5D" customClass="LTTRadarViewController" sceneMemberID="viewController">
+                <viewController automaticallyAdjustsScrollViewInsets="NO" id="E9V-Nh-C5D" userLabel="radar" customClass="LTTRadarViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="ix6-qN-egL"/>
                         <viewControllerLayoutGuide type="bottom" id="1Bt-i9-3Vh"/>

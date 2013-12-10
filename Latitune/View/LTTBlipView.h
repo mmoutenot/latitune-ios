@@ -9,11 +9,10 @@
 #import <UIKit/UIKit.h>
 #import "LTTBlip.h"
 
-@interface LTTBlipView : UIView
+@interface LTTBlipView : UIButton
 
 @property (nonatomic) LTTBlip *blip;
 
 - (void)setBlip:(LTTBlip *)blip;
-- (void)rotate:(NSNumber *) rad;
 
 @end
